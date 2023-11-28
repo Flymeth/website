@@ -30,14 +30,12 @@
 	import { onMount } from "svelte";
 	import { browser } from "$app/environment";
 	import { gsap } from "gsap";
-    import ScrollTrigger from "gsap/dist/ScrollTrigger";
 	import Loader from "$lib/components/loader.svelte";
 	import { fade } from "svelte/transition";
     import genScene from "$lib/scenes/layout";
 	import { onNavigate } from "$app/navigation";
 	import Footer from "$lib/components/footer.svelte";
     
-    gsap.registerPlugin(ScrollTrigger);
     let loaded = false;
     let mobile = false;
     let sceneContainer: HTMLDivElement;
@@ -83,6 +81,10 @@
                 content.tools.setBG(value)
             })
         })
+
+        window.addEventListener("resize", () => {
+            console.warn("Hey! You just resized the window. Please reload the page if you switched between the mobile and the pc version.")
+        })
     })
 
     // Add page transition
@@ -126,7 +128,8 @@
         width: 100%;
         height: 100%;
         z-index: -1;
-        filter: blur(5px) opacity(.5);
+        opacity: .65;
+        filter: blur(5px);
     }
 
     #app {

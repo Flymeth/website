@@ -133,7 +133,7 @@
         width: 100%;
         height: 100%;
         
-        z-index: 3;
+        z-index: 10;
 
         background-color: rgba($secondary, .15);
         backdrop-filter: blur(15px);
@@ -172,6 +172,7 @@
                 align-items: center;
                 height: 100%;
                 font-size: 20px;
+                grid-area: info;
 
                 h2 {
                     margin-left: 5px;
@@ -198,6 +199,8 @@
                 align-items: center;
                 justify-content: center;
                 padding: 0;
+                grid-area: links;
+
                 > li {
                     margin: 0 7.5px;
                     > a {
@@ -212,6 +215,28 @@
             button {
                 border-radius: 999px;
                 transform-origin: center right;
+                grid-area: close;
+            }
+
+            @media screen and (max-width: 630px) {
+                height: calc(var(--nav-height) * 1.5);
+                width: 90%;
+                padding: 15px;
+                display: grid;
+                grid-template-areas: 
+                    "info links"
+                    "close close"
+                ;
+                grid-template-rows: 50%;
+                gap: 10px;
+                grid-template-columns: 1fr;
+                border-radius: 15px;
+                align-items: center;
+                justify-content: center;
+                position: static;
+                > button {
+                    transform-origin: bottom center;
+                }
             }
         }
         #project-content {

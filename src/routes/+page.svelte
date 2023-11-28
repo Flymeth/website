@@ -1,5 +1,6 @@
 <script>
 	import WorkWithMe from "$lib/components/workWithMe.svelte";
+	import Header from "$lib/components/header.svelte";
 
     import vscode from "$lib/assets/img/tools/vscode.svg";
 
@@ -22,9 +23,9 @@
     import adobesuite from "$lib/assets/img/tools/adobesuite.svg";
 	import TechCategory from "$lib/components/techCategory.svelte";
 </script>
-<header>
+<Header>
     <h1>Hi! My name is <span>Johan</span>!</h1>
-</header>
+</Header>
 <main>
     <section id="me">
         <h2>Who am I ?</h2>

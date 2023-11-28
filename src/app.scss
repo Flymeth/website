@@ -147,21 +147,3 @@ hr {
     border: 1.5px dashed var(--secondary);
     border-radius: 999px;
 }
-
-header {
-    height: 95vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px 25px;
-    font-size: 25px;
-
-    > h1 span {
-        color: var(--primary);
-        font-family: inherit;
-    }
-    > p {
-        font-style: italic;
-        font-size: 20px;
-    }
-}
