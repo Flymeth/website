@@ -12,8 +12,6 @@
     import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
     export let project: Project;
-    console.log(project);
-
     const projectLinks = Object.entries({
         github: {
             icon: faGithub,

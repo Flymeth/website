@@ -7,7 +7,7 @@
 	import { page } from "$app/stores";
 	import { onMount } from "svelte";
 	import { writable } from "svelte/store";
-    import gsap from "gsap";
+    import { gsap } from "gsap";
 	import { blur } from "svelte/transition";
 	import { changeTheme } from "../../routes/+layout.svelte";
     import { circInOut } from "svelte/easing";

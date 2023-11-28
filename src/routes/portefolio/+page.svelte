@@ -16,6 +16,9 @@
             else window.history.pushState(null, "", new URL($page.url.pathname, $page.url.origin))
         }
     })
+
+    console.info(`Found ${projectlist.length} projects:`)
+    console.info(projectlist)
 </script>
 
 <header>
