@@ -35,6 +35,7 @@
     import genScene from "$lib/scenes/layout";
 	import { onNavigate } from "$app/navigation";
 	import Footer from "$lib/components/footer.svelte";
+	import { navigating } from "$app/stores";
     
     let loaded = false;
     let mobile = false;
@@ -106,7 +107,7 @@
 
 <div id="scene" bind:this={sceneContainer}></div>
 
-{#if loaded}
+{#if loaded && (!mobile || $navigating === null)}
     <Nav />
 
     <div id="app" data-mobile={mobile ? "" : null}>
@@ -115,7 +116,7 @@
 
     <Footer />
 {:else}
-    <div out:fade>
+    <div transition:fade>
         <Loader />
     </div>
 {/if}
