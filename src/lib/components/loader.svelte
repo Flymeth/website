@@ -10,6 +10,9 @@
     })
 
     onMount(() => {
+        gsap.to(firstPoint, {
+            opacity: 1
+        })
         timeline
         .set(firstPoint, {
             translateX: 50,
@@ -46,6 +49,7 @@
             top: 50%;
             left: 50%;
             translate: -50% -50%;
+            opacity: 0;
 
             height: 25px;
             aspect-ratio: 1 / 1;

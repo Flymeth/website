@@ -31,7 +31,7 @@
 	import { browser } from "$app/environment";
 	import { gsap } from "gsap";
 	import Loader from "$lib/components/loader.svelte";
-	import { fade } from "svelte/transition";
+	import { fade, fly } from "svelte/transition";
     import genScene from "$lib/scenes/layout";
 	import { onNavigate } from "$app/navigation";
 	import Footer from "$lib/components/footer.svelte";
@@ -43,7 +43,9 @@
     const clickableElementsNames = [
         "A",
         "BUTTON",
-        "INPUT"
+        "INPUT",
+        "TEXTAREA",
+        "OPTION"
     ]
     onMount(() => {
         mobile = navigator.userAgent.toLowerCase().includes("mobile")
@@ -107,16 +109,22 @@
 
 <div id="scene" bind:this={sceneContainer}></div>
 
-{#if loaded && (!mobile || $navigating === null)}
+{#if loaded}
     <Nav />
 
-    <div id="app" data-mobile={mobile ? "" : null}>
-        <slot />
-    </div>
+    {#if (!mobile || $navigating === null)}
+        <div id="app" data-mobile={mobile ? "" : null}>
+            <slot />
+        </div>
+    {:else}
+        <div transition:fade>
+            <Loader />
+        </div>
+    {/if}
 
     <Footer />
 {:else}
-    <div transition:fade>
+    <div out:fade>
         <Loader />
     </div>
 {/if}
