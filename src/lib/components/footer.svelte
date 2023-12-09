@@ -12,7 +12,7 @@
     <h3>Socials</h3>
     <ul>
         <li><a href="https://flymeth.net" target="_blank">My other website</a></li>
-        <li><a href="https://github.com/Flymeth">See my projects github</a></li>
+        <li><a href="https://github.com/Flymeth" target="_blank">See my github's projects</a></li>
     </ul>
 </footer>
 
@@ -21,7 +21,7 @@
         $transition-size: 25px;
         position: relative;
         background-color: var(--background);
-        margin-top: $transition-size;
+        margin-top: $transition-size + 15px;
         min-height: 50vh;
         padding: 15px;
 

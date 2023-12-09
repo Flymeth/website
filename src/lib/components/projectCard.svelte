@@ -9,10 +9,14 @@
     import { navHeight } from "./nav.svelte";
     import SvelteFA from "svelte-fa";
     import { faLink } from "@fortawesome/free-solid-svg-icons"
-    import { faGithub } from "@fortawesome/free-brands-svg-icons";
+    import { faGithub, faFigma } from "@fortawesome/free-brands-svg-icons";
 
     export let project: Project;
     const projectLinks = Object.entries({
+        prototype: {
+            icon: faFigma,
+            url: project.metadata.prototype
+        },
         github: {
             icon: faGithub,
             url: project.metadata.github
@@ -28,7 +32,7 @@
     $: isOpen = $opennedProject === project.metadata.name
 </script>
 
-<div id="project-{project.metadata.name.replaceAll(" ", "-")}" data-open={isOpen ? "" : null}>
+<div id="project-{project.metadata.name.replaceAll(" ", "-")}"  data-open={isOpen ? "" : null}>
     <div class="card" style="--banner: {project.metadata.bannerURL ? `url(${project.metadata.bannerURL})` : "url()"}">
         <div class="info">
             <h3>{project.metadata.name}</h3>
@@ -85,19 +89,17 @@
 
 <style lang="scss">
     @import "$lib/_colors.scss";
-
     .card {
         background: linear-gradient(to bottom, rgba($black, .5), rgba($black, .85)), var(--banner), $primary;
         background-position: center;
         background-size: cover;
-        width: 300px;
+        width: min(300px, 90vw);
         position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
         padding: 10px 15px;
-        margin: 15px 20px;
         border-radius: 10px;
         color: $white;
         text-shadow: 0 0 15px $black;

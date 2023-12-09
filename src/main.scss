@@ -41,7 +41,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none;
 }
 
 ::-webkit-scrollbar {
@@ -57,34 +56,6 @@ body {
     color: var(--foreground);
     font-family: "leelawadee", sans-serif;
     transition: background-color .15s, color .15s;
-
-    // Cursor
-    &::before {
-        content: "";
-        position: fixed;
-        top: var(--cursor-y);
-        left: var(--cursor-x);
-        translate: -50% -50%;
-
-        mix-blend-mode: difference;
-
-        width: 20px;
-        aspect-ratio: 1 / 1;
-
-        pointer-events: none;
-
-        background-color: var(--secondary);
-        opacity: .5;
-        background-blend-mode: difference;
-        z-index: 999;
-
-        scale: var(--cursor-scale);
-        opacity: var(--cursor-opacity);
-
-        box-shadow: 0 0 15px -2.5px var(--foreground);
-
-        border-radius: 50%;
-    }
 }
 
 @for $i from 1 to 6 {
@@ -146,4 +117,33 @@ hr {
     background-color: transparent;
     border: 1.5px dashed var(--secondary);
     border-radius: 999px;
+}
+
+input:not(.nodefault), textarea:not(.nodefault) {
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: "agency", sans-serif;
+    outline: none;
+
+    font-size: 16px;
+    position: relative;
+
+    transition: padding .15s;
+
+    &:required:placeholder-shown {
+        font-style: italic;
+    }
+    &:focus {
+        outline: 2px solid var(--foreground);
+        padding: 10px 20px;
+    }
+}
+textarea {
+    display: block;
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
 }

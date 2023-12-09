@@ -9,7 +9,7 @@
 	import { writable } from "svelte/store";
     import { gsap } from "gsap";
 	import { blur } from "svelte/transition";
-	import { changeTheme } from "../../routes/+layout.svelte";
+	import { changeTheme } from "../../routes/(app)/+layout.svelte";
     import { circInOut } from "svelte/easing";
 
     export let customMessages = [
@@ -81,7 +81,7 @@
         <span bind:this={nextTextElement}>~</span>
         <span bind:this={currentTextElement}>{customMessages[0]}</span>
     </h1>
-    <input type="checkbox" class="burger" checked={$isNavOpen} on:change={() => $isNavOpen = !$isNavOpen} />
+    <input type="checkbox" class="burger nodefault" checked={$isNavOpen} on:change={() => $isNavOpen = !$isNavOpen} />
 </div>
 
 {#if $isNavOpen}
@@ -253,15 +253,18 @@
                     border-radius: 10px;
                     border: 2px solid var(--foreground);
                     appearance: none;
+                    outline: none;
 
                     &[value="dark"] {
                         background-color: $black;
+                        border-color: $white;
                     }
                     &[value="auto"] {
                         background: linear-gradient(to bottom right, $black, $white);
                     }
                     &[value="light"] {
                         background-color: $white;
+                        border-color: $black;
                     }
 
                     &:checked {

@@ -10,6 +10,7 @@ export interface Project {
         iconURL?: string,
         bannerURL?: string,
         github?: string,
+        prototype?: string,
         link?: string,
     },
     content: {

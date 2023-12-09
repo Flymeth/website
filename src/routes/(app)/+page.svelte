@@ -6,7 +6,7 @@
 
     import html from "$lib/assets/img/tools/html.svg";
     import css from "$lib/assets/img/tools/css.svg";
-    import js from "$lib/assets/img/tools/js.svg";
+    import js from "$lib/assets/img/tools/javascript.svg";
     import sass from "$lib/assets/img/tools/sass.svg";
     import svelte from "$lib/assets/img/tools/svelte.svg";
     import react from "$lib/assets/img/tools/react.svg";
@@ -22,6 +22,20 @@
     import flstudio from "$lib/assets/img/tools/flstudio.svg";
     import adobesuite from "$lib/assets/img/tools/adobesuite.svg";
 	import TechCategory from "$lib/components/techCategory.svelte";
+
+    import gsap from "gsap";
+
+    function enterEasterGame() {
+        document.body.setAttribute("style", "overflow: hidden;")
+        gsap.to(document.body.children[0], {
+            opacity: 0,
+            scale: 5,
+            duration: 2,
+            ease: "power1.inOut"
+        }).then(() => {
+            window.location.href= "/eastereggs/shooter"
+        })
+    }
 </script>
 <Header>
     <h1>Hi! My name is <span>Johan</span>!</h1>
@@ -39,7 +53,9 @@
                 <TechCategory name="IDE" icons={[vscode]}/>
             </li>
             <li>
-                <TechCategory name="Web languages/frameworks" icons={[html, css, js, sass, svelte, react]}/>
+                <TechCategory name="Web languages/frameworks" on:iconClicked={({detail: {icon}}) => {
+                    if(icon === js) return enterEasterGame()
+                }} icons={[html, css, js, sass, svelte, react]}/>
             </li>
             <li>
                 <TechCategory name="Database" icons={[pocketbase, mariadb]}/>

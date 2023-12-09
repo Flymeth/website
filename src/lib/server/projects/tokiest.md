@@ -5,6 +5,7 @@ iconURL: /cdn/projects/TOKIEST/logo.svg
 bannerURL: /cdn/projects/TOKIEST/banner.svg
 github: https://github.com/Flymeth/challenge_resto
 link: https://tokiest.netlify.app
+prototype: https://www.figma.com/file/gthbaQLw8Ma0VxbWneVpUq/Resto-design?type=design&mode=design&t=s1HetJ5BXtQsI1N3-1
 tags:
 - gsap
 - svelte

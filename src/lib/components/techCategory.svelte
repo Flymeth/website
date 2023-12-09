@@ -1,12 +1,17 @@
 <script lang="ts">
+    import { createEventDispatcher } from "svelte";
     export let name: string;
     export let icons: string[];
+
+    const dispatch = createEventDispatcher()
 </script>
 
 <h3>{name}</h3>
 <ul>
     {#each icons as icon}
-        <li>
+        {@const techName = icon.replace(/^.*[\\/]/, '').split(".")[0]}
+        <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+        <li data-tech={techName} on:click={() => dispatch("iconClicked", {techName, icon})} on:keypress>
             <img src={icon} alt="{icon.split("/").at(-1)?.replace(".svg", "")} icon">
         </li>
     {/each}
@@ -17,6 +22,7 @@
     $icon-width: 50px;
     $icon-gap: 15px;
     $max-icons-per-row: 5;
+    $techNameAnimationDuration: .15s;
 
     h3 {
         margin-bottom: 15px;
@@ -40,16 +46,49 @@
             width: $icon-width;
             aspect-ratio: 1 / 1;
             transition: filter .15s;
+            position: relative;
 
             display: flex;
             align-items: center;
             justify-content: center;
+
+            z-index: 0;
+            transition: all $techNameAnimationDuration * 2;
 
             &:not([data-mobile] *):hover {
                 filter: grayscale(0) drop-shadow(0 0 10px $white);
             }
             > img {
                 width: 100%;
+                border-radius: 2.5px;
+            }
+
+            &::before {
+                content: attr(data-tech);
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                translate: -50% 20px;
+                opacity: 0;
+                text-transform: capitalize;
+                clip-path: polygon(0 10%, 40% 10%, 50% 0, 60% 10%, 100% 10%, 100% 100%, 0 100%);
+                background-color: var(--background);
+                padding: 5px;
+                border-radius: 5px;
+                font-weight: bold;
+                pointer-events: none;
+
+                transition: $techNameAnimationDuration;
+            }
+            &:hover {
+                &::before {
+                    opacity: 1;
+                    translate: -50% 5px;
+                }
+                ~ *:not(:hover) {
+                    z-index: -1;
+                    transition: z-index 0s 0s;
+                }
             }
         }
     }
