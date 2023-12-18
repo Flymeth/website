@@ -1,3 +1,5 @@
+import gsap from "gsap"
+
 const clickableElementsNames = [
     "A",
     "BUTTON",

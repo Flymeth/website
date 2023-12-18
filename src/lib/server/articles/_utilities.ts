@@ -1,18 +1,21 @@
-import hljs from "highlight.js";
 import MarkdownIt from "markdown-it";
 import markdownItYamlPlugin from "markdown-it-meta-yaml";
 import path from "node:path";
+import hljs from "highlight.js";
+import fs from "node:fs";
+import { fileURLToPath } from "node:url";
 
-export interface Project {
+export interface Article {
     metadata: {
-        name: string,
-        file: string,
+        title: string,
         description: string,
-        iconURL?: string,
+        file: string,
+        id: string,
+        time: {
+            created: Date,
+            edited: Date
+        },
         bannerURL?: string,
-        github?: string,
-        prototype?: string,
-        link?: string,
     },
     content: {
         md: string,
@@ -32,18 +35,21 @@ const parser = new MarkdownIt({
         return ''; // use external default escaping
     }
 })
-let tempMetadatas: Project["metadata"] | undefined = undefined;
+let tempMetadatas: Article["metadata"] | undefined = undefined;
 parser.use(markdownItYamlPlugin, {
-    cb: (json: Project["metadata"]) => tempMetadatas= json
+    cb: (json: Article["metadata"]) => tempMetadatas= json
 })
 
-export async function getProjects() {
-    const projects = new Set<Project>()
+export async function getArticles() {
+    const articles = new Set<Article>()
     
     // Importing projects markdown files
     const files = import.meta.glob("./*.md", {as: "raw", eager: true})
+    const dirname = path.dirname(fileURLToPath(import.meta.url))
     for(const name in files) {
         const raw = files[name] as string
+
+        const { birthtime, mtime } = fs.statSync(path.join(dirname, name))
 
         const md = raw.replace(
             /---(?:.|[\r\n])*^---/m, ""
@@ -52,11 +58,16 @@ export async function getProjects() {
         if(!tempMetadatas) continue
         
         tempMetadatas.file = path.basename(name)
-        projects.add({
+        tempMetadatas.time = {
+            created: birthtime,
+            edited: mtime
+        }
+        tempMetadatas.id = tempMetadatas.file.replace(".md", "")
+        articles.add({
             metadata: tempMetadatas, content: { raw, md, html }
         })
         tempMetadatas= undefined
     }
 
-    return projects
+    return articles
 }

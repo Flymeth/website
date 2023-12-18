@@ -120,9 +120,9 @@
             <section id="theme">
                 <h2>Theme</h2>
                 <form method="dialog" on:change={themeChanged} bind:this={form}>
-                    <input type="radio" value="dark" name="theme" id="theme-dark" checked={theme === "dark"}>
-                    <input type="radio" value="auto" name="theme" id="theme-auto" checked={theme === "auto"}>
-                    <input type="radio" value="light" name="theme" id="theme-light" checked={theme === "light"}>
+                    <input type="radio" class="nodefault" value="dark" name="theme" id="theme-dark" checked={theme === "dark"}>
+                    <input type="radio" class="nodefault" value="auto" name="theme" id="theme-auto" checked={theme === "auto"}>
+                    <input type="radio" class="nodefault" value="light" name="theme" id="theme-light" checked={theme === "light"}>
                 </form>
             </section>
         </div>
