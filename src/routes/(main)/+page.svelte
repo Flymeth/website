@@ -16,6 +16,9 @@
 
     import netlify from "$lib/assets/img/tools/netlify.svg";
     import heroku from "$lib/assets/img/tools/heroku.svg";
+
+    import wordpress from "$lib/assets/img/tools/wordpress.svg";
+    import elementor from "$lib/assets/img/tools/elementor.svg";
     
     import python from "$lib/assets/img/tools/python.svg";
     import unity from "$lib/assets/img/tools/unity.svg";
@@ -24,15 +27,24 @@
 	import TechCategory from "$lib/components/techCategory.svelte";
 
     import gsap from "gsap";
+	import { goto } from "$app/navigation";
 
     function enterEasterGame() {
-        document.body.setAttribute("style", "overflow: hidden;")
-        gsap.to(document.body.children[0], {
+        const tm = gsap.timeline()
+        tm.to(document.body, {
             opacity: 0,
-            scale: 5,
+            "--cursor-scale": 50,
+            duration: 1.25,
+            ease: "power1.inOut"
+        })
+        .to(document.body.children[0], {
+            opacity: 0,
             duration: 2,
             ease: "power1.inOut"
-        }).then(() => {
+        }, "<")
+        
+        .then(() => {
+            // The entire page needs to be reloaded...
             window.location.href= "/eastereggs/shooter"
         })
     }
@@ -61,10 +73,15 @@
                 <TechCategory name="Database" icons={[pocketbase, mariadb]}/>
             </li>
             <li>
+                <TechCategory name="CMS Tools" icons={[wordpress, elementor]}/>
+            </li>
+            <li>
                 <TechCategory name="Hosting" icons={[netlify, heroku]}/>
             </li>
             <li>
-                <TechCategory name="Others" icons={[python, adobesuite, unity, flstudio]}/>
+                <TechCategory name="Others" icons={[python, adobesuite, unity, flstudio]} on:iconClicked={({detail: { icon }}) => {
+                    if(icon === flstudio) goto("/discography")
+                }}/>
             </li>
         </ol>
     </section>

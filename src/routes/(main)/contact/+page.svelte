@@ -1,6 +1,5 @@
 <script>
 	import Header from "$lib/components/header.svelte";
-
 </script>
 <Header>
     <h1>I'm the <span>best</span> for your next project!</h1>

@@ -9,7 +9,7 @@
 	import { writable } from "svelte/store";
     import { gsap } from "gsap";
 	import { blur } from "svelte/transition";
-	import { changeTheme } from "../../routes/(app)/+layout.svelte";
+	import { changeTheme } from "../../routes/(main)/+layout.svelte";
     import { circInOut } from "svelte/easing";
 
     export let customMessages = [

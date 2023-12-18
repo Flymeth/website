@@ -13,6 +13,7 @@
     <ul>
         <li><a href="https://flymeth.net" target="_blank">My other website</a></li>
         <li><a href="https://github.com/Flymeth" target="_blank">See my github's projects</a></li>
+        <li><a href="https://github.com/Flymeth/website" target="_blank">Want to know how I built this website ?</a></li>
     </ul>
 </footer>
 

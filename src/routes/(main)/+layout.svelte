@@ -25,7 +25,7 @@
 </script>
 
 <script lang="ts">
-    import "./app.scss";
+    import "$lib/app.scss";
     import Nav, { isNavOpen } from "$lib/components/nav.svelte";
 	import { onMount } from "svelte";
 	import { browser } from "$app/environment";
@@ -36,17 +36,11 @@
 	import { onNavigate } from "$app/navigation";
 	import Footer from "$lib/components/footer.svelte";
 	import { navigating } from "$app/stores";
+	import setupCursor from "$lib/ts/setupCursor";
     
     let loaded = false;
     let mobile = false;
     let sceneContainer: HTMLDivElement;
-    const clickableElementsNames = [
-        "A",
-        "BUTTON",
-        "INPUT",
-        "TEXTAREA",
-        "OPTION"
-    ]
     onMount(() => {
         mobile = navigator.userAgent.toLowerCase().includes("mobile")
 
@@ -58,21 +52,7 @@
         }
 
         // Set cursor position (only update if the user is on desktop)
-        !mobile && (window.onmousemove = ({clientX, clientY}) => {
-            const hoveringElements = Array.from(document.querySelectorAll(":hover"))
-            const onClickableElement = hoveringElements.find(e => (
-                clickableElementsNames.includes(e.nodeName)
-            ))
-            const scale = onClickableElement ? 1.5 : 1
-            gsap.to(document.body, {
-                "--cursor-x": clientX + "px",
-                "--cursor-y": clientY + "px",
-                "--cursor-scale": scale, 
-                "--cursor-opacity": .75,
-                duration: .25,
-                ease: "power1.out"
-            })
-        })
+        !mobile && setupCursor()
 
         // Setup the 3D background scene
         genScene().then((content) => {
