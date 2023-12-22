@@ -1,28 +1,55 @@
-
 <script lang="ts">
     import { gsap } from "gsap";
 	import { onMount } from "svelte";
+	import { writable } from "svelte/store";
 
-    let firstPoint: HTMLDivElement;
+    let point: HTMLDivElement;
+    let pourcentElement: HTMLHeadingElement;
+    let loaderInterval: NodeJS.Timer;
+
+    let pourcent = 0
+    export const animationEnded = writable(false)
+    export const loaded = () => {
+        const delay = 5
+        clearInterval(loaderInterval)
+        for(let j = 0; j + pourcent < 100; j++) {
+            setTimeout(() => {
+                pourcent++
+            }, delay * j)
+        }
+
+        setTimeout(() => {
+            gsap.to([pourcentElement, point], {
+                opacity: 0,
+                delay: 1
+            }).then(() => {
+                animationEnded.set(true)
+            })
+        }, delay * (100 - pourcent))
+    }
 
     const timeline = gsap.timeline({
         repeat: -1,
     })
+    animationEnded.subscribe((v) => v && timeline.pause())
 
     onMount(() => {
-        gsap.to(firstPoint, {
+        $animationEnded = false
+        loaderInterval = setInterval(() => pourcent < 100 ? pourcent++ : null, 75)
+
+        gsap.to(point, {
             opacity: 1
         })
         timeline
-        .set(firstPoint, {
+        .set(point, {
             translateX: 50,
             translateY: "-50%"
         })
-        .to(firstPoint, {
+        .to(point, {
             translateX: -50,
             ease: "power2.out"
         })
-        .to(firstPoint, {
+        .to(point, {
             translateX: 50,
             ease: "power2.out"
         })
@@ -30,7 +57,8 @@
 </script>
 
 <div id="loader">
-    <div bind:this={firstPoint}></div>
+    <div bind:this={point}></div>
+    <h1 id="progress" bind:this={pourcentElement}>{pourcent}%</h1>
 </div>
 
 <style lang="scss">
@@ -54,6 +82,16 @@
             height: 25px;
             aspect-ratio: 1 / 1;
             background-color: var(--primary);
+        }
+
+        > #progress {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            translate: -50% 0;
+
+            font-size: 80px;
+            font-style: italic;
         }
     }
 </style>

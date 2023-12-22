@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Article from "$lib/components/article.svelte";
-import Header from "$lib/components/header.svelte";
+    import Header from "$lib/components/header.svelte";
 	import type { PageData } from "./$types";
     export let data: PageData;
 </script>
@@ -22,11 +22,13 @@ import Header from "$lib/components/header.svelte";
 
 <style lang="scss">
     @import "$lib/_colors.scss";
+
     :global(body:has(#blog-content)) {
-        background: linear-gradient(rgba($black, .5), rgba($black, .5)), url("https://source.unsplash.com/random/?codage,code");
+        background: url("https://source.unsplash.com/random/?codage,code");
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
+        text-shadow: 0 0 10px var(--background);
     }
 
     main {

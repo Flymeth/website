@@ -1,35 +1,7 @@
-<script context="module" lang="ts">
-	import { writable, derived, get } from "svelte/store";
-    const __theme = writable<"dark" | "light" | "auto">("auto")
-    export const theme = derived(__theme, (v) => (
-        v === "auto" ? (
-            browser && window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"
-        ) : v
-    ))
-
-    export function changeTheme(to: "light" | "dark" | "auto") {
-        if(to === get(__theme)) return;
-        if(browser) {
-            document.documentElement.removeAttribute("force-light")
-            document.documentElement.removeAttribute("force-dark")
-            __theme.set(to)
-            
-            if(to === "auto") {
-                window.localStorage.removeItem("theme")
-            } else {
-                window.localStorage.setItem("theme", to)
-                document.documentElement.setAttribute(`force-${to}`, "")
-            }
-        }
-    }
-</script>
-
 <script lang="ts">
     import "$lib/app.scss";
     import Nav, { isNavOpen } from "$lib/components/nav.svelte";
 	import { onMount } from "svelte";
-	import { browser } from "$app/environment";
-	import { gsap } from "gsap";
 	import Loader from "$lib/components/loader.svelte";
 	import { fade, fly } from "svelte/transition";
     import genScene from "$lib/scenes/layout";
@@ -37,11 +9,14 @@
 	import Footer from "$lib/components/footer.svelte";
 	import { navigating } from "$app/stores";
 	import setupCursor from "$lib/ts/setupCursor";
+	import { changeTheme, theme } from "../+layout.svelte";
     
-    let loaded = false;
+    let loader: Loader;
+    let showPage = false;
     let mobile = false;
     let sceneContainer: HTMLDivElement;
     onMount(() => {
+        loader.animationEnded.subscribe(v => showPage = v)
         mobile = navigator.userAgent.toLowerCase().includes("mobile")
 
         // Set theme
@@ -58,11 +33,11 @@
         genScene().then((content) => {
             sceneContainer.append(content.renderer.domElement)
             content.animate()
-            loaded= true
             content.tools.setBG($theme)
             theme.subscribe(value => {
                 content.tools.setBG(value)
             })
+            loader.loaded()
         })
 
         window.addEventListener("resize", () => {
@@ -89,7 +64,7 @@
 
 <div id="scene" bind:this={sceneContainer}></div>
 
-{#if loaded}
+{#if showPage}
     <Nav />
 
     {#if (!mobile || $navigating === null)}
@@ -104,8 +79,8 @@
 
     <Footer />
 {:else}
-    <div out:fade>
-        <Loader />
+    <div transition:fade>
+        <Loader bind:this={loader}/>
     </div>
 {/if}
 

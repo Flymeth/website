@@ -11,8 +11,8 @@
     <div id="contact">
         <h2>Contact me directly</h2>
         <ul>
-            <li><a href="mailto:johan.janin@gmail.com">By mail</a></li>
-            <li><a href="tel:+33782682332">With a call</a></li>
+            <li><a href="mailto:johan.janin@gmail.com">By mail (johan.janin@gmail.com)</a></li>
+            <li><a href="tel:+33782682332">With a call (+33 07.82.68.23.32)</a></li>
         </ul>
     </div>
     <hr>

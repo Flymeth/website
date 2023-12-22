@@ -9,9 +9,14 @@
 	import { writable } from "svelte/store";
     import { gsap } from "gsap";
 	import { blur } from "svelte/transition";
-	import { changeTheme } from "../../routes/(main)/+layout.svelte";
+	import { changeTheme } from "../../routes/+layout.svelte";
     import { circInOut } from "svelte/easing";
 
+    export let disable_sections: {
+        location?: boolean,
+        nav?: boolean,
+        theme?: boolean
+    } = {};
     export let customMessages = [
         "Hello there",
         "I'm Johan",
@@ -31,7 +36,8 @@
         Home: "/",
         Portefolio: "/portefolio",
         Discography: "/discography",
-        "Work With Me": "/contact"
+        "Work With Me": "/contact",
+        "My Little Blog": "/blog"
     }
 
     let nextTextElement: HTMLSpanElement;
@@ -59,7 +65,11 @@
             ease: "bounce.out"
         }, ">-.25")
 
-        setInterval(() => {
+        const interval: NodeJS.Timer = setInterval(() => {
+            if(!(
+                currentTextElement && nextTextElement
+            )) return clearInterval(interval)
+
             messageID = (messageID + 1) % customMessages.length
             timeline.play(0)
         }, changeMessageEachMs);
@@ -87,44 +97,50 @@
 {#if $isNavOpen}
     <menu transition:blur={{duration: 100, easing: circInOut}}>
         <div class="content">
-            <section id="location">
-                <h2>Location</h2>
-                <p class="ariane">
-                    {#each ["/", locations] as name, i}
-                        {@const path = locations.slice(0, i).join("/")}
-                        {#if i < locations.length}
-                            <a href="/{path}">{name}</a>
-                        {:else}
-                            <span>{name}</span>
-                        {/if}
-                    {/each}
-                </p>
-            </section>
-            <section id="nav">
-                <h2>Navigation</h2>
-                <nav>
-                    <ul>
-                        {#each Object.entries(menuPaths) as [name, path]}
-                            {@const selected = path === $page.url.pathname}
-                            <li>
-                                {#if selected}
-                                    <p class="current-page">{name}</p>
-                                {:else}
-                                    <a href={path}>{name}</a>
-                                {/if}
-                            </li>
+            {#if !(disable_sections && disable_sections.location)}
+                <section id="location">
+                    <h2>Location</h2>
+                    <p class="ariane">
+                        {#each ["/", locations] as name, i}
+                            {@const path = locations.slice(0, i).join("/")}
+                            {#if i < locations.length}
+                                <a href="/{path}">{name}</a>
+                            {:else}
+                                <span>{name}</span>
+                            {/if}
                         {/each}
-                    </ul>
-                </nav>
-            </section>
-            <section id="theme">
-                <h2>Theme</h2>
-                <form method="dialog" on:change={themeChanged} bind:this={form}>
-                    <input type="radio" class="nodefault" value="dark" name="theme" id="theme-dark" checked={theme === "dark"}>
-                    <input type="radio" class="nodefault" value="auto" name="theme" id="theme-auto" checked={theme === "auto"}>
-                    <input type="radio" class="nodefault" value="light" name="theme" id="theme-light" checked={theme === "light"}>
-                </form>
-            </section>
+                    </p>
+                </section>
+            {/if}
+            {#if !(disable_sections && disable_sections.nav)}
+                <section id="nav">
+                    <h2>Navigation</h2>
+                    <nav>
+                        <ul>
+                            {#each Object.entries(menuPaths) as [name, path]}
+                                {@const selected = path === $page.url.pathname}
+                                <li>
+                                    {#if selected}
+                                        <p class="current-page">{name}</p>
+                                    {:else}
+                                        <a href={path}>{name}</a>
+                                    {/if}
+                                </li>
+                            {/each}
+                        </ul>
+                    </nav>
+                </section>
+            {/if}
+            {#if !(disable_sections && disable_sections.theme)}
+                <section id="theme">
+                    <h2>Theme</h2>
+                    <form method="dialog" on:change={themeChanged} bind:this={form}>
+                        <input type="radio" class="nodefault" value="dark" name="theme" id="theme-dark" checked={theme === "dark"}>
+                        <input type="radio" class="nodefault" value="auto" name="theme" id="theme-auto" checked={theme === "auto"}>
+                        <input type="radio" class="nodefault" value="light" name="theme" id="theme-light" checked={theme === "light"}>
+                    </form>
+                </section>
+            {/if}
         </div>
     </menu>
 {/if}

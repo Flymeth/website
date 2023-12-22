@@ -1,4 +1,4 @@
-<form name="customers" data-netlify="true" method="post" action="/">
+<form name="customers" data-netlify="true" method="post">
 	<input type="hidden" name="form-name" value="customers" />
 
 	<fieldset id="person">

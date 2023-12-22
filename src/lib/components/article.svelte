@@ -12,6 +12,8 @@
 </article>
 
 <style lang="scss">
+    @import "$lib/_colors.scss";
+
     article {
         * {
             color: inherit;
@@ -20,14 +22,17 @@
         
         width: 200px;
         aspect-ratio: 1 / 1.25;
-        box-shadow: 0 2.5px 15px -5px var(--foreground);
+        box-shadow: 0 0 15px -5px $black;
         border-radius: 15px;
+        color: $white;
+        background-color: rgba($color: $black, $alpha: .05);
         -webkit-backdrop-filter: blur(15px);
         backdrop-filter: blur(15px);
         transition: .15s;
         &:hover {
-            box-shadow: 0 0 15px 0 var(--foreground);
+            box-shadow: 0 10px 20px -1.5px $black;
             scale: 1.02;
+            translate: 0 -10px;
         }
 
         > a {
@@ -38,10 +43,8 @@
             height: 100%;
             padding: 10px;
             width: 100%;
-            &:hover {
-                text-shadow: unset;
-            }
-
+            text-shadow: none !important;
+            
             > h3 {
                 text-align: center;
                 font-size: 25px;

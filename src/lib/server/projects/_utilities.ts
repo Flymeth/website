@@ -13,6 +13,10 @@ export interface Project {
         github?: string,
         prototype?: string,
         link?: string,
+        csb?: string,
+        codepen?: string,
+        stackoverflow?: string,
+        discord?: string
     },
     content: {
         md: string,
@@ -21,7 +25,7 @@ export interface Project {
     }
 }
 const parser = new MarkdownIt({
-    // ? From the MdIt doc
+    //? From the MdIt docs
     highlight: (code, language) => {
         if (language && hljs.getLanguage(language)) {
           try {
@@ -30,8 +34,17 @@ const parser = new MarkdownIt({
         }
     
         return ''; // use external default escaping
-    }
+    },
 })
+//? To open links in a new tab (from the MdIt docs)
+parser.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+    // Add a new `target` attribute, or replace the value of the existing one.
+    tokens[idx].attrSet('target', '_blank');
+
+    // Pass the token to the default renderer.
+    return self.renderToken(tokens, idx, options);
+};
+
 let tempMetadatas: Project["metadata"] | undefined = undefined;
 parser.use(markdownItYamlPlugin, {
     cb: (json: Project["metadata"]) => tempMetadatas= json

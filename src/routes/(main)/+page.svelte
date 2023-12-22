@@ -10,6 +10,7 @@
     import sass from "$lib/assets/img/tools/sass.svg";
     import svelte from "$lib/assets/img/tools/svelte.svg";
     import react from "$lib/assets/img/tools/react.svg";
+    import nodejs from "$lib/assets/img/tools/nodejs.svg";
 
     import pocketbase from "$lib/assets/img/tools/pocketbase.svg";
     import mariadb from "$lib/assets/img/tools/mariadb.svg";
@@ -19,11 +20,14 @@
 
     import wordpress from "$lib/assets/img/tools/wordpress.svg";
     import elementor from "$lib/assets/img/tools/elementor.svg";
+
+    import photoshop from "$lib/assets/img/tools/photoshop.svg"
+    import illustrator from "$lib/assets/img/tools/illustrator.svg"
+    import premierepro from "$lib/assets/img/tools/premierepro.svg"
     
     import python from "$lib/assets/img/tools/python.svg";
     import unity from "$lib/assets/img/tools/unity.svg";
     import flstudio from "$lib/assets/img/tools/flstudio.svg";
-    import adobesuite from "$lib/assets/img/tools/adobesuite.svg";
 	import TechCategory from "$lib/components/techCategory.svelte";
 
     import gsap from "gsap";
@@ -55,7 +59,9 @@
 <main>
     <section id="me">
         <h2>Who am I ?</h2>
-        <p>My name is Flymeth! I'm {new Date().getFullYear() - 2005} years old, and I'm currently studying to become a full stack web developper.</p>
+        <p>My name is Johan! I'm {new Date().getFullYear() - 2005} years old, and I'm currently studying to become a full stack web developper.</p>
+        <p>I love everything about the web developpement: from the simple HTML SEO optimisation and CSS styling to the server side logic such as authentification, database usage, API interactions, ...</p>
+        <p>From the day I started coding, I created tons of projets, such as Discord music bot, Real time chat application, Creative front-end developpement, and so on!</p>
     </section>
     <section id="tech">
         <h2>What do I use ?</h2>
@@ -67,7 +73,7 @@
             <li>
                 <TechCategory name="Web languages/frameworks" on:iconClicked={({detail: {icon}}) => {
                     if(icon === js) return enterEasterGame()
-                }} icons={[html, css, js, sass, svelte, react]}/>
+                }} icons={[html, css, js, sass, svelte, react, nodejs]}/>
             </li>
             <li>
                 <TechCategory name="Database" icons={[pocketbase, mariadb]}/>
@@ -79,7 +85,10 @@
                 <TechCategory name="Hosting" icons={[netlify, heroku]}/>
             </li>
             <li>
-                <TechCategory name="Others" icons={[python, adobesuite, unity, flstudio]} on:iconClicked={({detail: { icon }}) => {
+                <TechCategory name="Adobe Suite" icons={[photoshop, illustrator, premierepro]}/>
+            </li>
+            <li>
+                <TechCategory name="Others" icons={[python, unity, flstudio]} on:iconClicked={({detail: { icon }}) => {
                     if(icon === flstudio) goto("/discography")
                 }}/>
             </li>
@@ -92,6 +101,29 @@
         <h2>Some of my best projects</h2>
         <p>During my learning sessions, I was able to build different projects, more or less complex.</p>
         <p>So check out <a href="/portefolio">my portefolio</a> to discovering what I'm capable to.</p>
+    </section>
+
+    <section id="hobbies">
+        <h2>My Hobbies</h2>
+        <p>During my free time, I love coding things, espacially in Javascript. But I like doing many other things, such as:</p>
+        <ul>
+            <li>
+                Playing video games with my friends
+                <ul>
+                    <li>Minecraft</li>
+                    <li>Rocket League</li>
+                    <li>Others...</li>
+                </ul>
+            </li>
+            <li>
+                Go to parties
+                <ul>
+                    <li>At night clubs</li>
+                    <li>Or in my/friends' house</li>
+                    <li>And in my town with other teenagers</li>
+                </ul>
+            </li>
+        </ul>
     </section>
 </main>
 
@@ -139,6 +171,16 @@
                         border-radius: 999px;
 
                         background-color: var(--primary);
+                    }
+                }
+            }
+
+            &#hobbies > ul {
+                margin: 15px;
+                > li {
+                    margin: 15px 0;
+                    > ul {
+                        list-style: "> ";
                     }
                 }
             }

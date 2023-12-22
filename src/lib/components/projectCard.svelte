@@ -9,7 +9,7 @@
     import { navHeight } from "./nav.svelte";
     import SvelteFA from "svelte-fa";
     import { faLink } from "@fortawesome/free-solid-svg-icons"
-    import { faGithub, faFigma } from "@fortawesome/free-brands-svg-icons";
+    import { faGithub, faFigma, faCodepen } from "@fortawesome/free-brands-svg-icons";
 
     export let project: Project;
     const projectLinks = Object.entries({
@@ -21,10 +21,14 @@
             icon: faGithub,
             url: project.metadata.github
         },
+        codesandbox: {
+            icon: faCodepen,
+            url: project.metadata.csb
+        },
         internet: {
             icon: faLink,
             url: project.metadata.link
-        },
+        }
     })
     .map(([platform, data]) => ({platform, ...data}))
     .filter(link => link.url)
@@ -271,6 +275,9 @@
 
                 box-shadow: 0 0 15px -2.5px var(--background);
                 border-radius: 10px;
+            }
+            :global(hr) {
+                margin: 40px auto;
             }
         }
     }

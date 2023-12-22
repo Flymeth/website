@@ -8,10 +8,10 @@
 
 <h3>{name}</h3>
 <ul>
-    {#each icons as icon}
+    {#each icons as icon, i}
         {@const techName = icon.replace(/^.*[\\/]/, '').split(".")[0]}
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-        <li data-tech={techName} on:click={() => dispatch("iconClicked", {techName, icon})} on:keypress>
+        <li data-tech={techName} style="z-index: {icons.length - i};" on:click={() => dispatch("iconClicked", {techName, icon})} on:keypress>
             <img src={icon} alt="{icon.split("/").at(-1)?.replace(".svg", "")} icon">
         </li>
     {/each}
@@ -20,7 +20,7 @@
 <style lang="scss">
     @import "$lib/_colors.scss";
     $icon-width: 50px;
-    $icon-gap: 15px;
+    $icon-gap: 20px;
     $max-icons-per-row: 5;
     $techNameAnimationDuration: .15s;
 
@@ -45,15 +45,12 @@
             }
             width: $icon-width;
             aspect-ratio: 1 / 1;
-            transition: filter .15s;
             position: relative;
 
             display: flex;
             align-items: center;
             justify-content: center;
-
-            z-index: 0;
-            transition: all $techNameAnimationDuration * 2;
+            transition: $techNameAnimationDuration * 2;
 
             &:not([data-mobile] *):hover {
                 filter: grayscale(0) drop-shadow(0 0 10px $white);
@@ -77,17 +74,12 @@
                 border-radius: 5px;
                 font-weight: bold;
                 pointer-events: none;
-
                 transition: $techNameAnimationDuration;
             }
             &:hover {
                 &::before {
                     opacity: 1;
                     translate: -50% 5px;
-                }
-                ~ *:not(:hover) {
-                    z-index: -1;
-                    transition: z-index 0s 0s;
                 }
             }
         }

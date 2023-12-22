@@ -4,6 +4,7 @@ import path from "node:path";
 import hljs from "highlight.js";
 import fs from "node:fs";
 import { fileURLToPath } from "node:url";
+import { pathName } from "../location";
 
 export interface Article {
     metadata: {
@@ -35,6 +36,15 @@ const parser = new MarkdownIt({
         return ''; // use external default escaping
     }
 })
+//? To open links in a new tab (from the MdIt docs)
+parser.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+    // Add a new `target` attribute, or replace the value of the existing one.
+    tokens[idx].attrSet('target', '_blank');
+
+    // Pass the token to the default renderer.
+    return self.renderToken(tokens, idx, options);
+};
+
 let tempMetadatas: Article["metadata"] | undefined = undefined;
 parser.use(markdownItYamlPlugin, {
     cb: (json: Article["metadata"]) => tempMetadatas= json
@@ -45,11 +55,12 @@ export async function getArticles() {
     
     // Importing projects markdown files
     const files = import.meta.glob("./*.md", {as: "raw", eager: true})
-    const dirname = path.dirname(fileURLToPath(import.meta.url))
+    const { __dirname } = pathName(import.meta)
+    
     for(const name in files) {
         const raw = files[name] as string
 
-        const { birthtime, mtime } = fs.statSync(path.join(dirname, name))
+        const { birthtime, mtime } = fs.statSync(path.join(__dirname, name))
 
         const md = raw.replace(
             /---(?:.|[\r\n])*^---/m, ""
