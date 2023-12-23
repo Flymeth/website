@@ -54,7 +54,7 @@ export async function getArticles() {
     const articles = new Set<Article>()
     
     // Importing projects markdown files
-    const files = import.meta.glob("../../../../posts/articles/*.md", {as: "raw", eager: true})
+    const files = import.meta.glob("../../../../static/posts/articles/*.md", {as: "raw", eager: true})
     console.log(files);
     
     const { __dirname } = pathName(import.meta)
