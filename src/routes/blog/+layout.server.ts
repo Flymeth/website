@@ -1,4 +1,4 @@
-import { getArticles } from "$lib/server/articles/_utilities";
+import { getArticles } from "$lib/server/posts_utilities/articles";
 import type { LayoutServerLoad } from "./$types";
 
 export const load: LayoutServerLoad = async () => {

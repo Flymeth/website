@@ -54,7 +54,7 @@ export async function getProjects() {
     const projects = new Set<Project>()
     
     // Importing projects markdown files
-    const files = import.meta.glob("./*.md", {as: "raw", eager: true})
+    const files = import.meta.glob("../../../../posts/projects/*.md", {as: "raw", eager: true})
     for(const name in files) {
         const raw = files[name] as string
 

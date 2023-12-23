@@ -54,13 +54,15 @@ export async function getArticles() {
     const articles = new Set<Article>()
     
     // Importing projects markdown files
-    const files = import.meta.glob("./*.md", {as: "raw", eager: true})
-    const { __dirname } = pathName(import.meta)
+    const files = import.meta.glob("../../../../posts/articles/*.md", {as: "raw", eager: true})
+    console.log(files);
     
-    for(const name in files) {
-        const raw = files[name] as string
+    const { __dirname } = pathName(import.meta)
 
-        const { birthtime, mtime } = fs.statSync(path.join(__dirname, name))
+    for(const filePath in files) {
+        const raw = files[filePath] as string
+
+        const { birthtime, mtime } = fs.statSync(path.join(__dirname, filePath))
 
         const md = raw.replace(
                 /---(?:.|[\r\n])*^---/m, ""
@@ -68,7 +70,7 @@ export async function getArticles() {
         const html = parser.render(raw)
         if(!tempMetadatas) continue
         
-        tempMetadatas.file = path.basename(name)
+        tempMetadatas.file = path.basename(filePath)
         tempMetadatas.time = {
             created: birthtime,
             edited: mtime
