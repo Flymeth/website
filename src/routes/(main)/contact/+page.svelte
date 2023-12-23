@@ -3,7 +3,7 @@
 	import NetlifyContactForm from "$lib/components/netlifyContactForm.svelte";
 </script>
 <Header>
-    <h1>I'm the <span>best</span> for your next project!</h1>
+    <h1>I'm the <span>best one</span> for your next project!</h1>
     <p>I can be the one who make your project better!</p>
 </Header>
 

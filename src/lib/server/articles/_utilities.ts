@@ -63,7 +63,7 @@ export async function getArticles() {
         const { birthtime, mtime } = fs.statSync(path.join(__dirname, name))
 
         const md = raw.replace(
-            /---(?:.|[\r\n])*^---/m, ""
+                /---(?:.|[\r\n])*^---/m, ""
         ).trim()
         const html = parser.render(raw)
         if(!tempMetadatas) continue
