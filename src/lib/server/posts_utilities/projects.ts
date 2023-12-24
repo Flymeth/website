@@ -1,5 +1,6 @@
 import hljs from "highlight.js";
 import MarkdownIt from "markdown-it";
+import markdownItAttrs from "markdown-it-attrs";
 import markdownItYamlPlugin from "markdown-it-meta-yaml";
 import path from "node:path";
 
@@ -48,7 +49,7 @@ parser.renderer.rules.link_open = function (tokens, idx, options, env, self) {
 let tempMetadatas: Project["metadata"] | undefined = undefined;
 parser.use(markdownItYamlPlugin, {
     cb: (json: Project["metadata"]) => tempMetadatas= json
-})
+}).use(markdownItAttrs)
 
 export async function getProjects() {
     const projects = new Set<Project>()

@@ -25,7 +25,7 @@
 </script>
 
 <script lang="ts">
-    import "../main.scss";
+    import "../app.scss";
     import "highlight.js/styles/atom-one-dark.min.css";
 	import { browser } from "$app/environment";
 </script>

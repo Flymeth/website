@@ -102,10 +102,11 @@
                 <section id="location">
                     <h2>Location</h2>
                     <p class="ariane">
-                        {#each ["/", locations] as name, i}
+                        {#each ["/", ...locations] as name, i}
                             {@const path = locations.slice(0, i).join("/")}
                             {#if i < locations.length}
                                 <a href="/{path}">{name}</a>
+                                {i ? "/" : ""}
                             {:else}
                                 <span>{name}</span>
                             {/if}

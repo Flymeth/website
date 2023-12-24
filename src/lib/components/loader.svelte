@@ -35,7 +35,7 @@
 
     onMount(() => {
         $animationEnded = false
-        loaderInterval = setInterval(() => pourcent < 100 ? pourcent++ : null, 75)
+        loaderInterval = setInterval(() => pourcent < 100 ? pourcent++ : null, 100)
 
         gsap.to(point, {
             opacity: 1

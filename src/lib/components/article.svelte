@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Article } from "$lib/server/articles/_utilities";
+    import type { Article } from "$lib/server/posts_utilities/articles";
 
     export let article: Article;
 </script>
@@ -24,8 +24,8 @@
         aspect-ratio: 1 / 1.25;
         box-shadow: 0 0 15px -5px $black;
         border-radius: 15px;
-        color: $white;
-        background-color: rgba($color: $black, $alpha: .05);
+        color: $black;
+        background-color: rgba($color: $primary, $alpha: .25);
         -webkit-backdrop-filter: blur(15px);
         backdrop-filter: blur(15px);
         transition: .15s;

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import "$lib/app.scss";
+    import "$lib/main.scss";
     import Nav, { isNavOpen } from "$lib/components/nav.svelte";
 	import { onMount } from "svelte";
 	import Loader from "$lib/components/loader.svelte";

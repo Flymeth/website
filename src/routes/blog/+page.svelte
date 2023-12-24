@@ -24,7 +24,7 @@
     @import "$lib/_colors.scss";
 
     :global(body:has(#blog-content)) {
-        background: url("https://source.unsplash.com/random/?codage,code");
+        background: url("https://source.unsplash.com/random/?codage,code"), $secondary;
         background-size: cover;
         background-position: center;
         background-attachment: fixed;

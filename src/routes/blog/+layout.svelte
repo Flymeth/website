@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Nav from "$lib/components/nav.svelte";
-    import "$lib/app.scss";
+    import "$lib/main.scss";
 	import { onMount } from "svelte";
 	import setupCursor from "$lib/ts/setupCursor";
 
