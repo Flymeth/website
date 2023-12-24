@@ -1,7 +1,13 @@
 import * as three from "three";
 import { GLTFLoader, OBJLoader } from "three/examples/jsm/Addons";
 
+let cache: ReturnType<typeof newLayoutScene> | undefined;
 export default async function generate() {
+	if(cache) return cache
+	cache = newLayoutScene()
+	return cache
+}
+export async function newLayoutScene() {
 	const scene = new three.Scene();
 	const camera = new three.PerspectiveCamera(
 		75,

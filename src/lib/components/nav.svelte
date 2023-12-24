@@ -45,6 +45,7 @@
     let theme: "dark" | "light" | "auto";
     
     onMount(() => {
+        $isNavOpen = false
         const timeline = gsap.timeline()
         timeline
         .set(nextTextElement, {
@@ -81,7 +82,7 @@
     let form: HTMLFormElement;
     function themeChanged() {
         const formulary = new FormData(form)
-        theme = formulary.get("theme") as typeof theme | "auto"
+        theme = formulary.get("theme") as typeof theme
         changeTheme(theme)
     }
 </script>
