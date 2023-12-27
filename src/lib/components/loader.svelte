@@ -5,23 +5,21 @@
 
     let point: HTMLDivElement;
     let pourcentElement: HTMLHeadingElement;
-    let loaderInterval: NodeJS.Timer;
 
     let pourcent = 0
     export const animationEnded = writable(false)
     export const loaded = () => {
         const delay = 5
-        clearInterval(loaderInterval)
         for(let j = 0; j + pourcent < 100; j++) {
             setTimeout(() => {
-                pourcent++
+                if(pourcent < 100) pourcent++
             }, delay * j)
         }
 
         setTimeout(() => {
             gsap.to([pourcentElement, point], {
                 opacity: 0,
-                delay: 1
+                delay: 1,
             }).then(() => {
                 animationEnded.set(true)
             })
@@ -35,7 +33,12 @@
 
     onMount(() => {
         $animationEnded = false
-        loaderInterval = setInterval(() => pourcent < 100 ? pourcent++ : null, 100)
+        const incrementPourcentFunc = () => {
+            if(pourcent >= 100) return;
+            pourcent++
+            setTimeout(incrementPourcentFunc, Math.floor((Math.random() * 100)) + 100)
+        }
+        incrementPourcentFunc()
 
         gsap.to(point, {
             opacity: 1

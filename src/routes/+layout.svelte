@@ -28,6 +28,24 @@
     import "../app.scss";
     import "highlight.js/styles/atom-one-dark.min.css";
 	import { browser } from "$app/environment";
+	import { isNavOpen } from "$lib/components/nav.svelte";
+	import { onNavigate } from "$app/navigation";
+
+    // Add page transition
+    //>> https://svelte.dev/blog/view-transitions
+    onNavigate((navigation) => {
+        //@ts-ignore
+        if (!document.startViewTransition) return;
+        $isNavOpen = false
+        
+        return new Promise((resolve) => {
+            //@ts-ignore
+            document.startViewTransition(async () => {
+                resolve();
+                await navigation.complete;
+            });
+        });
+    })
 </script>
 
 <slot />

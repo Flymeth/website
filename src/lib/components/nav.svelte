@@ -31,7 +31,8 @@
     export let changeMessageEachMs = 5000
     let messageID = 0
     
-    $: locations = $page.url.pathname === "/" ? [] : $page.url.pathname.split("/").slice(1)
+    $: pathname = $page.url.pathname !== "/" && $page.url.pathname.endsWith("/") ? $page.url.pathname.slice(0, -1) : $page.url.pathname
+    $: locations = pathname === "/" ? [] : pathname.split("/").slice(1)
     const menuPaths = {
         Home: "/",
         Portefolio: "/portefolio",
@@ -120,7 +121,7 @@
                     <nav>
                         <ul>
                             {#each Object.entries(menuPaths) as [name, path]}
-                                {@const selected = path === $page.url.pathname}
+                                {@const selected = path === pathname}
                                 <li>
                                     {#if selected}
                                         <p class="current-page">{name}</p>
