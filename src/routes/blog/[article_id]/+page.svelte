@@ -55,6 +55,7 @@
 <style lang="scss">
     main {
         padding: 25px;
+        @import "$lib/assets/styles/markdowns.scss";
     }
 
     #article-nav {

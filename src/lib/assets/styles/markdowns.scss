@@ -1,3 +1,5 @@
+@import "$lib/_colors.scss";
+
 @for $i from 1 to 6 {
     :global(h#{$i}) {
         margin: 15px 0;
