@@ -8,7 +8,7 @@
 	import Footer from "$lib/components/footer.svelte";
 	import { navigating } from "$app/stores";
 	import setupCursor from "$lib/ts/setupCursor";
-	import { changeTheme, theme } from "../+layout.svelte";
+	import { changeTheme, theme } from "$lib/ts/theme";
     
     let loader: Loader;
     let showPage = false;
@@ -37,10 +37,6 @@
             })
             loader.loaded()
         })
-
-        window.addEventListener("resize", () => {
-            console.warn("Hey! You just resized the window. Please reload the page if you switched between the mobile and the pc version.")
-        })
     })
 </script>
 
@@ -55,7 +51,7 @@
         </div>
     {:else}
         <div transition:fade>
-            <Loader />
+            <Loader hideProgress={true} />
         </div>
     {/if}
 

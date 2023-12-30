@@ -24,7 +24,7 @@
         aspect-ratio: 1 / 1.25;
         box-shadow: 0 0 15px -5px $black;
         border-radius: 15px;
-        color: $black;
+        color: $white;
         background-color: rgba($color: $primary, $alpha: .25);
         -webkit-backdrop-filter: blur(15px);
         backdrop-filter: blur(15px);

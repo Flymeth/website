@@ -18,7 +18,9 @@ tags:
 ## Introduction
 
 Je suis ravi de présenter mon projet d'intégration web, un slider interactif d'expression faciale. Réalisé en seulement 10 jours, ce projet vise à créer une expérience utilisateur immersive en permettant aux utilisateurs de moduler l'émotion affichée sur un visage en fonction de la position du curseur.
-Vous trouverez [ici](/cdn/projects/emotion_slider/presentation.webm) une vidéo de présentation du projet.
+Voici une petite vidéo de présentation vous dévoilant comment l'utilisateur peut intéragir avec le slider:
+
+![video](/cdn/projects/emotion_slider/presentation.webm)
 
 ![Les différentes "phases" du slider](/cdn/projects/emotion_slider/sliders.png)
 

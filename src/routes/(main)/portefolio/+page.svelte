@@ -15,6 +15,7 @@
     console.debug(`Found ${projectlist.length} projects:`)
     console.debug(projectlist)
 
+
     const preOpenIndex = parseInt($page.url.searchParams.get("project") || "-1")
     let projectContainer: HTMLUListElement;
 

@@ -81,7 +81,7 @@ ul {
     padding-left: 15px;
 }
 
-button {
+button:not(.nodefault) {
     padding: 10px 25px;
     border: none;
     &.primary-color {

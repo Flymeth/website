@@ -3,6 +3,7 @@ import markdownItTocDoneRight from "markdown-it-toc-done-right";
 import markdownItYamlPlugin from "markdown-it-meta-yaml";
 import markdownItAnchors from "markdown-it-anchor";
 import markdownItAttrs from "markdown-it-attrs";
+import { html5Media } from "markdown-it-html5-media";
 import path from "node:path";
 import hljs from "highlight.js";
 import fs from "node:fs";
@@ -18,11 +19,12 @@ export interface Article {
         description: string,
         file: string,
         id: string,
+        ressources: string[],
         time: {
             created: Date,
             edited: Date
         },
-        bannerURL?: string,
+        coverURL?: string,
     },
     toc: navigation[],
     content: {
@@ -73,7 +75,7 @@ parser.use(markdownItYamlPlugin, {
         
         parse(ast)
     },
-}).use(markdownItAttrs)
+}).use(markdownItAttrs).use(html5Media)
 
 export async function getArticles() {
     const articles = new Set<Article>()

@@ -2,6 +2,7 @@ import hljs from "highlight.js";
 import MarkdownIt from "markdown-it";
 import markdownItAttrs from "markdown-it-attrs";
 import markdownItYamlPlugin from "markdown-it-meta-yaml";
+import { html5Media } from "markdown-it-html5-media"
 import path from "node:path";
 
 export interface Project {
@@ -49,7 +50,7 @@ parser.renderer.rules.link_open = function (tokens, idx, options, env, self) {
 let tempMetadatas: Project["metadata"] | undefined = undefined;
 parser.use(markdownItYamlPlugin, {
     cb: (json: Project["metadata"]) => tempMetadatas= json
-}).use(markdownItAttrs)
+}).use(markdownItAttrs).use(html5Media)
 
 export async function getProjects() {
     const projects = new Set<Project>()

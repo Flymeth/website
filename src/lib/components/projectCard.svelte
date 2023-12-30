@@ -4,14 +4,16 @@
 </script>
 
 <script lang="ts">
-	import type { Project } from "$lib/server/projects/_utilities";
+	import type { Project } from "$lib/server/posts_utilities/projects";
 	import { fade } from "svelte/transition";
     import { navHeight } from "./nav.svelte";
     import SvelteFA from "svelte-fa";
     import { faLink } from "@fortawesome/free-solid-svg-icons"
     import { faGithub, faFigma, faCodepen } from "@fortawesome/free-brands-svg-icons";
+	import ImageDisplay from "./imageDisplay.svelte";
 
     export let project: Project;
+
     const projectLinks = Object.entries({
         prototype: {
             icon: faFigma,
@@ -85,6 +87,8 @@
             </div>
             <hr>
             <div id="project-content">
+                <ImageDisplay />
+
                 {@html project.content.html}
             </div>
         </div>
@@ -93,6 +97,7 @@
 
 <style lang="scss">
     @import "$lib/_colors.scss";
+    
     .card {
         background: linear-gradient(to bottom, rgba($black, .5), rgba($black, .85)), var(--banner), $primary;
         background-position: center;
@@ -247,38 +252,7 @@
         }
         #project-content {
             padding: 0 25px;
-
-            > :global(*) {
-                margin-left: 20px;
-            }
-            @for $i from 1 to 6 {
-                > :global(h#{$i}) {
-                    margin: 15px 0;
-                    margin-left: 5px * ($i - 1);
-
-                    text-decoration: underline;
-                    color: $primary;
-                    text-shadow: 1px 1px 2.5px $black;
-                }
-            }
-
-            :global(li > p) {
-                display: inline;
-                margin: 0;
-            }
-
-            :global(img) {
-                width: min(100%, 650px);
-                height: auto;
-                display: block;
-                margin: 10px auto;
-
-                box-shadow: 0 0 15px -2.5px var(--background);
-                border-radius: 10px;
-            }
-            :global(hr) {
-                margin: 40px auto;
-            }
+            @import "$lib/assets/styles/markdowns.scss";
         }
     }
     // Disable the scroll-y if the project is oppenned

@@ -1,0 +1,33 @@
+@for $i from 1 to 6 {
+    :global(h#{$i}) {
+        margin: 15px 0;
+        margin-left: 5px * ($i - 1);
+
+        text-decoration: underline;
+        color: $primary;
+        text-shadow: 1px 1px 2.5px $black;
+    }
+}
+
+:global(li > p) {
+    display: inline;
+    margin: 0;
+}
+
+:global(img) {
+    width: min(100%, 650px);
+    height: auto;
+    display: block;
+    margin: 10px auto;
+
+    box-shadow: 0 0 15px -2.5px var(--background);
+    border-radius: 10px;
+}
+:global(hr) {
+    margin: 40px auto;
+}
+:global(video) {
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 10px;
+}

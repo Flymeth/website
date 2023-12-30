@@ -7,6 +7,8 @@
     import html from "$lib/assets/img/tools/html.svg";
     import css from "$lib/assets/img/tools/css.svg";
     import js from "$lib/assets/img/tools/javascript.svg";
+    import ts from "$lib/assets/img/tools/typescript.svg";
+    let scriptingLang = ts
     import sass from "$lib/assets/img/tools/sass.svg";
     import svelte from "$lib/assets/img/tools/svelte.svg";
     import react from "$lib/assets/img/tools/react.svg";
@@ -72,8 +74,9 @@
             </li>
             <li>
                 <TechCategory name="Web languages/frameworks" on:iconClicked={({detail: {icon}}) => {
+                    if(icon === ts) return scriptingLang = js
                     if(icon === js) return enterEasterGame()
-                }} icons={[html, css, js, sass, svelte, react, nodejs]}/>
+                }} icons={[html, css, scriptingLang, sass, svelte, react, nodejs]}/>
             </li>
             <li>
                 <TechCategory name="Database" icons={[pocketbase, mariadb]}/>

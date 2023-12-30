@@ -7,7 +7,7 @@ export interface Music {
         file: string,
         date: Date,
     },
-    audio: HTMLAudioElement,
+    audioSrc: string,
 }
 export function getMusics() {
     const musics = new Set<Music>()
@@ -17,7 +17,7 @@ export function getMusics() {
 
     for(const filePath of files) {
         const filename = path.basename(filePath)
-        const audio = new Audio(`./posts/music/${filename}`)
+        const audioSrc = `/posts/music/${filename}`
         const { birthtime } = fs.statSync(`./posts/music/${filename}`)
         const title = filename.replace(".mp3", "").split("_").join(" ")
 
@@ -26,7 +26,7 @@ export function getMusics() {
                 file: filename,
                 date: birthtime,
                 title
-            }, audio
+            }, audioSrc
         })
     }
 

@@ -6,6 +6,8 @@
 	import { onMount } from "svelte";
 	import { navHeight } from "./nav.svelte";
 
+    export let bannerURL: string = "";
+
     let mouse: HTMLSpanElement;
     let circle: HTMLSpanElement;
     let header: HTMLElement;
@@ -71,7 +73,7 @@
     })
 </script>
 
-<header bind:this={header}>
+<header bind:this={header} style="--banner:url({bannerURL})">
     <slot/>
     <a href="#scroller" class="scroll-insitation" on:click|preventDefault={() => {
         window.scrollTo({
@@ -92,13 +94,27 @@
     @import "$lib/_colors.scss";
 
     header {
-        height: 95vh;
+        height: 100vh;
         display: flex;
         justify-content: center;
         flex-direction: column;
         padding: 10px 25px;
         font-size: 25px;
         position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: var(--banner);
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: blur(10px);
+        }
 
         > :global(h1 span) {
             color: var(--primary);

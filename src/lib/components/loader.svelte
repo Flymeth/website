@@ -7,9 +7,10 @@
     let pourcentElement: HTMLHeadingElement;
 
     let pourcent = 0
+    export let hideProgress = false
     export const animationEnded = writable(false)
     export const loaded = () => {
-        const delay = 5
+        const delay = 10
         for(let j = 0; j + pourcent < 100; j++) {
             setTimeout(() => {
                 if(pourcent < 100) pourcent++
@@ -34,9 +35,9 @@
     onMount(() => {
         $animationEnded = false
         const incrementPourcentFunc = () => {
-            if(pourcent >= 100) return;
+            if(pourcent >= 95) return;
             pourcent++
-            setTimeout(incrementPourcentFunc, Math.floor((Math.random() * 100)) + 100)
+            setTimeout(incrementPourcentFunc, Math.floor((Math.random() * 400)) + 100)
         }
         incrementPourcentFunc()
 
@@ -61,7 +62,9 @@
 
 <div id="loader">
     <div bind:this={point}></div>
-    <h1 id="progress" bind:this={pourcentElement}>{pourcent}%</h1>
+    {#if !hideProgress}
+        <h1 id="progress" bind:this={pourcentElement}>{pourcent}%</h1>
+    {/if}
 </div>
 
 <style lang="scss">

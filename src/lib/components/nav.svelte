@@ -9,8 +9,8 @@
 	import { writable } from "svelte/store";
     import { gsap } from "gsap";
 	import { blur } from "svelte/transition";
-	import { changeTheme } from "../../routes/+layout.svelte";
     import { circInOut } from "svelte/easing";
+    import { changeTheme } from "$lib/ts/theme";
 
     export let disable_sections: {
         location?: boolean,
@@ -240,9 +240,7 @@
         width: 100%;
         height: 100%;
         z-index: 99;
-
         backdrop-filter: blur(15px);
-        background-color: rgba($color: $black, $alpha: .25);
 
         > .content {
             height: 100%;

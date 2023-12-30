@@ -23,12 +23,15 @@
 <style lang="scss">
     @import "$lib/_colors.scss";
 
-    :global(body:has(#blog-content)) {
-        background: url("https://source.unsplash.com/random/?codage,code"), $secondary;
+    :global(body:has(#blog-content) > div) {
+        background: url("https://source.unsplash.com/random/?programation"), var(--background);
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
         text-shadow: 0 0 10px var(--background);
+    }
+    :global(body:has(#blog-content) > div > div:not(#navbar)) {
+        backdrop-filter: blur(5px);
     }
 
     main {
@@ -44,6 +47,4 @@
             gap: 20px;
         }
     }
-
-
 </style>
