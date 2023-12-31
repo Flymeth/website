@@ -4,6 +4,12 @@
 	import type { PageData } from "./$types";
     export let data: PageData;
 </script>
+
+<svelte:head>
+    <meta property="og:title" content="Johan Janin's blog" />
+    <meta property="og:description" content="Hey! This is my little blog where I write article about any subjects! Come discover my work!" />
+</svelte:head>
+
 <Header>
     <h1>Welcome to my <span>blog</span>!</h1>
     <p>Ready to learn a lot ?</p>

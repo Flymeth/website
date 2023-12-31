@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
     import { isNavOpen } from "$lib/components/nav.svelte";
-    
 </script>
 
 <script lang="ts">
@@ -31,5 +30,10 @@
         })
     })
 </script>
+
+<svelte:head>
+    <meta property="og:site_name" content="Johan JANIN" />
+    <meta property="og:type" content="website" />
+</svelte:head>
 
 <slot />

@@ -1,7 +1,6 @@
-<!-- todo: Faire la version mobile -->
 <script lang="ts">
 	import type { Music } from "$lib/server/posts_utilities/musics";
-	import { onMount } from "svelte";
+	import { onDestroy, onMount } from "svelte";
 	import { derived, writable } from "svelte/store";
 	import { fade } from "svelte/transition";
 
@@ -87,6 +86,9 @@
     }
 
     onMount(() => {
+        controls.stop()
+    })
+    onDestroy(() => {
         controls.stop()
     })
 </script>
@@ -198,7 +200,7 @@
                 > label[for="slider"] {
                     width: 100%;
                     display: flex;
-                    align-items: start;
+                    align-items: flex-start;
                     justify-content: stretch;
                     > input {
                         appearance: none;

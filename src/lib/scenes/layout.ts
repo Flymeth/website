@@ -1,5 +1,5 @@
 import * as three from "three";
-import { GLTFLoader, OBJLoader } from "three/examples/jsm/Addons";
+import { FBXLoader, GLTFLoader, OBJLoader } from "three/examples/jsm/Addons";
 
 let cache: ReturnType<typeof newLayoutScene> | undefined;
 export default async function generate() {
@@ -42,26 +42,35 @@ export async function newLayoutScene() {
 		scene.environment = bg;
 	}
 	setBG("dark")
-	
-	const UFOLoader = new GLTFLoader();
-	const {scene: UFO} = await UFOLoader.loadAsync("/models/UFO/Rigged_Modular UFO 2.8.glb.gltf")
-	await renderer.compileAsync(UFO, camera, scene).then(() => scene.add(UFO))
 
-	const cubeLoader = new OBJLoader()
-	const burningCube = await cubeLoader.loadAsync("/models/cubes/burning_cube/model.obj")
-	await renderer.compileAsync(burningCube, camera, scene).then(() => scene.add(burningCube))
-	burningCube.position.set(-5, 2, 1)
+	const loader = new GLTFLoader()
+	
+	const { scene: keyboard } = await loader.loadAsync("/models/keyboard/keyboard.glb")
+	await renderer.compileAsync(keyboard, camera, scene).then(() => scene.add(keyboard))
+
+	const { scene: laptop } = await loader.loadAsync("/models/laptop/laptop.glb")
+	laptop.scale.set(20, 20, 20)
+	laptop.position.set(0, 5, -10)
+	await renderer.compileAsync(laptop, camera, scene).then(() => scene.add(laptop))
+
+	const { scene: rocket } = await loader.loadAsync("/models/rocket/rocket.glb")
+	rocket.scale.set(1.5, 1.5, 1.5)
+	rocket.position.set(-10, -10, 10)
+	await renderer.compileAsync(rocket, camera, scene).then(() => scene.add(rocket))
 	
 	// Animate/render everything
 	function frame() {
-		UFO.rotation.y = (UFO.rotation.y + 0.0025) % (2 * Math.PI)
-		
-		burningCube.rotation.x+= .00025
-		burningCube.rotation.y+= .00025
-		
+		keyboard.rotation.x+= .0005
+		keyboard.rotation.y+= .0005
+		keyboard.rotation.z+= .0005
+
+		rocket.rotation.x-= .0005
+		rocket.rotation.y+= .0005
+		rocket.rotation.z-= .0005
+
 		camera.rotation.x+= .0005
 		camera.rotation.y+= .0002
-		camera.rotation.z+= .0002
+		camera.rotation.z+= .0003
 		renderer.render(scene, camera);
 	}
 
@@ -70,11 +79,16 @@ export async function newLayoutScene() {
 		frame();
 	}
 
+	let __animating = false
 	return {
-		scene, camera, renderer, frame, animate,
-		objects: {
-			UFO
+		scene, camera, renderer, frame,
+		animate: () => {
+			if(!__animating) {
+				__animating = true
+				animate()
+			}
 		},
+		objects: { keyboard, laptop, rocket },
 		tools: {
 			setBG
 		}

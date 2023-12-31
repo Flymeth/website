@@ -2,6 +2,12 @@
 	import Header from "$lib/components/header.svelte";
 	import NetlifyContactForm from "$lib/components/netlifyContactForm.svelte";
 </script>
+
+<svelte:head>
+    <meta property="og:title" content="Johan Janin's contact" />
+    <meta property="og:description" content="If you want to contact me, it's the perfect link!" />
+</svelte:head>
+
 <Header>
     <h1>I'm the <span>best one</span> for your next project!</h1>
     <p>I can be the one who make your project better!</p>

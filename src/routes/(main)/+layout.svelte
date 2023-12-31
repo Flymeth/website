@@ -45,7 +45,7 @@
 {#if showPage}
     <Nav />
 
-    {#if (!mobile || $navigating === null)}
+    {#if $navigating === null || !mobile}
         <div id="app" data-mobile={mobile ? "" : null}>
             <slot />
         </div>

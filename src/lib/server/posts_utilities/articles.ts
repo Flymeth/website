@@ -20,6 +20,8 @@ export interface Article {
         file: string,
         id: string,
         ressources: string[],
+        category: string,
+        tags: string[],
         time: {
             created: Date,
             edited: Date

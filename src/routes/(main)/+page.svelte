@@ -55,6 +55,12 @@
         })
     }
 </script>
+
+<svelte:head>
+    <meta property="og:title" content="Johan Janin" />
+    <meta property="og:description" content="Hey! I'm Johan: a web development lover. I love doing front-end stuff as much as the back-end parts of a website." />
+</svelte:head>
+
 <Header>
     <h1>Hi! My name is <span>Johan</span>!</h1>
 </Header>

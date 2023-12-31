@@ -15,6 +15,11 @@
     })
 </script>
 
+<svelte:head>
+    <meta property="og:title" content="Johan Janin's musics" />
+    <meta property="og:description" content="I love musics, espacialy the electronic genre. So since I'm young I always tried to make my own music..." />
+</svelte:head>
+
 <Header>
     <h1>Here are <span>all</span> the different <span>songs</span> I made!</h1>
     <p>Because I'm a music lover, sometime I'm making my own music "for fun"...</p>

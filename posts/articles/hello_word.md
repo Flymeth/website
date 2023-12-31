@@ -4,9 +4,15 @@ description: "As this is my first article, let's learn a bit more on the famous 
 coverURL: https://drjplopes.com/media/BlogBanners/Hello-World_Banner.png
 ressources:
 - https://fr.wikipedia.org/wiki/Hello_world#Histoire
+category: Programation
+tags:
+- Hello Word
+- Programing language
+- Debuging
+- Noobs
 ---
 
-# Hello dear readders
+## Hello dear readders
 
 First of all, thanks for reading my first article: I hope you enjoy my website so far!
 As I'm currently writing my first article, I remember my first time at programation... my first *Hello Word* in `Javascript`.
