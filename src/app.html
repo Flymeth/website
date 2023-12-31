@@ -15,5 +15,12 @@
 	</head>
 	<body data-sveltekit-preload-data="hover" style="--cursor-opacity: 0;--cursor-scale: 0;">
 		<div>%sveltekit.body%</div>
+
+		<!-- To make the contact form working (this is a test) -->
+		<form name="contact" netlify netlify-honeypot="bot-field" hidden>
+			<input type="text" name="name" />
+			<input type="email" name="email" />
+			<textarea name="message"></textarea>
+		</form>
 	</body>
 </html>

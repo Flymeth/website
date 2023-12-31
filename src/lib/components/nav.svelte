@@ -35,7 +35,7 @@
     $: locations = pathname === "/" ? [] : pathname.split("/").slice(1)
     const menuPaths = {
         Home: "/",
-        Portefolio: "/portefolio",
+        Portfolio: "/portfolio",
         Discography: "/discography",
         "Work With Me": "/contact",
         "My Little Blog": "/blog"

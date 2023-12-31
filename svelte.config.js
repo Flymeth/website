@@ -15,12 +15,6 @@ const config = {
 		adapter: adapter({
 			split: true
 		}),
-	},
-	prerender: {
-		crawl: true,
-		enabled: true,
-		force: true,
-		pages: ['*']
 	}
 };
 
