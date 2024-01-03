@@ -3,12 +3,11 @@
     import "$lib/main.scss";
 	import { onMount } from "svelte";
 	import setupCursor from "$lib/ts/setupCursor";
+	import { isMobile } from "$lib/ts/mobile";
 
     onMount(() => {
-        const mobile = navigator.userAgent.toLowerCase().includes("mobile")
-
         // Set cursor position (only update if the user is on desktop)
-        !mobile && setupCursor()
+        !isMobile() && setupCursor()
     })
 </script>
 

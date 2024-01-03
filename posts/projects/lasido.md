@@ -14,6 +14,10 @@ Ce projet consiste en la création d'un robot Discord entièrement codé à la m
 
 ## Principales commandes
 
+### /play ou /play-file
+
+Grâce à ces commandes, vous pourrez non seulement jouer de la musique depuis Youtube, Deezer, Spotify et SoundCloud mais également jouer des musiques qui sont directement sur votre ordinateur!
+
 ### /search
 
 Afin de pouvoir rechercher une musique/playlist/artiste sur les principales plateformes de streaming sans avoir à quitter discord, j'ai mis en place cette commande à l'utilisation enfantine:
@@ -48,10 +52,6 @@ Cette commande est ma préféré. Afin d'avoir un player entierement fonctionnel
 Le développement du bot vise à intégrer de nouvelles fonctionnalités pour enrichir l'expérience musicale des utilisateurs :
 
 - **Likes Utilisateur :** Permettre aux utilisateurs de "liker" des titres, créant ainsi une liste personnalisée de leurs morceaux préférés.
-
-- **Importation de Musique entre Serveurs :** Possibilité d'importer des morceaux d'un serveur Discord à un autre, favorisant le partage de musique entre différentes communautés.
-
-- **Interface Web Fonctionnelle à 100% :** Mise en place d'une interface web complète pour une gestion simplifiée des paramètres et des fonctionnalités du bot.
 
 - **Égaliseur Audio :** Intégration d'un système d'égalisation audio offrant aux utilisateurs la possibilité de personnaliser le traitement sonore, notamment en ajoutant des basses ou en améliorant la qualité vocale.
 

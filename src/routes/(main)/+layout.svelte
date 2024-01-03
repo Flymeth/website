@@ -9,6 +9,7 @@
 	import { navigating } from "$app/stores";
 	import setupCursor from "$lib/ts/setupCursor";
 	import { changeTheme, theme } from "$lib/ts/theme";
+	import { isMobile } from "$lib/ts/mobile";
     
     let loader: Loader;
     let showPage = false;
@@ -17,7 +18,6 @@
     
     onMount(() => {
         loader.animationEnded.subscribe(v => showPage = v)
-        mobile = navigator.userAgent.toLowerCase().includes("mobile")
 
         // Set theme
         const storedTheme = window.localStorage.getItem("theme")
@@ -25,7 +25,7 @@
         else window.localStorage.removeItem("theme")
 
         // Set cursor position (only update if the user is on desktop)
-        !mobile && setupCursor()
+        !isMobile() && setupCursor()
 
         // Setup the 3D background scene
         genScene().then((content) => {
