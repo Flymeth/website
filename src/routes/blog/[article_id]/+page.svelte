@@ -30,7 +30,6 @@
     <meta property="profile:first_name" content="Johan" />
     <meta property="article:last_name" content="Janin" />
     <meta property="article:gender" content="male" />
-
 </svelte:head>
 
 <aside id="article-nav">
@@ -39,9 +38,9 @@
             <h3>Table Of Content</h3>
             <ul>
                 {#each article.toc as title}
-                <li style="--level:{title.level}">
-                    <a href={title.link} on:click={() => isMenuOpen = false}>{title.title}</a>
-                </li>
+                    <li style="--level:{title.level}">
+                        <a href={title.link} on:click={() => isMenuOpen = false}>{title.title}</a>
+                    </li>
                 {/each}
             </ul>
         </menu>

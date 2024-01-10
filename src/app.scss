@@ -7,6 +7,10 @@
     font-family: leelawadee;
     src: url("$lib/assets/fonts/leelawadee/leelawadee.ttf") format("truetype");
 }
+@font-face {
+    font-family: firacode;
+    src: url("$lib/assets/fonts/fira_code/firacode_variable_rg.ttf") format("truetype");
+}
 
 @mixin lightTheme {
     --background: #{$white};
@@ -149,5 +153,12 @@ textarea {
 }
 pre:has(> code) {
     overflow-y: scroll;
-    padding: 25px 5px;
+    padding: 25px 15px;
+    background-color: #21252B;
+    border-radius: 15px;
+    margin: 25px 0;
+}
+code {
+    font-family: "firacode", monospace;
+    font-size: 12.5px;
 }

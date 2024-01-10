@@ -78,6 +78,8 @@
 
         const themeStorage = window.localStorage.getItem("theme") as "light" | "dark" | null
         theme = themeStorage || "auto"
+
+        document.body.style.scrollPaddingTop = navHeight
     })
 
     let form: HTMLFormElement;
@@ -88,7 +90,7 @@
     }
 </script>
 
-<div id="navbar" style="--h: {navHeight}">
+<div id="navbar" style="--h:{navHeight}">
     <h1>
         <span bind:this={nextTextElement}>~</span>
         <span bind:this={currentTextElement}>{customMessages[0]}</span>
