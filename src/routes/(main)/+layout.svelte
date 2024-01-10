@@ -46,7 +46,7 @@
     <Nav />
 
     {#if $navigating === null || !mobile}
-        <div id="app" data-mobile={mobile ? "" : null}>
+        <div id="app">
             <slot />
         </div>
     {:else}

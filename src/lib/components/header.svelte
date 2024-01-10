@@ -76,9 +76,11 @@
 <header bind:this={header} style="--banner:url({bannerURL})">
     <slot/>
     <a href="#scroller" class="scroll-insitation" on:click|preventDefault={() => {
+        const { height } = header.getBoundingClientRect()
+
+        const top = (height + header.scrollTop) - parseInt(navHeight.replace("px", ""))
         window.scrollTo({
-            top: header.getBoundingClientRect().bottom - parseInt(navHeight.replace("px", "")),
-            behavior: "smooth"
+            top, behavior: "smooth"
         })
     }}>
         <span class="circle" bind:this={circle}>

@@ -8,6 +8,8 @@
 	import { beforeNavigate, onNavigate } from "$app/navigation";
 	import { onMount } from "svelte";
 	import SubLoader from "$lib/components/subLoader.svelte";
+    import { navigating as isNavigating } from "$app/stores";
+	import { isMobile } from "$lib/ts/mobile";
 
     let navigating = false
     // Add page transition
@@ -35,6 +37,7 @@
         window.addEventListener("resize", () => {
             console.warn("Hey! You just resized the window. Please reload the page if you switched between the mobile and the pc version.")
         })
+        if(isMobile()) document.body.setAttribute("data-mobile", "")
     })
 </script>
 
@@ -43,7 +46,7 @@
     <meta property="og:type" content="website" />
 </svelte:head>
 
-{#if navigating}
+{#if navigating || $isNavigating}
     <SubLoader />
 {/if}
 

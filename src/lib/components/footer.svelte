@@ -23,8 +23,8 @@
         position: relative;
         background-color: var(--background);
         margin-top: $transition-size + 15px;
-        min-height: 50vh;
         padding: 15px;
+        padding-bottom: 50px;
 
         &::before {
             content: "";

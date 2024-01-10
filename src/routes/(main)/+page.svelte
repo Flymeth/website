@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import WorkWithMe from "$lib/components/workWithMe.svelte";
 	import Header from "$lib/components/header.svelte";
 
@@ -23,9 +23,10 @@
     import wordpress from "$lib/assets/img/tools/wordpress.svg";
     import elementor from "$lib/assets/img/tools/elementor.svg";
 
-    import photoshop from "$lib/assets/img/tools/photoshop.svg"
-    import illustrator from "$lib/assets/img/tools/illustrator.svg"
-    import premierepro from "$lib/assets/img/tools/premierepro.svg"
+    import photoshop from "$lib/assets/img/tools/photoshop.svg";
+    import illustrator from "$lib/assets/img/tools/illustrator.svg";
+    import premierepro from "$lib/assets/img/tools/premierepro.svg";
+    import figma from "$lib/assets/img/tools/figma.svg";
     
     import python from "$lib/assets/img/tools/python.svg";
     import unity from "$lib/assets/img/tools/unity.svg";
@@ -34,6 +35,9 @@
 
     import gsap from "gsap";
 	import { goto } from "$app/navigation";
+	import Reviews from "$lib/components/reviews.svelte";
+
+    const reviews: Reviews["$$prop_def"]["list"] = []
 
     function enterEasterGame() {
         const tm = gsap.timeline()
@@ -94,7 +98,7 @@
                 <TechCategory name="Hosting" icons={[netlify, heroku]}/>
             </li>
             <li>
-                <TechCategory name="Adobe Suite" icons={[photoshop, illustrator, premierepro]}/>
+                <TechCategory name="Adobe Suite" icons={[photoshop, illustrator, premierepro, figma]}/>
             </li>
             <li>
                 <TechCategory name="Others" icons={[python, unity, flstudio]} on:iconClicked={({detail: { icon }}) => {
@@ -109,7 +113,7 @@
     <section id="showoff">
         <h2>Some of my best projects</h2>
         <p>During my learning sessions, I was able to build different projects, more or less complex.</p>
-        <p>So check out <a href="/portefolio">my portefolio</a> to discovering what I'm capable to.</p>
+        <p>So check out <a href="/portfolio">my portfolio</a> to discovering what I'm capable to.</p>
     </section>
 
     <section id="hobbies">
@@ -133,6 +137,15 @@
                 </ul>
             </li>
         </ul>
+    </section>
+
+    <section id="reviews">
+        <h2>What they think about me</h2>
+        {#if reviews.length}
+            <Reviews list={ reviews }/>
+        {:else}
+            <p>This part of the website is still under construct.</p>
+        {/if}
     </section>
 </main>
 
@@ -191,6 +204,13 @@
                     > ul {
                         list-style: "> ";
                     }
+                }
+            }
+
+            &#reviews {
+                margin: 30px 0;
+                > h2 {
+                    margin-bottom: 15px;
                 }
             }
         }

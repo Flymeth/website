@@ -15,7 +15,6 @@
     console.debug(`Found ${projectlist.length} projects:`)
     console.debug(projectlist)
 
-
     const preOpenIndex = parseInt($page.url.searchParams.get("project") || "-1")
     let projectContainer: HTMLUListElement;
 
@@ -36,6 +35,9 @@
                 behavior: "instant"
             })
         }
+        window.addEventListener("keydown", (e) => {
+            if(e.key.toLowerCase() === "escape") $opennedProject = null
+        })
 
         for(const card of projectContainer.children) {
             gsap.from(card, {
@@ -53,12 +55,12 @@
 
 <svelte:head>
     <meta property="og:title" content="Johan Janin's portfolio" />
-    <meta property="og:description" content="Wan to discover my work and how is my working routine ? Just click on this link!" />
+    <meta property="og:description" content="Want to discover my work and how is my working routine ? Just click on this link!" />
 </svelte:head>
 
 <Header>
     <h1>Wanna discover <span>my projects</span> ?</h1>
-    <p>My portefolio is here for that!</p>
+    <p>My portfolio is here for that!</p>
 </Header>
 
 <main>
