@@ -42,8 +42,9 @@
 </script>
 
 <svelte:head>
-    <meta property="og:site_name" content="Johan JANIN" />
+    <meta property="og:site_name" content="johan-janin.com" />
     <meta property="og:type" content="website" />
+    <meta property="theme-color" content="#FF7F11" />
 </svelte:head>
 
 {#if navigating || $isNavigating}

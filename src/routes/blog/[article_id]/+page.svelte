@@ -18,6 +18,13 @@
     <meta property="og:description" content={article.metadata.description} />
     <meta property="og:image" content={article.metadata.coverURL} />
 
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="johan-janin.com">
+    <meta property="twitter:url" content="https://johan-janin.com">
+    <meta name="twitter:title" content={article.metadata.title}>
+    <meta name="twitter:description" content={article.metadata.description}>
+    <meta name="twitter:image" content={article.metadata.coverURL}>
+
     <meta property="og:type" content="article" />
     <meta property="article:author" content="johan_jnn" />
     <meta property="article:section" content={article.metadata.category} />
@@ -28,8 +35,9 @@
     <meta property="article:published_time" content={article.metadata.time.created.toISOString()} />
     <meta property="article:modified_time" content={article.metadata.time.edited.toISOString()} />
     <meta property="profile:first_name" content="Johan" />
-    <meta property="article:last_name" content="Janin" />
-    <meta property="article:gender" content="male" />
+    <meta property="profile:last_name" content="Janin" />
+    <meta property="profile:username" content="johan_jnn" />
+    <meta property="profile:gender" content="male" />
 </svelte:head>
 
 <aside id="article-nav">
@@ -59,7 +67,7 @@
 <hr>
 <footer>
     <h2>Already finished ?</h2>
-    <p>Don't forget to share my work!</p>
+    <p>I hope you enjoyed this article! Don't forget to share my work!</p>
 
     <Share sharingInformation= {{
         title: "Sharing a good article",

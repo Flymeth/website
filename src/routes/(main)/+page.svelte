@@ -37,7 +37,25 @@
 	import { goto } from "$app/navigation";
 	import Reviews from "$lib/components/reviews.svelte";
 
-    const reviews: Reviews["$$prop_def"]["list"] = []
+    const reviews: Reviews["$$prop_def"]["list"] = [
+        {
+            author: {
+                name: "Théo MISTRAL",
+                status: "IPI Student",
+                img: "https://static-cdn.jtvnw.net/jtv_user_pictures/68ea825a-b820-49db-96a8-3840ab51aec2-profile_image-70x70.png",
+                link: "https://www.linkedin.com/in/th%C3%A9o-mistral-8597b6216/"
+            },
+            comment: "The sites are comprehensive and allow innovative interactions. The site is delivered quite quickly. I highly recommend Johan for the creation of your site."
+        },
+        {
+            author: {
+                name: "QUENTIN",
+                status: "2nd year My Digital School Student",
+                img: "/cdn/reviews/quentin.jpg"
+            },
+            comment: "The coding work done by Johan JANIN is simply remarkable. His technical mastery and perseverance are reflected in his work, exceeding all expectations. His commitment to excellence makes him a key professional in the field, and his contribution deserves well-deserved recognition."
+        }
+    ]
 
     function enterEasterGame() {
         const tm = gsap.timeline()

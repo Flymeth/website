@@ -25,8 +25,7 @@
             speed: 1000,
             arrows: false,
             pagination: false,
-            fixedWidth: "min(300px, 90vw)",
-            fixedHeight: 200,
+            fixedWidth: "min(350px, 90vw)",
             width: "min(800px, 100%)",
             gap: 20,
             easing: "ease",
@@ -115,7 +114,7 @@
                     content: "”";
                     bottom: 0;
                     right: 0;
-                    translate: 0 25%;
+                    translate: 0 50%;
                 }
             }
         }
