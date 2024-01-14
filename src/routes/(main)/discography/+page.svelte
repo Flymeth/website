@@ -16,6 +16,7 @@
 </script>
 
 <svelte:head>
+    <title>My musics</title>
     <meta property="og:title" content="Johan Janin's musics" />
     <meta property="og:description" content="I love musics, espacialy the electronic genre. So since I'm young I always tried to make my own music..." />
 </svelte:head>

@@ -28,6 +28,7 @@
 </script>
 
 <svelte:head>
+    <title>Let's take contact!</title>
     <meta property="og:title" content="Johan Janin's contact" />
     <meta property="og:description" content="If you want to contact me, it's the perfect link!" />
 </svelte:head>

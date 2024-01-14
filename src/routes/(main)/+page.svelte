@@ -79,6 +79,7 @@
 </script>
 
 <svelte:head>
+    <title>Johan JANIN</title>
     <meta property="og:title" content="Johan Janin" />
     <meta property="og:description" content="Hey! I'm Johan: a web development lover. I love doing front-end stuff as much as the back-end parts of a website." />
 </svelte:head>
