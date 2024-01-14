@@ -1,5 +1,5 @@
-<script lang="ts">
-    export let list: {
+<script context="module" lang="ts">
+    export interface Review {
         author: {
             name: string,
             status: string,
@@ -7,7 +7,10 @@
             link?: string
         },
         comment: string
-    }[]
+    }
+</script>
+<script lang="ts">
+    export let list: Review[]
     export let name = "reviews"
 
     import { Splide, SplideSlide } from "@splidejs/svelte-splide";

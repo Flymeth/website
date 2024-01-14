@@ -35,9 +35,9 @@
 
     import gsap from "gsap";
 	import { goto } from "$app/navigation";
-	import Reviews from "$lib/components/reviews.svelte";
+	import Reviews, { type Review } from "$lib/components/reviews.svelte";
 
-    const reviews: Reviews["$$prop_def"]["list"] = [
+    const reviews: Review[] = [
         {
             author: {
                 name: "Théo MISTRAL",
