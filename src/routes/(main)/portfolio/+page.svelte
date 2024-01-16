@@ -55,8 +55,8 @@
 
 <svelte:head>
     <title>My Portfolio</title>
-    <meta property="og:title" content="Johan Janin's portfolio" />
-    <meta property="og:description" content="Want to discover my work and how is my working routine ? Just click on this link!" />
+    <meta name="title" content="Johan Janin's portfolio" />
+    <meta name="description" content="Want to discover my work and how is my working routine ? Just click on this link!" />
 </svelte:head>
 
 <Header>

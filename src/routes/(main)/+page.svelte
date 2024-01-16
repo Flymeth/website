@@ -51,7 +51,7 @@
             author: {
                 name: "QUENTIN",
                 status: "2nd year My Digital School Student",
-                img: "/cdn/reviews/quentin.jpg"
+                img: "/cdn/reviews/quentin.webp"
             },
             comment: "The coding work done by Johan JANIN is simply remarkable. His technical mastery and perseverance are reflected in his work, exceeding all expectations. His commitment to excellence makes him a key professional in the field, and his contribution deserves well-deserved recognition."
         }
@@ -80,8 +80,8 @@
 
 <svelte:head>
     <title>Johan JANIN</title>
-    <meta property="og:title" content="Johan Janin" />
-    <meta property="og:description" content="Hey! I'm Johan: a web development lover. I love doing front-end stuff as much as the back-end parts of a website." />
+    <meta name="title" content="Johan Janin" />
+    <meta name="description" content="Hey! I'm Johan: a web development lover. I love doing front-end stuff as much as the back-end parts of a website." />
 </svelte:head>
 
 <Header>

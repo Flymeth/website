@@ -7,8 +7,8 @@
 
 <svelte:head>
     <title>My Blog</title>
-    <meta property="og:title" content="Johan Janin's blog" />
-    <meta property="og:description" content="Hey! This is my little blog where I write article about any subjects! Come discover my work!" />
+    <meta name="title" content="Johan Janin's blog" />
+    <meta name="description" content="Hey! This is my little blog where I write article about any subjects! Come discover my work!" />
 </svelte:head>
 
 <Header>
@@ -49,7 +49,7 @@
             margin: 25px 10px;
     
             display: flex;
-            align-items: center;
+            align-items: stretch;
             flex-wrap: wrap;
             gap: 20px;
         }

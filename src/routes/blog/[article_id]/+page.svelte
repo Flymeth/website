@@ -16,8 +16,8 @@
 <svelte:head>
     <title>{article.metadata.title} - Johan Janin's Blog</title>
 
-    <meta property="og:title" content="Johan Janin - {article.metadata.title}" />
-    <meta property="og:description" content={article.metadata.description} />
+    <meta name="title" content="Johan Janin - {article.metadata.title}" />
+    <meta name="description" content={article.metadata.description} />
     <meta property="og:image" content={article.metadata.coverURL} />
 
     <meta name="twitter:card" content="summary_large_image">
