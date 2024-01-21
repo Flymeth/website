@@ -1,9 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
-import { dev } from "$app/environment"
+import metadata from "./_meta.json";
+import { pathName } from "../location";
 
-const filename = "_meta.json"
-const filepath = dev ? `static/${filename}` : `../../../../${filename}`;
 interface Columns {
     path: string,
     ctime: number,
@@ -11,8 +10,6 @@ interface Columns {
     mtime: number,
     birthtime: number
 }
-const cache: Columns[] = []
-
 export function store() {
     function getTree(dir?: string): Map<string, fs.Stats> {
         const folder = path.join(dir || "./posts")
@@ -44,19 +41,16 @@ export function store() {
 
         list.push(row)
     }
-    fs.writeFileSync(filepath, JSON.stringify(list))
+    const { __dirname } = pathName(import.meta)
+    const outputPath = path.join(__dirname, "_meta.json")
+    const output = JSON.stringify(list)
+    fs.writeFileSync(outputPath, output)
     return list
 }
 export function getMetadata(src: string) {
-    if(!cache.length) {
-        const data = fs.readFileSync(filepath, { encoding: "utf-8" })
-        const list: Columns[] = JSON.parse(data)
-        if(list.length) cache.push(...list)
-        else cache.push(...store())
-    }
-
     const srcPath = path.normalize(src)
-    const mtdata = cache.find(c => path.normalize(c.path) === srcPath)
+
+    const mtdata = metadata.find(c => path.normalize(c.path) === srcPath)
     if(!mtdata) throw new Error(`No saved metadata found for file "${path}"`)
     return mtdata
 }
