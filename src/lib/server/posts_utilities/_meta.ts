@@ -3,7 +3,7 @@ import path from "node:path";
 import { dev } from "$app/environment"
 
 const filename = "_meta.json"
-const filepath = dev ? `static/${filename}` : `/${filename}`;
+const filepath = dev ? `static/${filename}` : `../../../../${filename}`;
 interface Columns {
     path: string,
     ctime: number,
