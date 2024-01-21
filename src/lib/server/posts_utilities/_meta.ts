@@ -47,10 +47,15 @@ export function store() {
     fs.writeFileSync(outputPath, output)
     return list
 }
-export function getMetadata(src: string) {
+export function getMetadata(src: string): Columns {
     const srcPath = path.normalize(src)
 
     const mtdata = metadata.find(c => path.normalize(c.path) === srcPath)
-    if(!mtdata) throw new Error(`No saved metadata found for file "${path}"`)
-    return mtdata
+    return mtdata || {
+        atime: 0,
+        birthtime: 0,
+        ctime: 0,
+        mtime: 0,
+        path: src
+    }
 }
