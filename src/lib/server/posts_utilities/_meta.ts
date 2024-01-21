@@ -1,7 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
+import { dev } from "$app/environment"
 
-const file = "static/_meta.json";
+const filename = "_meta.json"
+const filepath = dev ? `static/${filename}` : filename;
 interface Columns {
     path: string,
     ctime: number,
@@ -42,12 +44,12 @@ export function store() {
 
         list.push(row)
     }
-    fs.writeFileSync(file, JSON.stringify(list))
+    fs.writeFileSync(filepath, JSON.stringify(list))
     return list
 }
 export function getMetadata(src: string) {
     if(!cache.length) {
-        const data = fs.readFileSync(file, { encoding: "utf-8" })
+        const data = fs.readFileSync(filepath, { encoding: "utf-8" })
         const list: Columns[] = JSON.parse(data)
         if(list.length) cache.push(...list)
         else cache.push(...store())
