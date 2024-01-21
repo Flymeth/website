@@ -4,7 +4,7 @@ description: Intégration d'une maquette par Roney
 bannerURL: /cdn/projects/emotion_slider/banner.png
 link: https://phmef2.csb.app/
 prototype: https://www.figma.com/community/file/1136570288055678634
-csb: https://codesandbox.io/s/phmef2
+codesandbox: https://codesandbox.io/s/phmef2
 tags:
 - integration
 - pure-html

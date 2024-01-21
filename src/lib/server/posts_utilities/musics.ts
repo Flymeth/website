@@ -1,5 +1,6 @@
 import path from "node:path";
 import fs from "node:fs";
+import { getMetadata } from "./_meta";
 
 export interface Music {
     metadata: {
@@ -18,13 +19,13 @@ export function getMusics() {
     for(const filePath of files) {
         const filename = path.basename(filePath)
         const audioSrc = `/posts/music/${filename}`
-        const { birthtime } = fs.statSync(`./posts/music/${filename}`)
+        const { birthtime } = getMetadata(`./posts/music/${filename}`)
         const title = filename.replace(".mp3", "").split("_").join(" ")
 
         musics.add({
             metadata: {
                 file: filename,
-                date: birthtime,
+                date: new Date(birthtime),
                 title
             }, audioSrc
         })

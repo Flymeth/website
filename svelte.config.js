@@ -1,7 +1,7 @@
 // import adapter from "@sveltejs/adapter-auto";
 import adapter from '@sveltejs/adapter-netlify';
 import { vitePreprocess } from '@sveltejs/kit/vite';
-import autoprefixer from "autoprefixer";
+import "autoprefixer";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {

@@ -11,7 +11,7 @@ export interface Project {
         github?: string,
         prototype?: string,
         link?: string,
-        csb?: string,
+        codesandbox?: string,
         codepen?: string,
         stackoverflow?: string,
         discord?: string

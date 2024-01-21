@@ -2,6 +2,7 @@ import path from "node:path";
 import fs from "node:fs";
 import type { TableOfContent } from "../mdParser";
 import parseMarkdown from "../mdParser";
+import { getMetadata } from "./_meta";
 
 export interface Article {
     metadata: {
@@ -37,11 +38,11 @@ export async function getArticles() {
         if(!(meta.metadata && meta.toc)) continue
         
         const filename = path.basename(filePath)
-        const { birthtime, mtime } = fs.statSync(`./posts/articles/${filename}`)
+        const { birthtime, mtime } = getMetadata(`./posts/articles/${filename}`)
         meta.metadata.file = filename
         meta.metadata.time = {
-            created: birthtime,
-            edited: mtime
+            created: new Date(birthtime),
+            edited: new Date(mtime)
         }
         meta.metadata.id = meta.metadata.file.replace(".md", "")
         articles.add({

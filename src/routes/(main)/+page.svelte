@@ -41,11 +41,11 @@
         {
             author: {
                 name: "Théo MISTRAL",
-                status: "IPI Student",
+                status: "Etudiant IPI",
                 img: "https://static-cdn.jtvnw.net/jtv_user_pictures/68ea825a-b820-49db-96a8-3840ab51aec2-profile_image-70x70.png",
                 link: "https://www.linkedin.com/in/th%C3%A9o-mistral-8597b6216/"
             },
-            comment: "The sites are comprehensive and allow innovative interactions. The site is delivered quite quickly. I highly recommend Johan for the creation of your site."
+            comment: "Les sites sont complets et permettent des interactions innovantes. Le site est livré assez rapidement. Je recommande vivement Johan pour la création de votre site."
         },
         {
             author: {
@@ -53,7 +53,7 @@
                 status: "2nd year My Digital School Student",
                 img: "/cdn/reviews/quentin.webp"
             },
-            comment: "The coding work done by Johan JANIN is simply remarkable. His technical mastery and perseverance are reflected in his work, exceeding all expectations. His commitment to excellence makes him a key professional in the field, and his contribution deserves well-deserved recognition."
+            comment: "Le travail de codage effectué par Johan JANIN est tout simplement remarquable. Sa maîtrise technique et sa persévérance se reflètent dans son travail, dépassant toutes les attentes. Son engagement envers l’excellence fait de lui un professionnel incontournable dans le domaine et sa contribution mérite une reconnaissance bien méritée."
         }
     ]
 
@@ -81,46 +81,47 @@
 <svelte:head>
     <title>Johan JANIN</title>
     <meta name="title" content="Johan Janin" />
-    <meta name="description" content="Hey! I'm Johan: a web development lover. I love doing front-end stuff as much as the back-end parts of a website." />
+    <meta name="description" content="Salut! Moi c'est Johan: un passionné du digital spécialisé dans le développement web." />
 </svelte:head>
 
 <Header>
-    <h1>Hi! My name is <span>Johan</span>!</h1>
+    <h1>En quête d'un <span>développeur full-stack</span>?</h1>
+    <p>Je suis Johan: un expert dans la création web.</p>
 </Header>
 <main>
     <section id="me">
-        <h2>Who am I ?</h2>
-        <p>My name is Johan! I'm {new Date().getFullYear() - 2005} years old, and I'm currently studying to become a full stack web developper.</p>
-        <p>I love everything about the web developpement: from the simple HTML SEO optimisation and CSS styling to the server side logic such as authentification, database usage, API interactions, ...</p>
-        <p>From the day I started coding, I created tons of projets, such as Discord music bot, Real time chat application, Creative front-end developpement, and so on!</p>
+        <h2>Je me présente</h2>
+        <p>Je m'appelle Johan, j'ai {new Date().getFullYear() - 2005} ans, et je suis étudiant en digital.</p>
+        <p>Depuis plus de 4 ans je suis passionné par le monde du digital. Que ce soit dans la création d'identité visuelle, de conception/création web, référrencement et développement web, je suis dévoué à ma tâche afin de pouvoir proposer un résulta digne de mes compétences à mes clients.</p>
+        <p>Avec la création de projets comme des applications de messagerie instantanées, de robot discord ou de sites e-commerce, je possède aujourd'hui des compétences solides en terme de développement web.</p>
     </section>
     <section id="tech">
-        <h2>What do I use ?</h2>
-        <p>Here is the technologies I'm familiar with:</p>
+        <h2>Mes outils</h2>
+        <p>Voici ce que j'utilise au quotidient afin de réaliser mes projets:</p>
         <ol>
             <li>
-                <TechCategory name="IDE" icons={[vscode]}/>
+                <TechCategory name="Logiciels de développement" icons={[vscode]}/>
             </li>
             <li>
-                <TechCategory name="Web languages/frameworks" on:iconClicked={({detail: {icon}}) => {
+                <TechCategory name="Langage de programmation/frameworks" on:iconClicked={({detail: {icon}}) => {
                     if(icon === ts) return scriptingLang = js
                     if(icon === js) return enterEasterGame()
                 }} icons={[html, css, scriptingLang, sass, svelte, react, nodejs]}/>
             </li>
             <li>
-                <TechCategory name="Database" icons={[pocketbase, mariadb]}/>
+                <TechCategory name="Bases de données" icons={[pocketbase, mariadb]}/>
             </li>
             <li>
-                <TechCategory name="CMS Tools" icons={[wordpress, elementor]}/>
+                <TechCategory name="CMS & Outils" icons={[wordpress, elementor]}/>
             </li>
             <li>
-                <TechCategory name="Hosting" icons={[netlify, heroku]}/>
+                <TechCategory name="Hébergement" icons={[netlify, heroku]}/>
             </li>
             <li>
-                <TechCategory name="Adobe Suite" icons={[photoshop, illustrator, premierepro, figma]}/>
+                <TechCategory name="Suite Adobe" icons={[photoshop, illustrator, premierepro, figma]}/>
             </li>
             <li>
-                <TechCategory name="Others" icons={[python, unity, flstudio]} on:iconClicked={({detail: { icon }}) => {
+                <TechCategory name="Autres" icons={[python, unity, flstudio]} on:iconClicked={({detail: { icon }}) => {
                     if(icon === flstudio) goto("/discography")
                 }}/>
             </li>
@@ -130,47 +131,41 @@
     <WorkWithMe />
 
     <section id="showoff">
-        <h2>Some of my best projects</h2>
-        <p>During my learning sessions, I was able to build different projects, more or less complex.</p>
-        <p>So check out <a href="/portfolio">my portfolio</a> to discovering what I'm capable to.</p>
+        <h2>Mes projets</h2>
+        <p>Que ce soit pour mes études ou par passe-temps personnel, j'ai réalisé de nombreux projets dont les meilleurs sont répertoriés sur <a href="/portfolio">mon portfolio</a>.</p>
     </section>
 
     <section id="hobbies">
-        <h2>My Hobbies</h2>
-        <p>During my free time, I love coding things, espacially in Javascript. But I like doing many other things, such as:</p>
+        <h2>Mes passe-temps</h2>
+        <p>Certes le monde du digital est une passion chez moi, mais cela ne veut pas dire que je ne fais que cela durant mon temps libre.</p>
         <ul>
             <li>
-                Playing video games with my friends
+                J'aime jouer au jeux-vidéos avec mes amis
                 <ul>
                     <li>Minecraft</li>
                     <li>Rocket League</li>
-                    <li>Others...</li>
+                    <li>Jeux d'arcades</li>
                 </ul>
             </li>
             <li>
-                Go to parties
+                Sortir
                 <ul>
-                    <li>At night clubs</li>
-                    <li>Or in my/friends' house</li>
-                    <li>And in my town with other teenagers</li>
+                    <li>Passer du temps avec mes amis</li>
+                    <li>Ou ma famille</li>
                 </ul>
             </li>
         </ul>
     </section>
 
     <section id="reviews">
-        <h2>What they think about me</h2>
-        {#if reviews.length}
-            <Reviews list={ reviews }/>
-        {:else}
-            <p>This part of the website is still under construct.</p>
-        {/if}
+        <h2>Ce qu'ils disent de mon travail</h2>
+        <Reviews list={ reviews }/>
     </section>
 </main>
 
 <style lang="scss">
     main {
-        padding: 15px 25px;
+        padding: 15px 45px;
         @media screen and (max-width: 800px) {
             padding: 15px;
         }
@@ -180,11 +175,17 @@
                 margin: 20px 25px 10px;
             }
             > p:not([data-mobile] *) {
+                position: relative;
+                margin: 10px 0;
+                margin-left: 50px;
+
                 &::before {
                     content: "<p>";
                     opacity: .25;
                     font-style: italic;
-                    margin-right: 5px;
+                    position: absolute;
+                    right: calc(100% + 5px);
+                    top: 0;
                 }
                 &::after {
                     content: "</p>";
@@ -221,7 +222,7 @@
                 > li {
                     margin: 15px 0;
                     > ul {
-                        list-style: "> ";
+                        list-style: "+ ";
                     }
                 }
             }

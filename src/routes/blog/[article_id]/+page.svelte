@@ -4,6 +4,7 @@
     import type { PageData } from "./$types";
 	import Share from "$lib/components/share.svelte";
 	import { page } from "$app/stores";
+	import ImageDisplay from "$lib/components/imageDisplay.svelte";
     export let data: PageData;
 
     const { article } = data
@@ -14,7 +15,7 @@
 </script>
 
 <svelte:head>
-    <title>{article.metadata.title} - Johan Janin's Blog</title>
+    <title>{article.metadata.title} - Johan Janin</title>
 
     <meta name="title" content="Johan Janin - {article.metadata.title}" />
     <meta name="description" content={article.metadata.description} />
@@ -45,7 +46,7 @@
 <aside id="article-nav">
     {#if isMenuOpen}
         <menu transition:fade>
-            <h3>Table Of Content</h3>
+            <h3>Sommaire</h3>
             <ul>
                 {#each article.toc as title}
                     <li style="--level:{title.level}">
@@ -56,7 +57,7 @@
         </menu>
     {/if}
 
-    <a href="/blog">Close article</a>
+    <a href="/blog">Quitter l'article</a>
     <input type="checkbox" name="menu-oppener" id="open-toc" class="nodefault" bind:checked={isMenuOpen}>
 </aside>
 <Header bannerURL={article.metadata.coverURL}>
@@ -65,21 +66,22 @@
 </Header>
 <main>
     {@html article.content.html}
+    <ImageDisplay />
 </main>
 <hr>
 <footer>
-    <h2>Already finished ?</h2>
-    <p>I hope you enjoyed this article! Don't forget to share my work!</p>
+    <h2>Déjà fini ?</h2>
+    <p>J'espère que tu as apprécié mon travail! Si c'est le cas, n'hésite pas à le faire découvrir à d'autres personnes:</p>
 
     <Share sharingInformation= {{
-        title: "Sharing a good article",
-        description: `Hey! I just read an article about "${article.metadata.title}" and it was sick!`,
+        title: "Un bel article!",
+        description: `Je viens de lire l'article "${article.metadata.title}" sur le site de Johan JANIN (johan-janin.com), et il fut très interressant!`,
         link: $page.url.hostname === "localhost" ? new URL($page.url.pathname, "https://johan-janin.netlify.app").toString() : $page.url.href
     }}/>
 
     {#if article.metadata.ressources}
-        <h2>Mentions</h2>
-        <p>Here is the ressources I used to write this article:</p>
+        <h2>Ressources</h2>
+        <p>Ci-dessous sont listés les différentes ressources que j'ai utilisées pour écrire cet article:</p>
         <ul>
             {#each article.metadata.ressources as rsrc}
                 <li><a href={rsrc} target="_blank">{rsrc}</a></li>

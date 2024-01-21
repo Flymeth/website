@@ -1,19 +1,18 @@
 <footer>
-    <h2>Congratulation! You reached the bottom!</h2>
+    <h2>Te voici en bas de page!</h2>
     <p>
         <a href="#top" on:click|preventDefault={() => (
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             })
-        )}>Wanna go back to the top ?</a>
+        )}>Envie de remonter la page ?</a>
     </p>
 
     <h3>Socials</h3>
     <ul>
-        <li><a href="https://flymeth.net" target="_blank">My other website</a></li>
-        <li><a href="https://github.com/Flymeth" target="_blank">See my github's projects</a></li>
-        <li><a href="https://github.com/Flymeth/website" target="_blank">Want to know how I built this website ?</a></li>
+        <li><a href="https://github.com/Flymeth" target="_blank">Mes projets (github)</a></li>
+        <li><a href="https://flymeth.net" target="_blank">Mon deuxième site</a></li>
     </ul>
 </footer>
 

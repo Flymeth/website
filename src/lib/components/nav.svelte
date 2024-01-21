@@ -18,15 +18,13 @@
         theme?: boolean
     } = {};
     export let customMessages = [
-        "Hello there",
-        "I'm Johan",
-        "A web developper,",
-        "Rocket League player,",
-        "Web lover,",
-        "Minecraft engineer,",
-        "Svelte enjoyer,",
-        `Who always work on ${["Monday", "Tuesday", "Whenesday", "Thursday", "Friday", "Saturday", "Sunday"].at(new Date().getDay() -1)}`,
-        "So feel free to contact me!",
+        "Bonjour!",
+        "Je suis Johan",
+        "Un développeur web,",
+        "Amoureux du web,",
+        "Adorant Svelte et React,",
+        `Qui travaille le ${["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"].at(new Date().getDay() -1)}`,
+        "Hâte de travailler avec vous!",
     ]
     export let changeMessageEachMs = 5000
     let messageID = 0
@@ -34,11 +32,11 @@
     $: pathname = $page.url.pathname !== "/" && $page.url.pathname.endsWith("/") ? $page.url.pathname.slice(0, -1) : $page.url.pathname
     $: locations = pathname === "/" ? [] : pathname.split("/").slice(1)
     const menuPaths = {
-        Home: "/",
+        Présentation: "/",
         Portfolio: "/portfolio",
-        Discography: "/discography",
-        "Work With Me": "/contact",
-        "My Little Blog": "/blog"
+        Discographie: "/discography",
+        "Travailler avec moi": "/contact",
+        "Mon petit blog": "/blog"
     }
 
     let nextTextElement: HTMLSpanElement;
@@ -103,7 +101,7 @@
         <div class="content">
             {#if !(disable_sections && disable_sections.location)}
                 <section id="location">
-                    <h2>Location</h2>
+                    <h2>Fil d'ariane</h2>
                     <p class="ariane">
                         {#each ["/", ...locations] as name, i}
                             {@const path = locations.slice(0, i).join("/")}
@@ -119,7 +117,7 @@
             {/if}
             {#if !(disable_sections && disable_sections.nav)}
                 <section id="nav">
-                    <h2>Navigation</h2>
+                    <h2>Menu</h2>
                     <nav>
                         <ul>
                             {#each Object.entries(menuPaths) as [name, path]}
@@ -138,7 +136,7 @@
             {/if}
             {#if !(disable_sections && disable_sections.theme)}
                 <section id="theme">
-                    <h2>Theme</h2>
+                    <h2>Thèmes</h2>
                     <form method="dialog" on:change={themeChanged} bind:this={form}>
                         <input type="radio" class="nodefault" value="dark" name="theme" id="theme-dark" checked={theme === "dark"}>
                         <input type="radio" class="nodefault" value="auto" name="theme" id="theme-auto" checked={theme === "auto"}>

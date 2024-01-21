@@ -15,6 +15,9 @@
     display: inline;
     margin: 0;
 }
+:global(pre) {
+    color: $white;
+}
 
 :global(img), :global(video) {
     width: min(100%, 650px);

@@ -131,7 +131,7 @@
                 </div>
             </div>
         {:else}
-            <p class="player-idle">No song is currently selected.</p>
+            <p class="player-idle">Aucune musique n'est actuellement jouée.</p>
         {/if}
     </div>
 {/if}

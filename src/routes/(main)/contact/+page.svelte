@@ -13,34 +13,34 @@
         icon: IconDefinition
     }[] = [
         {
-            link: "mailto:johan.janin@gmail.com", text: "By mail", icon: faEnvelope
+            link: "mailto:johan.janin@gmail.com", text: "Par email", icon: faEnvelope
         },
         {
-            link: "tel:+33782682332", text: "With a call", icon: faPhone
+            link: "tel:+33782682332", text: "Via un appel", icon: faPhone
         },
         {
-            link: "https://www.linkedin.com/in/johan-janin/", text: "Discover my LinkedIn", icon: faLinkedin, target: true
+            link: "https://www.linkedin.com/in/johan-janin/", text: "Sur LinkedIn", icon: faLinkedin, target: true
         },
         {
-            link: "/cv.pdf", text: "Look at my CV", icon: faPager, target: true
+            link: "/cv.pdf", text: "Voir mon CV", icon: faPager, target: true
         }
     ]
 </script>
 
 <svelte:head>
-    <title>Let's take contact!</title>
-    <meta name="title" content="Johan Janin's contact" />
-    <meta name="description" content="If you want to contact me, it's the perfect link!" />
+    <title>Prenons contact!</title>
+    <meta name="title" content="Johan Janin - Prendre Contact" />
+    <meta name="description" content="Vous souhaitez réaliser un projet? J'ai déjà hâte de travailler avec vous!" />
 </svelte:head>
 
 <Header>
-    <h1>I'm the <span>best one</span> for your next project!</h1>
-    <p>I can be the one who make your project better!</p>
+    <h1>Prenons <span>contact</span> et travaillons <span>ensemble</span>!</h1>
+    <p>J'ai déjà hâte de travailler avec vous!</p>
 </Header>
 
 <main>
     <section id="contact">
-        <h2>Contact me directly</h2>
+        <h2>Mes réseaux</h2>
         <ul>
             {#each contactItems as item}
                 <li>
@@ -54,7 +54,7 @@
     </section>
     <hr>
     <section id="form">
-        <h2>Or send me what you're looking for</h2>
+        <h2>Contact rapide</h2>
 
         <NetlifyContactForm />
     </section>

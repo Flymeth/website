@@ -8,8 +8,8 @@
 	import { fade } from "svelte/transition";
     import { navHeight } from "./nav.svelte";
     import SvelteFA from "svelte-fa";
-    import { faLink } from "@fortawesome/free-solid-svg-icons"
-    import { faGithub, faFigma, faCodepen } from "@fortawesome/free-brands-svg-icons";
+    import { faLink, type IconDefinition } from "@fortawesome/free-solid-svg-icons"
+    import { faGithub, faFigma, faCodepen, faDiscord, faStackOverflow } from "@fortawesome/free-brands-svg-icons";
 	import ImageDisplay from "./imageDisplay.svelte";
 
     export let project: Project;
@@ -25,12 +25,24 @@
         },
         codesandbox: {
             icon: faCodepen,
-            url: project.metadata.csb
+            url: project.metadata.codesandbox
+        },
+        codepen: {
+            icon: faCodepen,
+            url: project.metadata.codepen
+        },
+        stackoverflow: {
+            icon: faStackOverflow,
+            url: project.metadata.stackoverflow
+        },
+        discord: {
+            icon: faDiscord,
+            url: project.metadata.discord
         },
         internet: {
             icon: faLink,
             url: project.metadata.link
-        }
+        },
     })
     .map(([platform, data]) => ({platform, ...data}))
     .filter(link => link.url)
@@ -45,15 +57,16 @@
             <p>{project.metadata.description}</p>
         </div>
         <div class="actions">
-            <button class="primary-color" on:click={() => $opennedProject = project.metadata.name}>View</button>
+            <button class="primary-color" on:click={() => $opennedProject = project.metadata.name}>Découvrir</button>
             {#if project.metadata.link}
                 <a href={project.metadata.link} target="_blank">
-                    <button>Access</button>
+                    <button>Accéder</button>
                 </a>
             {/if}
         </div>
     </div>
     {#if isOpen}
+        <ImageDisplay />
         <div id="project-view" style="--nav-height: {navHeight};" transition:fade>
             <div id="project-nav">
                 <div class="info">
@@ -87,8 +100,6 @@
             </div>
             <hr>
             <div id="project-content">
-                <ImageDisplay />
-
                 {@html project.content.html}
             </div>
         </div>

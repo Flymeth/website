@@ -1,7 +1,7 @@
 <div class="work-with-me">
-    <h2>Wanna work with me ?</h2>
+    <h2>Convaincu ?</h2>
     <a href="/contact">
-        <button>Hell Yeah!</button>
+        <button>Travailler avec moi</button>
     </a>
 </div>
 

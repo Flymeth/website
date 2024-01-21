@@ -12,12 +12,12 @@
 	import { isMobile } from "$lib/ts/mobile";
     
     let loader: Loader;
-    let showPage = false;
+    let loading = true;
     let mobile = false;
     let sceneContainer: HTMLDivElement;
     
     onMount(() => {
-        loader.animationEnded.subscribe(v => showPage = v)
+        loader.animationEnded.subscribe(ended => loading = !ended)
 
         // Set theme
         const storedTheme = window.localStorage.getItem("theme")
@@ -42,25 +42,23 @@
 
 <div id="scene" bind:this={sceneContainer}></div>
 
-{#if showPage}
-    <Nav />
-
-    {#if $navigating === null || !mobile}
-        <div id="app">
-            <slot />
-        </div>
-    {:else}
-        <div transition:fade>
-            <Loader hideProgress={true} />
-        </div>
-    {/if}
-
-    <Footer />
-{:else}
+{#if loading}
     <div transition:fade>
         <Loader bind:this={loader}/>
     </div>
+{:else if $navigating !== null && mobile}
+    <div transition:fade>
+        <Loader hideProgress={true} />
+    </div>
 {/if}
+
+<Nav />
+
+<div id="app">
+    <slot />
+</div>
+
+<Footer />
 
 <style lang="scss">
     #scene {

@@ -2,13 +2,13 @@
 	<input type="hidden" name="form-name" value="customers" />
 
 	<fieldset id="person">
-		<legend>Who you are</legend>
+		<legend>Les présentations</legend>
 		<label for="name">
 			<input
 				type="text"
 				name="name"
 				id="name"
-				placeholder="Your name"
+				placeholder="Ton prénom"
 				required
 			/>
 		</label>
@@ -17,17 +17,17 @@
 				type="text"
 				name="lastname"
 				id="lastname"
-				placeholder="Your lastname"
+				placeholder="Ton nom"
 				required
 			/>
 		</label>
 	</fieldset>
 
 	<fieldset id="contact">
-		<legend>What if I need to contact you back</legend>
+		<legend>Tes coordonnées</legend>
 
 		<label for="email">
-			Your mail address
+			Adresse mail
 			<input
 				type="email"
 				name="email"
@@ -37,7 +37,7 @@
 			/>
 		</label>
 		<label for="phone">
-			Your phone number
+			numéro de téléphone
 			<input
 				type="tel"
 				name="phone"
@@ -48,14 +48,14 @@
 	</fieldset>
 
 	<fieldset id="subject">
-		<legend>Your project</legend>
+		<legend>Ton projet</legend>
 
 		<label for="project">
 			<input
 				type="text"
 				name="project"
 				id="project"
-				placeholder="Subject"
+				placeholder="Sujet"
 				required
 			/>
 		</label>
@@ -65,13 +65,13 @@
 				id="description"
 				cols="30"
 				rows="10"
-				placeholder="Description"
+				placeholder="Explications"
 				required
 			></textarea>
 		</label>
 	</fieldset>
 
-	<button type="submit" class="primary-color">Take contact</button>
+	<button type="submit" class="primary-color">Prendre contact</button>
 </form>
 
 <style lang="scss">

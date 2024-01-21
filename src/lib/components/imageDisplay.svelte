@@ -73,7 +73,6 @@
                 &.zoom {
                     height: 100%;
                     width: auto;
-                    scale: 2;
 
                     cursor: zoom-out;
                 }

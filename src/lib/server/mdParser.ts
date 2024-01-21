@@ -55,7 +55,9 @@ parser.use(markdownItYamlPlugin, {
         
         parse(ast)
     },
-}).use(markdownItAttrs).use(markdownItHtml5Media)
+}).use(markdownItAttrs).use(markdownItHtml5Media, {
+    videoAttrs: `controls autoplay loop muted`
+})
 
 export default function parseMarkdown<metadata>(raw: string) {
     const md = raw.replace(

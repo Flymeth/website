@@ -60,6 +60,10 @@ body {
     color: var(--foreground);
     font-family: "leelawadee", sans-serif;
     transition: background-color .15s, color .15s;
+    font-size: 1.05em;
+    &.noscroll {
+        overflow-y: hidden;
+    }
 }
 
 @for $i from 1 to 6 {
@@ -97,7 +101,6 @@ button:not(.nodefault) {
     color: var(--foreground);
 
     font-family: "agency", serif;
-    letter-spacing: 2.5px;
     font-size: 15px;
     font-style: italic;
 

@@ -10,7 +10,7 @@
     }
 </script>
 
-<h3>Share my work on your favorites social medias</h3>
+<h3>Partage mon travail sur tes réseaux favoris</h3>
 <ul class="share-links">
     <li class="twitter x" style="--theme:#1DA1F2;">
         <a target="_blank" href="https://twitter.com/intent/tweet?text={encodeURIComponent(sharingInformation.description)}&url={encodeURIComponent(sharingInformation.link)}">
@@ -36,8 +36,8 @@
         <a href="#copy" on:click|preventDefault={() => {
             const text = `${sharingInformation.description}\n${sharingInformation.link}`
             navigator.clipboard.writeText(text)
-            .then(() => alert("Thanks! The article link has been copied."))
-            .catch(() => alert("Oups... It seems like we cannot write in your clipboard..."))
+            .then(() => alert("Merci! L'article vient d'être copié."))
+            .catch(() => alert("Aie... L'article n'a pas pu être copié."))
         }}>
             <Fa icon={faCopy}/>
         </a>

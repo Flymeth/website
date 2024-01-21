@@ -6,20 +6,23 @@
 </script>
 
 <svelte:head>
-    <title>My Blog</title>
-    <meta name="title" content="Johan Janin's blog" />
-    <meta name="description" content="Hey! This is my little blog where I write article about any subjects! Come discover my work!" />
+    <title>Le Blog</title>
+    <meta name="title" content="Johan Janin - Le Blog" />
+    <meta name="description" content="Un petit blog créé pour partager mon savoir et mes découvertes!" />
 </svelte:head>
 
 <Header>
-    <h1>Welcome to my <span>blog</span>!</h1>
-    <p>Ready to learn a lot ?</p>
+    <h1>Bienvenue sur mon <span>blog</span>!</h1>
+    <p>Es-tu prêts à en apprendre un peu plus sur le web ?</p>
 </Header>
 
 <main id="blog-content">
-    <h2>Read my latest articles:</h2>
+    <h2>Voici mes derniers articles:</h2>
     <ul class="article-list">
-        {#each Array.from(data.articles).slice(0, 5) as article}
+        {#each  Array.from(data.articles)
+                .sort((a, b) => b.metadata.time.created.getTime() - a.metadata.time.created.getTime())
+                .slice(0, 5)
+        as article}
             <li>
                 <Article {article}/>
             </li>

@@ -17,13 +17,13 @@
 
 <svelte:head>
     <title>My musics</title>
-    <meta name="title" content="Johan Janin's musics" />
-    <meta name="description" content="I love musics, espacialy the electronic genre. So since I'm young I always tried to make my own music..." />
+    <meta name="title" content="Johan Janin - Mes musiques" />
+    <meta name="description" content="J'adore écouter de la musique! Un jour je me suis demandé si je pouvais en créer..." />
 </svelte:head>
 
 <Header>
-    <h1>Here are <span>all</span> the different <span>songs</span> I made!</h1>
-    <p>Because I'm a music lover, sometime I'm making my own music "for fun"...</p>
+    <h1>Mes <span>musiques</span></h1>
+    <p>Durant mon temps libre je créer parfois mes propres musiques...</p>
 </Header>
 
 <main>

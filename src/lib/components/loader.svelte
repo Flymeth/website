@@ -23,6 +23,7 @@
                 delay: 1,
             }).then(() => {
                 animationEnded.set(true)
+                document.body.classList.remove("noscroll")
             })
         }, delay * (100 - pourcent))
     }
@@ -33,6 +34,7 @@
     animationEnded.subscribe((v) => v && timeline.pause())
 
     onMount(() => {
+        document.body.classList.add("noscroll")
         $animationEnded = false
         const incrementPourcentFunc = () => {
             if(pourcent >= 95) return;

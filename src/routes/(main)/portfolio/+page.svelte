@@ -54,14 +54,14 @@
 </script>
 
 <svelte:head>
-    <title>My Portfolio</title>
-    <meta name="title" content="Johan Janin's portfolio" />
-    <meta name="description" content="Want to discover my work and how is my working routine ? Just click on this link!" />
+    <title>Le Portfolio</title>
+    <meta name="title" content="Johan Janin - Le Portfolio" />
+    <meta name="description" content="Vous trouverez ici mes meilleures réalisations durant mes études ou mon temps libre!" />
 </svelte:head>
 
 <Header>
-    <h1>Wanna discover <span>my projects</span> ?</h1>
-    <p>My portfolio is here for that!</p>
+    <h1>Mon <span>Portfolio</span></h1>
+    <p>Ici sont répertoriés mes meilleures projets ainsi que des explications sur la réalisation de ceux-ci.</p>
 </Header>
 
 <main>
