@@ -66,7 +66,7 @@
 
 <main>
     <ul bind:this={projectContainer}>
-        {#each projectlist.toSorted(() => Math.random() - .5) as project (project.metadata.name)}
+        {#each [...projectlist].sort(() => Math.random() - .5) as project (project.metadata.name)}
             <li>
                 <ProjectCard {project}/>
             </li>
