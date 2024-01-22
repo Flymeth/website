@@ -240,7 +240,11 @@
         width: 100%;
         height: 100%;
         z-index: 99;
+        background-image: url("/logo.svg");
+        background-size: 50%;
+        background-position: center right;
         backdrop-filter: blur(15px);
+        background-repeat: no-repeat;
 
         > .content {
             height: 100%;
