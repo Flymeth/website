@@ -13,6 +13,7 @@ export default function setupCursor() {
         const hoveringElements = Array.from(document.querySelectorAll(":hover"))
         const onClickableElement = hoveringElements.find(e => (
             clickableElementsNames.includes(e.nodeName)
+            || e.nodeName === "IMG" && e.classList.contains("img-display")
         ))
         const scale = onClickableElement ? 1.5 : 1
         gsap.to(document.body, {

@@ -4,7 +4,6 @@
     let imgInformations: {
         src: string,
         alt: string,
-        zoom?: boolean
     } | undefined;
     export const openModal = (data: typeof imgInformations) => {
         imgInformations= data
@@ -13,14 +12,16 @@
     export let auto_implement = true;
 
     function handleClick(target: EventTarget | null) {
-        if((target as HTMLElement | null)?.nodeName === "IMG" && imgInformations) imgInformations.zoom = !imgInformations?.zoom
-        else return closeModal()
+        console.log(target);
+        
+        if((target as HTMLElement | null)?.nodeName === "BUTTON") return closeModal()
     }
 
     let locator: HTMLDivElement;
     onMount(() => {
         if(auto_implement && locator) {
             locator.parentElement?.querySelectorAll<HTMLImageElement>("img:not(#image-visualizer)").forEach(img => {
+                img.classList.add("img-display")
                 img.onclick = () => openModal(img)
             })
         }
@@ -31,7 +32,7 @@
 {#if imgInformations}
     <div id="img-displayer" transition:fade>
         <button class="nodefault" on:click={(e) => handleClick(e.target)}>
-            <img src={imgInformations.src} alt={imgInformations.alt} id="image-visualizer" class:zoom={imgInformations.zoom}>
+            <img src={imgInformations.src} alt={imgInformations.alt} id="image-visualizer">
         </button>
     </div>
 {/if}
@@ -65,18 +66,21 @@
             }
 
             > img {
-                max-width: 90vw;
-                max-height: 90vh;
-    
-                width: 50%;
-                cursor: zoom-in;
-                &.zoom {
-                    height: 100%;
-                    width: auto;
-
-                    cursor: zoom-out;
-                }
+                max-width: 95vw;
+                max-height: 80vh;
+                width: max-content;
+                height: max-content;
+                border-radius: 5px;
             }
+        }
+    }
+
+    :global(img.img-display) {
+        will-change: scale;
+        transition: scale .15s;
+
+        &:hover {
+            scale: 1.02;
         }
     }
 </style>

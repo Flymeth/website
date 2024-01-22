@@ -50,7 +50,7 @@
         {
             author: {
                 name: "QUENTIN",
-                status: "2nd year My Digital School Student",
+                status: "Etudiant My Digital School",
                 img: "/cdn/reviews/quentin.webp"
             },
             comment: "Le travail de codage effectué par Johan JANIN est tout simplement remarquable. Sa maîtrise technique et sa persévérance se reflètent dans son travail, dépassant toutes les attentes. Son engagement envers l’excellence fait de lui un professionnel incontournable dans le domaine et sa contribution mérite une reconnaissance bien méritée."
@@ -177,7 +177,7 @@
             > p:not([data-mobile] *) {
                 position: relative;
                 margin: 10px 0;
-                margin-left: 50px;
+                margin-left: 30px;
 
                 &::before {
                     content: "<p>";

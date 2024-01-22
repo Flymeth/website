@@ -27,8 +27,8 @@ export async function newLayoutScene() {
 	// Load textures/models
 	const envLoader = new three.TextureLoader();
 	const backgrounds = {
-		light: await envLoader.loadAsync("/env_maps/alpha_mayoris.jpg"),
-		dark: await envLoader.loadAsync("/env_maps/nebulas.png")
+		light: await envLoader.loadAsync("/env_maps/alpha_mayoris.webp"),
+		dark: await envLoader.loadAsync("/env_maps/nebulas.webp")
 	}
 	function setBG(theme: keyof typeof backgrounds) {
 		const bg = backgrounds[theme]

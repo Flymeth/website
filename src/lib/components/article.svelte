@@ -6,8 +6,13 @@
 
 <article id={article.metadata.id}>
     <a href="/blog/{article.metadata.id}" class="nodefault">
-        <h3>{article.metadata.title}</h3>
-        <p>{article.metadata.description}</p>
+        <div class="first-view">
+            <img src={article.metadata.coverURL} alt="Cover for article '{article.metadata.title}'">
+            <h3>{article.metadata.title}</h3>
+        </div>
+        <div class="hover-view" style="--cover:url({article.metadata.coverURL});">
+            <p>{article.metadata.description}</p>
+        </div>
     </a>
 </article>
 
@@ -29,27 +34,71 @@
         -webkit-backdrop-filter: blur(15px);
         backdrop-filter: blur(15px);
         transition: .15s;
-        &:hover {
-            box-shadow: 0 10px 20px -1.5px $black;
-            scale: 1.02;
-            translate: 0 -10px;
-        }
+        overflow: hidden;
 
         > a {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-end;
             justify-content: space-between;
-            height: 100%;
-            padding: 10px;
-            padding-bottom: 20px;
-            width: 100%;
+            aspect-ratio: 1 / 1;
             text-shadow: none !important;
-            
-            > h3 {
-                text-align: center;
-                font-size: 25px;
-                margin-bottom: 20px;
+            position: relative;
+
+            > div {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transition: opacity .15s;
+                padding: 10px;
+                padding-bottom: 20px;
+
+                &.first-view {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
+                    > img {
+                        width: 100%;
+                        height: 50%;
+                        object-fit: cover;
+                        border-radius: 999px;
+                    }
+                    
+                    > h3 {
+                        text-align: center;
+                        font-size: 25px;
+                    }
+                }
+                &.hover-view {
+                    $opacity: .65;
+                    $color: $secondary;
+                    background: linear-gradient(rgba($color, $opacity), rgba($color, $opacity)), var(--cover);
+                    background-size: cover;
+                    background-position: center;
+                    opacity: 0;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: center;
+                    color: $black;
+                    font-weight: bolder;
+                }
+            }
+        }
+
+        &:hover {
+            box-shadow: 0 10px 20px -1.5px $black;
+            scale: 1.02;
+            translate: 0 -10px;
+            > a> div {
+                &.first-view {
+                    opacity: 0;
+                }
+                &.hover-view {
+                    opacity: 1;
+                }
             }
         }
     }

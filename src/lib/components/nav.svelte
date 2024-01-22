@@ -8,7 +8,7 @@
 	import { onMount } from "svelte";
 	import { writable } from "svelte/store";
     import { gsap } from "gsap";
-	import { blur } from "svelte/transition";
+	import { blur, fade } from "svelte/transition";
     import { circInOut } from "svelte/easing";
     import { changeTheme } from "$lib/ts/theme";
 
@@ -97,54 +97,52 @@
 </div>
 
 {#if $isNavOpen}
-    <menu transition:blur={{duration: 100, easing: circInOut}}>
-        <div class="content">
-            {#if !(disable_sections && disable_sections.location)}
-                <section id="location">
-                    <h2>Fil d'ariane</h2>
-                    <p class="ariane">
-                        {#each ["/", ...locations] as name, i}
-                            {@const path = locations.slice(0, i).join("/")}
-                            {#if i < locations.length}
-                                <a href="/{path}">{name}</a>
-                                {i ? "/" : ""}
-                            {:else}
-                                <span>{name}</span>
-                            {/if}
+    <menu transition:fade={{duration: 200, easing: circInOut}}>
+        {#if !(disable_sections && disable_sections.location)}
+            <section id="location">
+                <h2>Fil d'ariane</h2>
+                <p class="ariane">
+                    {#each ["/", ...locations] as name, i}
+                        {@const path = locations.slice(0, i).join("/")}
+                        {#if i < locations.length}
+                            <a href="/{path}">{name}</a>
+                            {i ? "/" : ""}
+                        {:else}
+                            <span>{name}</span>
+                        {/if}
+                    {/each}
+                </p>
+            </section>
+        {/if}
+        {#if !(disable_sections && disable_sections.nav)}
+            <section id="nav">
+                <h2>Menu</h2>
+                <nav>
+                    <ul>
+                        {#each Object.entries(menuPaths) as [name, path]}
+                            {@const selected = path === pathname}
+                            <li>
+                                {#if selected}
+                                    <p class="current-page">{name}</p>
+                                {:else}
+                                    <a href={path}>{name}</a>
+                                {/if}
+                            </li>
                         {/each}
-                    </p>
-                </section>
-            {/if}
-            {#if !(disable_sections && disable_sections.nav)}
-                <section id="nav">
-                    <h2>Menu</h2>
-                    <nav>
-                        <ul>
-                            {#each Object.entries(menuPaths) as [name, path]}
-                                {@const selected = path === pathname}
-                                <li>
-                                    {#if selected}
-                                        <p class="current-page">{name}</p>
-                                    {:else}
-                                        <a href={path}>{name}</a>
-                                    {/if}
-                                </li>
-                            {/each}
-                        </ul>
-                    </nav>
-                </section>
-            {/if}
-            {#if !(disable_sections && disable_sections.theme)}
-                <section id="theme">
-                    <h2>Thèmes</h2>
-                    <form method="dialog" on:change={themeChanged} bind:this={form}>
-                        <input type="radio" class="nodefault" value="dark" name="theme" id="theme-dark" checked={theme === "dark"}>
-                        <input type="radio" class="nodefault" value="auto" name="theme" id="theme-auto" checked={theme === "auto"}>
-                        <input type="radio" class="nodefault" value="light" name="theme" id="theme-light" checked={theme === "light"}>
-                    </form>
-                </section>
-            {/if}
-        </div>
+                    </ul>
+                </nav>
+            </section>
+        {/if}
+        {#if !(disable_sections && disable_sections.theme)}
+            <section id="theme">
+                <h2>Thèmes</h2>
+                <form method="dialog" on:change={themeChanged} bind:this={form}>
+                    <input type="radio" class="nodefault" value="dark" name="theme" id="theme-dark" checked={theme === "dark"}>
+                    <input type="radio" class="nodefault" value="auto" name="theme" id="theme-auto" checked={theme === "auto"}>
+                    <input type="radio" class="nodefault" value="light" name="theme" id="theme-light" checked={theme === "light"}>
+                </form>
+            </section>
+        {/if}
     </menu>
 {/if}
 
@@ -239,58 +237,53 @@
         left: 0;
         width: 100%;
         height: 100%;
+        padding: 25px;
         z-index: 99;
         background-image: url("/logo.svg");
-        background-size: 50%;
+        background-size: 25%;
         background-position: center right;
         backdrop-filter: blur(15px);
         background-repeat: no-repeat;
 
-        > .content {
-            height: 100%;
-            padding: 25px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        font-size: 17px;
 
-            display: flex;
-            justify-content: center;
+        h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            & + * {
+                margin-left: 25px;
+            }
+        }
+        > section {
+            margin: 25px 0;
+        }
 
-            flex-direction: column;
-            font-size: 17px;
+        > #theme form {
+            > input[type="radio"] {
+                width: 30px;
+                aspect-ratio: 1 / 1;
+                border-radius: 10px;
+                border: 2px solid var(--foreground);
+                appearance: none;
+                outline: none;
 
-            h2 {
-                font-size: 30px;
-                margin-bottom: 15px;
-                & + * {
-                    margin-left: 25px;
+                &[value="dark"] {
+                    background-color: $black;
+                    border-color: $white;
                 }
-            }
-            > section {
-                margin: 25px 0;
-            }
+                &[value="auto"] {
+                    background: linear-gradient(to bottom right, $black, $white);
+                }
+                &[value="light"] {
+                    background-color: $white;
+                    border-color: $black;
+                }
 
-            > #theme form {
-                > input[type="radio"] {
-                    width: 30px;
-                    aspect-ratio: 1 / 1;
-                    border-radius: 10px;
-                    border: 2px solid var(--foreground);
-                    appearance: none;
-                    outline: none;
-
-                    &[value="dark"] {
-                        background-color: $black;
-                        border-color: $white;
-                    }
-                    &[value="auto"] {
-                        background: linear-gradient(to bottom right, $black, $white);
-                    }
-                    &[value="light"] {
-                        background-color: $white;
-                        border-color: $black;
-                    }
-
-                    &:checked {
-                        border-color: $primary;
-                    }
+                &:checked {
+                    border-color: $primary;
                 }
             }
         }

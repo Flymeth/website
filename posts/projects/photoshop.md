@@ -17,26 +17,26 @@ Pour chaque image, vous trouverez une description (si il y en a une) **en dessou
 
 ## Une plage intégré dans un immeuble
 
-![Une plage intégré dans un immeuble](/cdn/projects/photoshop/plage_dans_immeuble.png)
+![Une plage intégré dans un immeuble](/cdn/projects/photoshop/plage_dans_immeuble.webp)
 
 Le but de cette création était surtout de nous former à l'utilisation des calques ainsi que des masques sur photoshop.
 Je pense m'en être plutôt bien sortie, à vous d'en juger grâce à ce screen du projet:
 
-![Capture d'écran du projet "une plage intégré dans un immeuble"](/cdn/projects/photoshop/plage_dans_immeuble_project.png)
+![Capture d'écran du projet "une plage intégré dans un immeuble"](/cdn/projects/photoshop/plage_dans_immeuble_project.webp)
 
 ## Write less, Do more
 
-![Write less do more](/cdn/projects/photoshop/write_less_do_more.png)
+![Write less do more](/cdn/projects/photoshop/write_less_do_more.webp)
 
 ## Décathlon: Reborn
 
-![Decathlon Reborn](/cdn/projects/photoshop/decathlon_reborn.png)
+![Decathlon Reborn](/cdn/projects/photoshop/decathlon_reborn.webp)
 
 Notre intervenant en Photoshop nous a demander de faire une affiche dans le style [Y2K](https://www.pinterest.fr/search/pins/?q=y2k%20poster&rs=typed) suite à la création par Décathlon du projet "[Reborn](https://www.decathlon.fr/lab/story/faire-de-nos-dechets-nos-futurs-produits)", qui promet le recyclage de tout vos objets/vêtements de sport!
 
 ## Léo Taillefeur
 
-![Léo Taillefeur](/cdn/projects/photoshop/leo_taillefer.png)
+![Léo Taillefeur](/cdn/projects/photoshop/leo_taillefer.webp)
 
 Ici le but était de créer une affiche pour un sportif. Etant fan de ski et de sport d'hiver en général, j'ai choisi de créer mon affiche autour du français [Léo Taillefer](https://www.instagram.com/leotaillefer/): un rider qui a "dédié sa vie au ski".
 
