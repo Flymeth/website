@@ -1,5 +1,5 @@
 import * as three from "three";
-import { FBXLoader, GLTFLoader, OBJLoader } from "three/examples/jsm/Addons";
+import { GLTFLoader } from "three/examples/jsm/Addons";
 
 let cache: ReturnType<typeof newLayoutScene> | undefined;
 export default async function generate() {
@@ -67,6 +67,10 @@ export async function newLayoutScene() {
 		rocket.rotation.x-= .0005
 		rocket.rotation.y+= .0005
 		rocket.rotation.z-= .0005
+
+		laptop.rotation.x+= .0005
+		laptop.rotation.y-= .0005
+		laptop.rotation.z+= .0005
 
 		camera.rotation.x+= .0005
 		camera.rotation.y+= .0002

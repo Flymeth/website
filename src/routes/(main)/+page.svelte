@@ -73,7 +73,7 @@
         
         .then(() => {
             // The entire page needs to be reloaded...
-            window.location.href= "/eastereggs/shooter"
+            window.location.href= "/eastereggs/jumper"
         })
     }
 </script>
