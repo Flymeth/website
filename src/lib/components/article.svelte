@@ -7,10 +7,12 @@
 <article id={article.metadata.id}>
     <a href="/blog/{article.metadata.id}" class="nodefault">
         <div class="first-view">
-            <img src={article.metadata.coverURL} alt="Cover for article '{article.metadata.title}'">
+            {#if article.metadata.coverURL}
+                <img src={article.metadata.coverURL} alt="Cover for article '{article.metadata.title}'">
+            {/if}
             <h3>{article.metadata.title}</h3>
         </div>
-        <div class="hover-view" style="--cover:url({article.metadata.coverURL});">
+        <div class="hover-view" style="--cover:{article.metadata.coverURL ? `url(${article.metadata.coverURL});` : "var(--secondary);"}">
             <p>{article.metadata.description}</p>
         </div>
     </a>
@@ -73,8 +75,8 @@
                     }
                 }
                 &.hover-view {
-                    $opacity: .65;
-                    $color: $secondary;
+                    $opacity: .85;
+                    $color: $white;
                     background: linear-gradient(rgba($color, $opacity), rgba($color, $opacity)), var(--cover);
                     background-size: cover;
                     background-position: center;

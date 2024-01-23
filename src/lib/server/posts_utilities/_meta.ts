@@ -49,6 +49,10 @@ export function store() {
 }
 export function getMetadata(src: string): Columns {
     const srcPath = path.normalize(src)
+    console.log(metadata);
+    
+    console.log(srcPath, src);
+    
 
     const mtdata = metadata.find(c => path.normalize(c.path) === srcPath)
     return mtdata || {
