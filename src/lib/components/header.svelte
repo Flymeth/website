@@ -75,7 +75,7 @@
 
 <header bind:this={header} style="--banner:url({bannerURL})">
     <slot/>
-    <a href="#scroller" class="scroll-insitation" on:click|preventDefault={() => {
+    <a href="?" class="scroll-insitation" on:click|preventDefault={() => {
         const { height } = header.getBoundingClientRect()
 
         const top = (height + header.scrollTop) - parseInt(navHeight.replace("px", ""))

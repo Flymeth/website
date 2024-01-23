@@ -1,7 +1,7 @@
 <footer>
     <h2>Te voici en bas de page!</h2>
     <p>
-        <a href="#top" on:click|preventDefault={() => (
+        <a href="?" on:click|preventDefault={() => (
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
