@@ -51,6 +51,10 @@ export function getMetadata(src: string): Columns {
     console.log(metadata);
     console.log(src, src in metadata.meta);
 
+    for(const key in metadata.meta) {
+        console.log(key, src, key === src, path.normalize(key), path.normalize(key) === src);
+    }
+
     //@ts-ignore
     if(src in metadata.meta) return metadata.meta[src]
     else return {

@@ -12,8 +12,6 @@
     export let auto_implement = true;
 
     function handleClick(target: EventTarget | null) {
-        console.log(target);
-        
         if((target as HTMLElement | null)?.nodeName === "BUTTON") return closeModal()
     }
 
