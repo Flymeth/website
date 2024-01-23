@@ -30,7 +30,7 @@ export function store() {
     const tree = getTree()
     const meta: {[key: string]: Columns} = {}
     for(const [location, stats] of Array.from(tree)) {
-        meta[path.normalize(location)] = {
+        meta[path.win32.normalize(location)] = {
             atime: stats.atime.getTime(),
             ctime: stats.ctime.getTime(),
             mtime: stats.mtime.getTime(),
@@ -47,13 +47,7 @@ export function store() {
     return meta
 }
 export function getMetadata(src: string): Columns {
-    src = path.normalize(src)
-    console.log(metadata);
-    console.log(src, src in metadata.meta);
-
-    for(const key in metadata.meta) {
-        console.log(key, src, key === src, path.normalize(key), path.normalize(key) === src);
-    }
+    src = path.win32.normalize(src)
 
     //@ts-ignore
     if(src in metadata.meta) return metadata.meta[src]
