@@ -4,7 +4,6 @@ import metadata from "./_meta.json";
 import { pathName } from "../location";
 
 interface Columns {
-    path: string,
     ctime: number,
     atime: number,
     mtime: number,
@@ -29,37 +28,35 @@ export function store() {
     }
 
     const tree = getTree()
-    const list: Columns[] = []
+    const meta: {[key: string]: Columns} = {}
     for(const [location, stats] of Array.from(tree)) {
-        const row: {[key in keyof Columns]: Columns[key]} = {
-            path: location,
+        meta[path.normalize(location)] = {
             atime: stats.atime.getTime(),
             ctime: stats.ctime.getTime(),
             mtime: stats.mtime.getTime(),
             birthtime: stats.birthtime.getTime()
         }
-
-        list.push(row)
     }
     const { __dirname } = pathName(import.meta)
     const outputPath = path.join(__dirname, "_meta.json")
-    const output = JSON.stringify(list)
+    const output = JSON.stringify({
+        timestamp: Date.now(),
+        meta
+    })
     fs.writeFileSync(outputPath, output)
-    return list
+    return meta
 }
 export function getMetadata(src: string): Columns {
-    const srcPath = path.normalize(src)
+    src = path.normalize(src)
     console.log(metadata);
-    
-    console.log(srcPath, src);
-    
+    console.log(src, src in metadata.meta);
 
-    const mtdata = metadata.find(c => path.normalize(c.path) === srcPath)
-    return mtdata || {
+    //@ts-ignore
+    if(src in metadata.meta) return metadata.meta[src]
+    else return {
         atime: 0,
         birthtime: 0,
         ctime: 0,
         mtime: 0,
-        path: src
     }
 }
