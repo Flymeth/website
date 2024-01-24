@@ -13,13 +13,13 @@
         icon: IconDefinition
     }[] = [
         {
-            link: "mailto:johan.janin@gmail.com", text: "Par email", icon: faEnvelope
+            link: "mailto:johan.janin@gmail.com", text: "Email", icon: faEnvelope
         },
         {
-            link: "tel:+33782682332", text: "Via un appel", icon: faPhone
+            link: "tel:+33782682332", text: "Téléphone", icon: faPhone
         },
         {
-            link: "https://www.linkedin.com/in/johan-janin/", text: "Sur LinkedIn", icon: faLinkedin, target: true
+            link: "https://www.linkedin.com/in/johan-janin/", text: "LinkedIn", icon: faLinkedin, target: true
         },
         {
             link: "/cv.pdf", text: "Voir mon CV", icon: faPager, target: true
@@ -39,6 +39,12 @@
 </Header>
 
 <main>
+    <section id="form">
+        <h2>Contact rapide</h2>
+
+        <NetlifyContactForm />
+    </section>
+    <hr>
     <section id="contact">
         <h2>Mes réseaux</h2>
         <ul>
@@ -51,12 +57,6 @@
                 </li>
             {/each}
         </ul>
-    </section>
-    <hr>
-    <section id="form">
-        <h2>Contact rapide</h2>
-
-        <NetlifyContactForm />
     </section>
 </main>
 

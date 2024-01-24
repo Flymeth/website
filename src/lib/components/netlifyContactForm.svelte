@@ -37,7 +37,7 @@
 			/>
 		</label>
 		<label for="phone">
-			numéro de téléphone
+			Numéro de téléphone
 			<input
 				type="tel"
 				name="phone"
@@ -48,14 +48,14 @@
 	</fieldset>
 
 	<fieldset id="subject">
-		<legend>Ton projet</legend>
+		<legend>Ton message</legend>
 
 		<label for="project">
 			<input
 				type="text"
 				name="project"
 				id="project"
-				placeholder="Sujet"
+				placeholder="Objet"
 				required
 			/>
 		</label>

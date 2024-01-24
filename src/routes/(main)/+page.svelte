@@ -54,6 +54,15 @@
                 img: "/cdn/reviews/quentin.webp"
             },
             comment: "Le travail de codage effectué par Johan JANIN est tout simplement remarquable. Sa maîtrise technique et sa persévérance se reflètent dans son travail, dépassant toutes les attentes. Son engagement envers l’excellence fait de lui un professionnel incontournable dans le domaine et sa contribution mérite une reconnaissance bien méritée."
+        },
+        {
+            author: {
+                name: "Loris RODRIGUES",
+                status: "Etudiant My Digital School",
+                img: "/cdn/reviews/loris_r.webp",
+                link: "https://www.linkedin.com/in/loris-rodrigues/"
+            },
+            comment: "Je recommande fortement Johan JANIN pour le développement Full-Stack."
         }
     ]
 

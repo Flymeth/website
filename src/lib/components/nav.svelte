@@ -8,7 +8,7 @@
 	import { onMount } from "svelte";
 	import { writable } from "svelte/store";
     import { gsap } from "gsap";
-	import { blur, fade } from "svelte/transition";
+	import { fade } from "svelte/transition";
     import { circInOut } from "svelte/easing";
     import { changeTheme } from "$lib/ts/theme";
 
@@ -35,7 +35,7 @@
         Présentation: "/",
         Portfolio: "/portfolio",
         Discographie: "/discography",
-        "Travailler avec moi": "/contact",
+        "Prendre contact": "/contact",
         "Mon petit blog": "/blog"
     }
 
