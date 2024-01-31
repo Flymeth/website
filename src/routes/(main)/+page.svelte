@@ -91,6 +91,14 @@
     <title>Johan JANIN</title>
     <meta name="title" content="Johan Janin" />
     <meta name="description" content="Salut! Moi c'est Johan: un passionné du digital spécialisé dans le développement web." />
+    <meta property="og:image" content="/icons/logo_256.png" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="johan-janin.com">
+    <meta property="twitter:url" content="https://johan-janin.com">
+    <meta name="twitter:title" content="Johan Janin">
+    <meta name="twitter:description" content="Salut! Moi c'est Johan: un passionné du digital spécialisé dans le développement web.">
+    <meta name="twitter:image" content="/icons/logo_256.png">
 </svelte:head>
 
 <Header>

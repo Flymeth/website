@@ -5,6 +5,9 @@
 	import Share from "$lib/components/share.svelte";
 	import { page } from "$app/stores";
 	import ImageDisplay from "$lib/components/imageDisplay.svelte";
+    import Fa from "svelte-fa";
+    import { faPen, faFolder, type IconDefinition, faClock } from "@fortawesome/free-solid-svg-icons";
+    
     export let data: PageData;
 
     const { article } = data
@@ -12,6 +15,11 @@
     console.info(article)
 
     let isMenuOpen = false;
+    
+    const articleInfos: [IconDefinition, string][] = [
+        [faFolder, article.metadata.category],
+        [faPen, article.metadata.time.created.toLocaleDateString()],
+    ]
 </script>
 
 <svelte:head>
@@ -65,8 +73,18 @@
     <p>{article.metadata.description}</p>
 </Header>
 <main>
-    {@html article.content.html}
-    <ImageDisplay />
+    <ul id="article-info">
+        {#each articleInfos as [icon, value]}
+            <li>
+                <Fa {icon} color="var(--primary)"/>
+                <span>{value}</span>
+            </li>
+        {/each}
+    </ul>
+    <div id="article-content">
+        {@html article.content.html}
+        <ImageDisplay />
+    </div>
 </main>
 <hr>
 <footer>
@@ -94,7 +112,29 @@
 <style lang="scss">
     main {
         padding: 25px;
-        @import "$lib/assets/styles/markdowns.scss";
+        > #article-info {
+            width: min(90%, 500px);
+            margin: 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            list-style: none;
+            margin-bottom: 30px;
+            > li {
+                background-color: var(--foreground);
+                color: var(--background);
+                padding: 5px 10px;
+                border-radius: 999px;
+                font-weight: bold;
+                span {
+                    display: inline-block;
+                    margin-left: 5px
+                }
+            }
+        }
+        > #article-content {
+            @import "$lib/assets/styles/markdowns.scss";
+        }
     }
 
     #article-nav {
@@ -130,10 +170,11 @@
                 padding: 0;
                 margin: 15px 0 30px;
                 > li {
-                    padding-left: calc((var(--level) - 1) * 7.5px);
+                    padding-left: calc((var(--level) - 1) * 10px);
                     &::before {
                         content: "# ";
                     }
+
                 }
             }
         }

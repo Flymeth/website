@@ -261,6 +261,10 @@
             margin: 25px 0;
         }
 
+        > #nav nav ul p {
+            display: inline;
+        }
+
         > #theme form {
             > input[type="radio"] {
                 width: 30px;

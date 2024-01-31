@@ -12,7 +12,7 @@
             {/if}
             <h3>{article.metadata.title}</h3>
         </div>
-        <div class="hover-view" style="--cover:{article.metadata.coverURL ? `url(${article.metadata.coverURL});` : "var(--secondary);"}">
+        <div class="hover-view" style={article.metadata.coverURL ? `--cover:url(${article.metadata.coverURL});` : "--cover:var(--secondary);"}>
             <p>{article.metadata.description}</p>
         </div>
     </a>

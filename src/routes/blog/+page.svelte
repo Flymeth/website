@@ -9,6 +9,14 @@
     <title>Le Blog</title>
     <meta name="title" content="Johan Janin - Le Blog" />
     <meta name="description" content="Un petit blog créé pour partager mon savoir et mes découvertes!" />
+    <meta property="og:image" content="/icons/logo_256.png" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="johan-janin.com">
+    <meta property="twitter:url" content="https://johan-janin.com">
+    <meta name="twitter:title" content="Johan Janin - Le Blog">
+    <meta name="twitter:description" content="Un petit blog créé pour partager mon savoir et mes découvertes!">
+    <meta name="twitter:image" content="/icons/logo_256.png">
 </svelte:head>
 
 <Header>
@@ -53,6 +61,7 @@
     
             display: flex;
             align-items: stretch;
+            justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
         }

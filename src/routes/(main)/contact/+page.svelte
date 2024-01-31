@@ -31,6 +31,14 @@
     <title>Prenons contact!</title>
     <meta name="title" content="Johan Janin - Prendre Contact" />
     <meta name="description" content="Vous souhaitez réaliser un projet? J'ai déjà hâte de travailler avec vous!" />
+    <meta property="og:image" content="/icons/logo_256.png" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="johan-janin.com">
+    <meta property="twitter:url" content="https://johan-janin.com">
+    <meta name="twitter:title" content="Johan Janin - Prendre Contact">
+    <meta name="twitter:description" content="Vous souhaitez réaliser un projet? J'ai déjà hâte de travailler avec vous!">
+    <meta name="twitter:image" content="/icons/logo_256.png">
 </svelte:head>
 
 <Header>

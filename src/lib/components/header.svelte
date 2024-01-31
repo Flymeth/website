@@ -125,6 +125,7 @@
         > :global(p) {
             font-style: italic;
             font-size: 20px;
+            mix-blend-mode: difference;
         }
 
         > .scroll-insitation {

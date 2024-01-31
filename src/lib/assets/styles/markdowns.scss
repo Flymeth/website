@@ -31,3 +31,7 @@
 :global(hr) {
     margin: 40px auto;
 }
+
+:global(ul), :global(ol) {
+    list-style-position: inside;
+}
