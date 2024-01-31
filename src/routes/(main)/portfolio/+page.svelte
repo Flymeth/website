@@ -57,14 +57,14 @@
     <title>Le Portfolio</title>
     <meta name="title" content="Johan Janin - Le Portfolio" />
     <meta name="description" content="Vous trouverez ici mes meilleures réalisations durant mes études ou mon temps libre!" />
-    <meta property="og:image" content="/icons/logo_256.png" />
+    <meta property="og:image" content="/icons/bg_white/logo_256.png" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="johan-janin.com">
     <meta property="twitter:url" content="https://johan-janin.com">
     <meta name="twitter:title" content="Johan Janin - Le Portfolio">
     <meta name="twitter:description" content="Vous trouverez ici mes meilleures réalisations durant mes études ou mon temps libre!">
-    <meta name="twitter:image" content="/icons/logo_256.png">
+    <meta name="twitter:image" content="/icons/bg_white/logo_256.png">
 </svelte:head>
 
 <Header>

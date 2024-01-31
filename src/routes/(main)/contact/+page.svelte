@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Header from "$lib/components/header.svelte";
 	import NetlifyContactForm from "$lib/components/netlifyContactForm.svelte";
-
     import Fa from "svelte-fa";
     import { faEnvelope, faPager, faPhone, type IconDefinition } from "@fortawesome/free-solid-svg-icons";
     import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -31,14 +30,14 @@
     <title>Prenons contact!</title>
     <meta name="title" content="Johan Janin - Prendre Contact" />
     <meta name="description" content="Vous souhaitez réaliser un projet? J'ai déjà hâte de travailler avec vous!" />
-    <meta property="og:image" content="/icons/logo_256.png" />
+    <meta property="og:image" content="/icons/bg_white/logo_256.png" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="johan-janin.com">
     <meta property="twitter:url" content="https://johan-janin.com">
     <meta name="twitter:title" content="Johan Janin - Prendre Contact">
     <meta name="twitter:description" content="Vous souhaitez réaliser un projet? J'ai déjà hâte de travailler avec vous!">
-    <meta name="twitter:image" content="/icons/logo_256.png">
+    <meta name="twitter:image" content="/icons/bg_white/logo_256.png">
 </svelte:head>
 
 <Header>
