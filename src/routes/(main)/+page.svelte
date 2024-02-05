@@ -35,36 +35,8 @@
 
     import gsap from "gsap";
 	import { goto } from "$app/navigation";
-	import Reviews, { type Review } from "$lib/components/reviews.svelte";
-
-    const reviews: Review[] = [
-        {
-            author: {
-                name: "Théo MISTRAL",
-                status: "Etudiant IPI",
-                img: "https://static-cdn.jtvnw.net/jtv_user_pictures/68ea825a-b820-49db-96a8-3840ab51aec2-profile_image-70x70.png",
-                link: "https://www.linkedin.com/in/th%C3%A9o-mistral-8597b6216/"
-            },
-            comment: "Les sites sont complets et permettent des interactions innovantes. Le site est livré assez rapidement. Je recommande vivement Johan pour la création de votre site."
-        },
-        {
-            author: {
-                name: "QUENTIN",
-                status: "Etudiant My Digital School",
-                img: "/cdn/reviews/quentin.webp"
-            },
-            comment: "Le travail de codage effectué par Johan JANIN est tout simplement remarquable. Sa maîtrise technique et sa persévérance se reflètent dans son travail, dépassant toutes les attentes. Son engagement envers l’excellence fait de lui un professionnel incontournable dans le domaine et sa contribution mérite une reconnaissance bien méritée."
-        },
-        {
-            author: {
-                name: "Loris RODRIGUES",
-                status: "Etudiant My Digital School",
-                img: "/cdn/reviews/loris_r.webp",
-                link: "https://www.linkedin.com/in/loris-rodrigues/"
-            },
-            comment: "Je recommande fortement Johan JANIN pour le développement Full-Stack."
-        }
-    ]
+	import Reviews from "$lib/components/reviews.svelte";
+    import reviews from "$lib/assets/data/reviews.json";
 
     function enterEasterGame() {
         const tm = gsap.timeline()
@@ -103,7 +75,7 @@
 
 <Header>
     <h1>En quête d'un <span>développeur full-stack</span>?</h1>
-    <p>Je suis Johan: un expert dans la création web.</p>
+    <p>Je suis Johan: un expert dans la création web, basé à Lyon.</p>
 </Header>
 <main>
     <section id="me">

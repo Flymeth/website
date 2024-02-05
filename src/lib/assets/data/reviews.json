@@ -1,0 +1,37 @@
+[
+    {
+        "author": {
+            "name": "Théo MISTRAL",
+            "status": "Etudiant IPI",
+            "img": "/cdn/reviews/theo_m.webp",
+            "link": "https://www.linkedin.com/in/th%C3%A9o-mistral-8597b6216/"
+        },
+        "comment": "Les sites sont complets et permettent des interactions innovantes. Le site est livré assez rapidement. Je recommande vivement Johan pour la création de votre site."
+    },
+    {
+        "author": {
+            "name": "QUENTIN",
+            "status": "Etudiant My Digital School",
+            "img": "/cdn/reviews/quentin.webp"
+        },
+        "comment": "Le travail de codage effectué par Johan JANIN est tout simplement remarquable. Sa maîtrise technique et sa persévérance se reflètent dans son travail, dépassant toutes les attentes. Son engagement envers l’excellence fait de lui un professionnel incontournable dans le domaine et sa contribution mérite une reconnaissance bien méritée."
+    },
+    {
+        "author": {
+            "name": "Loris RODRIGUES",
+            "status": "Etudiant My Digital School",
+            "img": "/cdn/reviews/loris_r.webp",
+            "link": "https://www.linkedin.com/in/loris-rodrigues/"
+        },
+        "comment": "Je recommande fortement Johan JANIN pour le développement Full-Stack."
+    },
+    {
+        "author": {
+            "name": "Cyril Couffe",
+            "status": "Formateur My Digital School",
+            "img": "/cdn/reviews/cyril_c.webp",
+            "link": "https://www.linkedin.com/in/cyril-couffe-phd-331722b6/"
+        },
+        "comment": "Depuis le début, Johan démontre une grande aisance dans l'apprentissage, l'écriture, et la relecture de code pour créer differentes applications et sites web. Je le recommande sans hésiter pour quiconque rechercherait un esprit avide d'apprendre et de créer !"
+    }
+]

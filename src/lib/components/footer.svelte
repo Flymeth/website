@@ -13,6 +13,7 @@
     <ul>
         <li><a href="https://github.com/Flymeth" target="_blank">Mes projets (github)</a></li>
         <li><a href="https://flymeth.net" target="_blank">Mon deuxième site</a></li>
+        <li><a href="/law/mentions-legales">Mentions Légales</a></li>
     </ul>
 </footer>
 

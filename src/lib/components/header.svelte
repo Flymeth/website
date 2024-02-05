@@ -114,6 +114,7 @@
             background-image: var(--banner);
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             z-index: -1;
             filter: blur(10px);
         }
@@ -125,7 +126,6 @@
         > :global(p) {
             font-style: italic;
             font-size: 20px;
-            mix-blend-mode: difference;
         }
 
         > .scroll-insitation {

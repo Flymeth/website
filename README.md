@@ -1,9 +1,8 @@
 # My website
 
 Welcome to the source code of my website!
+To see the result of this code, go [here](https://johan-janin.com)!
 
 ## Todo
 
-### Contact form
-
-The contact form doesn't work, maybe trying [this](https://github.com/sveltejs/kit/issues/942) will help...
+Make a more interactive 3D background

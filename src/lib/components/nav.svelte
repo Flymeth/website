@@ -239,7 +239,7 @@
         height: 100%;
         padding: 25px;
         z-index: 99;
-        background-image: url("/logo.svg");
+        background: url("/logo.svg"), linear-gradient(to right, transparent, rgba($white, .5));
         background-size: 25%;
         background-position: center right;
         backdrop-filter: blur(15px);
