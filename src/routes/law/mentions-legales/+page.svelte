@@ -6,9 +6,10 @@
     import Nav from "$lib/components/nav.svelte";
 	import setupCursor from "$lib/ts/setupCursor";
 	import { onMount } from "svelte";
+	import { isMobile } from "$lib/ts/mobile";
 
     onMount(() => {
-        setupCursor()
+        isMobile() && setupCursor()
     })
 </script>
 
