@@ -9,7 +9,7 @@
 	import { isMobile } from "$lib/ts/mobile";
 
     onMount(() => {
-        isMobile() && setupCursor()
+        !isMobile() && setupCursor()
     })
 </script>
 
