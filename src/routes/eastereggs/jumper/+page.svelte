@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-    <title>Jumper - An Easteregg Game</title>
+    <title>Jumper - An Easteregg Jumping Game</title>
 </svelte:head>
 
 {#if game}
@@ -24,6 +24,9 @@
                     <li><button>Play</button></li>
                     <li><button>Settings</button></li>
                     <li><button>About</button></li>
+                    <li>
+                        <a href="/"><button>Quit</button></a>
+                    </li>
                 </ul>
             </nav>
         {:else if game.state === "settings"}

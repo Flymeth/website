@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { reveal } from "svelte-reveal";
     import { createEventDispatcher } from "svelte";
     export let name: string;
     export let icons: string[];
@@ -11,8 +12,18 @@
     {#each icons as icon, i}
         {@const techName = icon.replace(/^.*[\\/]/, '').split(".")[0]}
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-        <li data-tech={techName} style="z-index: {icons.length - i};" on:click={() => dispatch("iconClicked", {techName, icon})} on:keypress>
-            <img src={icon} alt="{icon.split("/").at(-1)?.replace(".svg", "")} icon">
+        <li 
+            data-tech={techName} 
+            style="z-index: {icons.length - i};" 
+            on:click={() => dispatch("iconClicked", {techName, icon})}
+            on:keypress
+        >
+            <img src={icon} alt="{icon.split("/").at(-1)?.replace(".svg", "")} icon" use:reveal={{
+                delay: 100 * i,
+                blur: 15,
+                easing: "easeInOutCirc",
+                reset: true
+            }}>
         </li>
     {/each}
 </ul>

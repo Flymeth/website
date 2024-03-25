@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Article from "$lib/components/article.svelte";
     import Header from "$lib/components/header.svelte";
+	import { reveal } from "svelte-reveal";
 	import type { PageData } from "./$types";
     export let data: PageData;
 </script>
@@ -30,8 +31,11 @@
         {#each  Array.from(data.articles)
                 .sort((a, b) => b.metadata.time.created.getTime() - a.metadata.time.created.getTime())
                 .slice(0, 5)
-        as article}
-            <li>
+        as article, i}
+            <li use:reveal={{
+                delay: 100 * i,
+                y: 0
+            }}>
                 <Article {article}/>
             </li>
         {/each}

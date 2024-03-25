@@ -11,6 +11,8 @@
     import { faLink, type IconDefinition } from "@fortawesome/free-solid-svg-icons"
     import { faGithub, faFigma, faCodepen, faDiscord, faStackOverflow } from "@fortawesome/free-brands-svg-icons";
 	import ImageDisplay from "./imageDisplay.svelte";
+	import Share from "./share.svelte";
+	import { page } from "$app/stores";
 
     export let project: Project;
 
@@ -46,8 +48,8 @@
     })
     .map(([platform, data]) => ({platform, ...data}))
     .filter(link => link.url)
-    
-    $: isOpen = $opennedProject === project.metadata.name
+
+    $: isOpen = $opennedProject === project.metadata.id
 </script>
 
 <div id="project-{project.metadata.name.replaceAll(" ", "-")}"  data-open={isOpen ? "" : null}>
@@ -57,7 +59,7 @@
             <p>{project.metadata.description}</p>
         </div>
         <div class="actions">
-            <button class="primary-color" on:click={() => $opennedProject = project.metadata.name}>Découvrir</button>
+            <button class="primary-color" on:click={() => $opennedProject = project.metadata.id}>Découvrir</button>
             {#if project.metadata.link}
                 <a href={project.metadata.link} target="_blank">
                     <button>Accéder</button>
@@ -102,6 +104,12 @@
             <div id="project-content">
                 {@html project.content.html}
             </div>
+
+            <Share sharingInformation={{
+                title: project.metadata.name,
+                link: $page.url.href,
+                description: project.metadata.description
+            }} />
         </div>
     {/if}
 </div>

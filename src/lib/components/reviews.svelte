@@ -15,7 +15,6 @@
 
     import { Splide, SplideSlide } from "@splidejs/svelte-splide";
     import "@splidejs/svelte-splide/css";
-
 </script>
 
 <div id={name} class="reviews">
@@ -24,12 +23,12 @@
             drag: true,
             type: "loop",
             autoplay: true,
-            interval: 5000,
+            interval: 7500,
             speed: 1000,
             arrows: false,
             pagination: false,
-            fixedWidth: "min(350px, 90vw)",
-            width: "min(800px, 100%)",
+            fixedWidth: "min(350px, 86vw)",
+            width: "100%",
             gap: 20,
             easing: "ease",
         }}
@@ -62,10 +61,17 @@
 </div>
 
 <style lang="scss">
+    @import "$lib/_colors.scss";
+
     .reviews {
         display: flex;
         align-items: center;
         justify-content: center;
+
+        background-color: rgba($secondary, .5);
+        padding: 15px 10px;
+        border-radius: 25px;
+        margin-top: 30px;
         
         .review {
             background-color: var(--background);

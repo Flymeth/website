@@ -10,14 +10,9 @@
     export let hideProgress = false
     export const animationEnded = writable(false)
     export const loaded = () => {
-        const delay = 10
-        for(let j = 0; j + pourcent < 100; j++) {
-            setTimeout(() => {
-                if(pourcent < 100) pourcent++
-            }, delay * j)
-        }
-
         setTimeout(() => {
+            pourcent= 100
+    
             gsap.to([pourcentElement, point], {
                 opacity: 0,
                 delay: 1,
@@ -25,7 +20,21 @@
                 animationEnded.set(true)
                 document.body.classList.remove("noscroll")
             })
-        }, delay * (100 - pourcent))
+        }, 500);
+    }
+    export const reset = () => {
+        pourcent= 0
+        $animationEnded= false
+        startIncrementation()
+    }
+
+    function startIncrementation() {
+        const incrementPourcentFunc = () => {
+            if(pourcent >= 95) return;
+            pourcent++
+            setTimeout(incrementPourcentFunc, Math.floor((Math.random() * 400)) + 100)
+        }
+        incrementPourcentFunc()
     }
 
     const timeline = gsap.timeline({
@@ -34,14 +43,7 @@
     animationEnded.subscribe((v) => v && timeline.pause())
 
     onMount(() => {
-        document.body.classList.add("noscroll")
-        $animationEnded = false
-        const incrementPourcentFunc = () => {
-            if(pourcent >= 95) return;
-            pourcent++
-            setTimeout(incrementPourcentFunc, Math.floor((Math.random() * 400)) + 100)
-        }
-        incrementPourcentFunc()
+        reset()
 
         gsap.to(point, {
             opacity: 1
@@ -65,7 +67,29 @@
 <div id="loader">
     <div bind:this={point}></div>
     {#if !hideProgress}
-        <h1 id="progress" bind:this={pourcentElement}>{pourcent}%</h1>
+        <h2 id="progress" bind:this={pourcentElement}>
+            <span style="translate: 0 {
+                pourcent < 100 ? 1 : -Math.floor(pourcent / 100)
+            }em;">
+                {#each Array(10).fill(null).map((_, i) => i) as i}
+                    <span class="digit">{i}</span>
+                {/each}
+            </span>
+            <span style="translate: 0 -{
+                Math.floor((pourcent % 100) / 10)
+            }em;">
+                {#each Array(10).fill(null).map((_, i) => i) as i}
+                    <span class="digit">{i}</span>
+                {/each}</span>
+            <span style="translate: 0 -{
+                pourcent % 10
+            }em;">
+                {#each Array(10).fill(null).map((_, i) => i) as i}
+                    <span class="digit">{i}</span>
+                {/each}</span>
+            
+            %
+        </h2>
     {/if}
 </div>
 
@@ -100,6 +124,21 @@
 
             font-size: 80px;
             font-style: italic;
+
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            height: 1em;
+            line-height: 1em;
+            overflow-y: hidden;
+
+            span {
+                text-align: end;
+                transition: .15s;
+                > .digit {
+                    display: block;
+                }
+            }
         }
     }
 </style>

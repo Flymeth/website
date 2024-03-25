@@ -19,7 +19,7 @@
         if (!document.startViewTransition) return;
         $isNavOpen = false
         navigating = true
-
+        
         return new Promise((resolve) => {
             //@ts-ignore
             document.startViewTransition(async () => {

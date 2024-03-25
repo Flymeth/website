@@ -1,4 +1,11 @@
-<div class="work-with-me">
+<script lang="ts">
+    import { reveal } from "svelte-reveal";
+</script>
+
+<div class="work-with-me" use:reveal={{
+    reset: true,
+    y: 0
+}}>
     <h2>Convaincu ?</h2>
     <a href="/contact">
         <button>Travailler avec moi</button>

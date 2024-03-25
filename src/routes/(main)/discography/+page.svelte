@@ -2,6 +2,7 @@
 	import Header from "$lib/components/header.svelte";
 	import MusicPlayer from "$lib/components/musicPlayer.svelte";
 	import { onMount } from "svelte";
+    import { reveal } from "svelte-reveal";
 	import type { PageServerData } from "./$types";
     export let data: PageServerData;
 
@@ -39,7 +40,10 @@
         <div class="list">
             {#each musics as music}
                 {@const selected = $selectedMusic?.music.audioSrc === music.audioSrc}
-                <section id={music.metadata.file} class="music">
+                <section id={music.metadata.file} class="music" use:reveal={{
+                    y: 0,
+                    blur: 15
+                }}>
                     <h3>{music.metadata.title}</h3>
                     <hr>
                     <button on:click={() => {

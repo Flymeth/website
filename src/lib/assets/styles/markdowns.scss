@@ -1,37 +1,83 @@
 @import "$lib/_colors.scss";
 
 @for $i from 1 to 6 {
-    :global(h#{$i}) {
-        margin: 15px 0;
-        margin-left: 5px * ($i - 1);
+	:global(h#{$i}) {
+		margin: 15px 0;
+		margin-left: 5px * ($i - 1);
 
-        text-decoration: underline;
-        color: $primary;
-        text-shadow: 1px 1px 2.5px $black;
-    }
+		text-decoration: underline;
+		color: $primary;
+		text-shadow: 1px 1px 2.5px $black;
+	}
 }
 
 :global(li > p) {
-    display: inline;
-    margin: 0;
+	display: inline;
+	margin: 0;
 }
 :global(pre) {
-    color: $white;
+	color: $white;
 }
 
-:global(img), :global(video) {
-    width: min(100%, 650px);
-    height: auto;
-    display: block;
-    margin: 10px auto;
+:global(img),
+:global(video) {
+	width: min(100%, 650px);
+	height: auto;
+	display: block;
+	margin: 10px auto;
 
-    box-shadow: 0 0 15px -2.5px var(--background);
-    border-radius: 10px;
+	box-shadow: 0 0 15px -2.5px var(--background);
+	border-radius: 10px;
 }
 :global(hr) {
-    margin: 40px auto;
+	margin: 40px auto;
 }
 
-:global(ul), :global(ol) {
-    list-style-position: inside;
+:global(ul),
+:global(ol) {
+	list-style-position: inside;
+	padding-left: 10px;
+	margin: 10px 0;
+
+	> :global(li) {
+		margin: 5px 0;
+	}
+}
+
+// https://codepen.io/tomhodgins/pen/QEwvEK/
+:global(table) {
+	margin: 15px auto;
+    color: #333;
+	background: rgba(255, 255, 255, .6);
+	border: 1px solid grey;
+	font-size: 12pt;
+	border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+}
+
+:global(table thead) {
+    text-transform: uppercase;
+}
+
+:global(table thead th),
+:global(table tfoot th) {
+	color: #777;
+	background: rgba(0, 0, 0, 0.1);
+}
+:global(table caption) {
+	padding: 0.5em;
+}
+:global(table th),
+:global(table td) {
+	padding: 0.5em;
+	border: 1px solid lightgrey;
+}
+/* Zebra Table Style */
+:global(tbody tr:nth-of-type(odd)) {
+	background: rgba(0, 0, 0, 0.05);
+}
+:global(tbody tr:nth-of-type(odd)) {
+	background: rgba(255, 255, 255, 0.05);
 }

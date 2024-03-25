@@ -37,6 +37,15 @@
 	import { goto } from "$app/navigation";
 	import Reviews from "$lib/components/reviews.svelte";
     import reviews from "$lib/assets/data/reviews.json";
+    
+    import { IndexScene }  from "$lib/scenes/index";
+    import { backgroundScene } from "./+layout.svelte";
+	import { onMount } from "svelte";
+    import { reveal } from "svelte-reveal";
+    
+    onMount(() => {
+        backgroundScene.set(new IndexScene());
+    })
 
     function enterEasterGame() {
         const tm = gsap.timeline()
@@ -75,14 +84,14 @@
 
 <Header>
     <h1>En quête d'un <span>développeur full-stack</span>?</h1>
-    <p>Je suis Johan: un expert dans la création web, basé à Lyon.</p>
+    <p>Je suis Johan : un expert dans la création web, basé à Lyon.</p>
 </Header>
 <main>
     <section id="me">
         <h2>Je me présente</h2>
-        <p>Je m'appelle Johan, j'ai {new Date().getFullYear() - 2005} ans, et je suis étudiant en digital.</p>
-        <p>Depuis plus de 4 ans je suis passionné par le monde du digital. Que ce soit dans la création d'identité visuelle, de conception/création web, référrencement et développement web, je suis dévoué à ma tâche afin de pouvoir proposer un résulta digne de mes compétences à mes clients.</p>
-        <p>Avec la création de projets comme des applications de messagerie instantanées, de robot discord ou de sites e-commerce, je possède aujourd'hui des compétences solides en terme de développement web.</p>
+        <p use:reveal>Je m'appelle Johan, j'ai {new Date().getFullYear() - 2005} ans, et je suis étudiant en digital.</p>
+        <p use:reveal>Depuis plus de 4 ans je suis passionné par le monde du digital. Que ce soit dans la création d'identité visuelle, de conception/création web, référrencement et développement web, je suis dévoué à ma tâche afin de pouvoir proposer un résultat digne de mes compétences à mes clients.</p>
+        <p use:reveal>Avec la création de projets comme des applications de messageries instantanées, de robot discord ou de sites e-commerce, je possède aujourd'hui des compétences solides en terme de développement web.</p>
     </section>
     <section id="tech">
         <h2>Mes outils</h2>
@@ -125,22 +134,24 @@
     </section>
 
     <section id="hobbies">
-        <h2>Mes passe-temps</h2>
+        <h2 use:reveal>Mes passe-temps</h2>
         <p>Certes le monde du digital est une passion chez moi, mais cela ne veut pas dire que je ne fais que cela durant mon temps libre.</p>
         <ul>
             <li>
                 J'aime jouer au jeux-vidéos avec mes amis
                 <ul>
-                    <li>Minecraft</li>
-                    <li>Rocket League</li>
-                    <li>Jeux d'arcades</li>
+                    <li use:reveal>Minecraft</li>
+                    <li use:reveal>Rocket League</li>
+                    <li use:reveal>Jeux d'arcades</li>
                 </ul>
             </li>
             <li>
                 Sortir
                 <ul>
-                    <li>Passer du temps avec mes amis</li>
-                    <li>Ou ma famille</li>
+                    <li use:reveal>Passer du temps avec mes amis</li>
+                    <li use:reveal>Ou ma famille</li>
+                    <li use:reveal>Voyage</li>
+                    <li use:reveal>Faire du VTT</li>
                 </ul>
             </li>
         </ul>
@@ -150,6 +161,12 @@
         <h2>Ce qu'ils disent de mon travail</h2>
         <Reviews list={ reviews }/>
     </section>
+
+    <style>
+        #scene {
+            filter: none !important;
+        }
+    </style>
 </main>
 
 <style lang="scss">

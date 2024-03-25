@@ -4,31 +4,29 @@
 	import ProjectCard, { opennedProject } from "$lib/components/projectCard.svelte";
 	import WorkWithMe from "$lib/components/workWithMe.svelte";
 	import { onMount } from "svelte";
-    import { gsap } from "gsap";
-    import ScrollTrigger from "gsap/dist/ScrollTrigger";
     import type { PageData } from "./$types";
 	import Header from "$lib/components/header.svelte";
+	import { reveal } from "svelte-reveal";
     export let data: PageData;
-    gsap.registerPlugin(ScrollTrigger)
 
     const projectlist = Array.from(data.projects)
-    console.debug(`Found ${projectlist.length} projects:`)
-    console.debug(projectlist)
+    console.debug(`Found ${projectlist.length} projects.`)
 
-    const preOpenIndex = parseInt($page.url.searchParams.get("project") || "-1")
+    const preOpenID = $page.url.searchParams.get("project")
     let projectContainer: HTMLUListElement;
 
-    if(preOpenIndex >= 0) $opennedProject = projectlist[preOpenIndex].metadata.name
-    opennedProject.subscribe(name => {
+    if(preOpenID) $opennedProject = preOpenID
+    opennedProject.subscribe(projectID => {
         if(browser) {
-            const id = projectlist.findIndex(p => p.metadata.name === name)
-            if(id >= 0) window.history.pushState(null, "", new URL(`?project=${id}`, $page.url.href))
+            if(
+                projectlist.find(p => p.metadata.id === projectID)
+            ) window.history.pushState(null, "", new URL(`?project=${projectID}`, $page.url.href))
             else window.history.pushState(null, "", new URL($page.url.pathname, $page.url.origin))
         }
     })
 
     onMount(() => {
-        if(preOpenIndex >= 0) {
+        if($opennedProject) {
             const {top, bottom, height} = projectContainer.getBoundingClientRect()
             window.scrollTo({
                 top: (top + bottom - height)/2,
@@ -38,18 +36,6 @@
         window.addEventListener("keydown", (e) => {
             if(e.key.toLowerCase() === "escape") $opennedProject = null
         })
-
-        for(const card of projectContainer.children) {
-            gsap.from(card, {
-                opacity: 0,
-                scrollTrigger: {
-                    trigger: card,
-                    start: "top+=50px bottom",
-                    end: "bottom+=150px bottom",
-                    scrub: 1
-                }
-            })
-        }
     })
 </script>
 
@@ -74,8 +60,8 @@
 
 <main>
     <ul bind:this={projectContainer}>
-        {#each [...projectlist].sort(() => Math.random() - .5) as project (project.metadata.name)}
-            <li>
+        {#each [...projectlist].sort(() => Math.random() - .5) as project (project.metadata.id)}
+            <li use:reveal>
                 <ProjectCard {project}/>
             </li>
         {/each}

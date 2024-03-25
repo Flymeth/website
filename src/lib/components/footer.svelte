@@ -25,6 +25,7 @@
         margin-top: $transition-size + 15px;
         padding: 15px;
         padding-bottom: 50px;
+        box-shadow: 0 0 10px var(--foreground);
 
         &::before {
             content: "";

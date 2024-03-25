@@ -5,6 +5,7 @@ export interface Project {
     metadata: {
         name: string,
         file: string,
+        id: string,
         description: string,
         iconURL?: string,
         bannerURL?: string,
@@ -33,7 +34,9 @@ export async function getProjects() {
         const { parsed, meta } = parseMarkdown<Project["metadata"]>(raw)
         if(!meta.metadata) continue
         
-        meta.metadata.file = path.basename(name)
+        const { base: file, name: id } = path.parse(name);
+        meta.metadata.file = file
+        meta.metadata.id = id
         projects.add({
             metadata: meta.metadata, 
             content: parsed

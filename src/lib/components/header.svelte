@@ -67,14 +67,39 @@
             y: "-150%",
             ease: "power1.out"
         }, "<")
-        
 
         scrollInsitationTimeline.play()
     })
 </script>
 
+<!-- REQUIRING SVELTE 5 -->
+<!-- {#snippet letterAnimation(words)}
+    {#each sentence as letter}
+        {#if /\s/.match(letter)}
+            <span class="space"></span>
+        {:else}
+            <span class="letter">{a}</span>  
+        {/if}
+    {/each}
+{/snippet} -->
+
 <header bind:this={header} style="--banner:url({bannerURL})">
-    <slot/>
+    
+    <!-- <h1>
+        {#each title as sentence, i}
+            {@const isAccented = i % 2}
+
+            {#if isAccented}
+                <span class="accented">
+                    {@render letterAnimation(sentence)}
+                </span>
+            {:else}
+                {@render letterAnimation(sentence)}
+            {/if}
+        {/each}
+    </h1> -->
+
+    <slot />
     <a href="?" class="scroll-insitation" on:click|preventDefault={() => {
         const { height } = header.getBoundingClientRect()
 
