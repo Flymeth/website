@@ -57,10 +57,13 @@
         <h2>Mes réseaux</h2>
         <ul>
             {#each contactItems as item, i}
-                <li>
-                    <a href={item.link} target={item.target ? "_blank" : null} use:reveal={{
-                        delay: 200 * i
-                    }}>
+                <li use:reveal={{
+                    delay: 200 * i,
+                    onRevealEnd(node) {
+                        node.style.setProperty("transition", "scale .25s")
+                    },
+                }}>
+                    <a href={item.link} target={item.target ? "_blank" : null}>
                         <Fa icon={item.icon} size="20" />
                         <p>{item.text}</p>
                     </a>
@@ -124,7 +127,6 @@
 
             > li {
                 will-change: scale;
-                transition: scale .25s;
 
                 > a {
                     width: 100%;

@@ -13,19 +13,24 @@
     import svelte from "$lib/assets/img/tools/svelte.svg";
     import react from "$lib/assets/img/tools/react.svg";
     import nodejs from "$lib/assets/img/tools/nodejs.svg";
+    import php from "$lib/assets/img/tools/php.svg"
 
     import pocketbase from "$lib/assets/img/tools/pocketbase.svg";
     import mariadb from "$lib/assets/img/tools/mariadb.svg";
+    import mysql from "$lib/assets/img/tools/mysql.svg";
+    import php_myadmin from "$lib/assets/img/tools/php_myadmin.svg";
 
     import netlify from "$lib/assets/img/tools/netlify.svg";
     import heroku from "$lib/assets/img/tools/heroku.svg";
 
     import wordpress from "$lib/assets/img/tools/wordpress.svg";
     import elementor from "$lib/assets/img/tools/elementor.svg";
+    import shopify from "$lib/assets/img/tools/shopify.svg";
 
     import photoshop from "$lib/assets/img/tools/photoshop.svg";
     import illustrator from "$lib/assets/img/tools/illustrator.svg";
     import premierepro from "$lib/assets/img/tools/premierepro.svg";
+    import indesign from "$lib/assets/img/tools/indesign.svg";
     import figma from "$lib/assets/img/tools/figma.svg";
     
     import python from "$lib/assets/img/tools/python.svg";
@@ -104,19 +109,19 @@
                 <TechCategory name="Langage de programmation/frameworks" on:iconClicked={({detail: {icon}}) => {
                     if(icon === ts) return scriptingLang = js
                     if(icon === js) return enterEasterGame()
-                }} icons={[html, css, scriptingLang, sass, svelte, react, nodejs]}/>
+                }} icons={[html, css, scriptingLang, sass, svelte, react, nodejs, php]}/>
             </li>
             <li>
-                <TechCategory name="Bases de données" icons={[pocketbase, mariadb]}/>
+                <TechCategory name="Bases de données" icons={[pocketbase, mariadb, mysql, php_myadmin]}/>
             </li>
             <li>
-                <TechCategory name="CMS & Outils" icons={[wordpress, elementor]}/>
+                <TechCategory name="CMS & Outils" icons={[wordpress, elementor, shopify]}/>
             </li>
             <li>
                 <TechCategory name="Hébergement" icons={[netlify, heroku]}/>
             </li>
             <li>
-                <TechCategory name="Suite Adobe" icons={[photoshop, illustrator, premierepro, figma]}/>
+                <TechCategory name="Suite Adobe" icons={[photoshop, illustrator, premierepro, indesign, figma]}/>
             </li>
             <li>
                 <TechCategory name="Autres" icons={[python, unity, flstudio]} on:iconClicked={({detail: { icon }}) => {

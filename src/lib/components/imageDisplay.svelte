@@ -18,7 +18,7 @@
     let locator: HTMLDivElement;
     onMount(() => {
         if(auto_implement && locator) {
-            locator.parentElement?.querySelectorAll<HTMLImageElement>("img:not(#image-visualizer)").forEach(img => {
+            locator.parentElement?.querySelectorAll<HTMLImageElement>("img:not(#image-visualizer):not(.no-visualizer)").forEach(img => {
                 img.classList.add("img-display")
                 img.onclick = () => openModal(img)
             })

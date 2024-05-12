@@ -44,6 +44,15 @@
 	}
 }
 
+:global(blockquote) {
+	padding: 15px 15px;
+	border-left: 3.5px solid $primary;
+	background-color: var(--background, $black);
+	border-radius: 5px;
+	margin: 15px 0;
+	font-style: italic;
+}
+
 // https://codepen.io/tomhodgins/pen/QEwvEK/
 :global(table) {
 	margin: 15px auto;

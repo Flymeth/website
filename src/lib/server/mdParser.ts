@@ -28,8 +28,9 @@ const parser = new MarkdownIt({
 })
 //? To open links in a new tab (from the MdIt docs)
 parser.renderer.rules.link_open = function (tokens, idx, options, env, self) {
-    // Add a new `target` attribute, or replace the value of the existing one.
-    tokens[idx].attrSet('target', '_blank');
+    const link = tokens[idx].attrGet('href');
+    // Add a new `target` attribute, or replace the value of the existing one if the link is an extern one.
+    if(!link || link.startsWith("http")) tokens[idx].attrSet('target', '_blank');
 
     // Pass the token to the default renderer.
     return self.renderToken(tokens, idx, options);

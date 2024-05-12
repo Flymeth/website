@@ -73,7 +73,7 @@
             <div id="project-nav">
                 <div class="info">
                     {#if project.metadata.iconURL}
-                        <img src={project.metadata.iconURL} alt="Project icon">
+                        <img src={project.metadata.iconURL} alt="Project icon" class="no-visualizer">
                     {/if}
                     <h2>
                         {#if project.metadata.link}
