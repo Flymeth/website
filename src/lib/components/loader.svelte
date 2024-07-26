@@ -121,6 +121,7 @@
             bottom: 50px;
             left: 50%;
             translate: -50% 0;
+            width: 100%;
 
             font-size: 80px;
             font-style: italic;

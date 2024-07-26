@@ -1,26 +1,44 @@
-*, ::before, ::after {
-    cursor: none;
+*,
+::before,
+::after {
+	cursor: none;
 }
 // Cursor
-body::before {
-    content: "";
-    position: fixed;
-    top: var(--cursor-y);
-    left: var(--cursor-x);
-    translate: -50% -50%;
+$cursor-w: 20px;
+body {
+	&::before,
+	&::after {
+		content: "";
+		position: fixed;
+		translate: -50% -50%;
 
-    mix-blend-mode: difference;
-    width: 20px;
-    aspect-ratio: 1 / 1;
-    pointer-events: none;
+		aspect-ratio: 1 / 1;
+		border-radius: 50%;
+		z-index: 999;
 
-    background-color: var(--secondary);
-    opacity: .5;
-    z-index: 999;
+		pointer-events: none;
+		opacity: var(--cursor-opacity);
+	}
 
-    scale: var(--cursor-scale);
-    opacity: var(--cursor-opacity);
-    box-shadow: 0 0 15px -2.5px var(--foreground);
-    
-    border-radius: 50%;
+	&::before {
+		top: var(--cursor-y);
+		left: var(--cursor-x);
+		width: $cursor-w;
+
+		mix-blend-mode: difference;
+		background-color: var(--secondary);
+		z-index: 999;
+
+		scale: var(--cursor-scale);
+		box-shadow: 0 0 15px -2.5px var(--foreground);
+	}
+
+	&::after {
+		top: var(--cursor-cy);
+		left: var(--cursor-cx);
+		width: calc(#{$cursor-w} / 2.5);
+		background-color: var(--foreground);
+
+		scale: calc(1 / var(--cursor-scale));
+	}
 }

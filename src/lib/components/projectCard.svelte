@@ -8,7 +8,7 @@
 	import { fade } from "svelte/transition";
     import { navHeight } from "./nav.svelte";
     import SvelteFA from "svelte-fa";
-    import { faLink, type IconDefinition } from "@fortawesome/free-solid-svg-icons"
+    import { faLink } from "@fortawesome/free-solid-svg-icons"
     import { faGithub, faFigma, faCodepen, faDiscord, faStackOverflow } from "@fortawesome/free-brands-svg-icons";
 	import ImageDisplay from "./imageDisplay.svelte";
 	import Share from "./share.svelte";

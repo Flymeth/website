@@ -1,0 +1,17 @@
+{
+	"title": "Stage de développement web",
+	"description": "Stage de fin d'année chez SecondStep en tant que développeur web React",
+	"date": [1714640400000, 1720198800000],
+	"skills": [
+		"React",
+		"Shopify",
+		"SCSS",
+		"GraphiQL",
+		"NodeJs",
+		"Gestion de Projet"
+	],
+	"links": {
+		"notion": "https://stage-secondstep.notion.site/e62cb3d0fd4a4dd9a3e1a330ec98d660"
+	},
+	"document": "/stages/secondstep-2023-2024.pdf"
+}

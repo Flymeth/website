@@ -1,7 +1,7 @@
 import * as postMeta from "$lib/server/posts_utilities/_meta";
 import { dev } from "$app/environment";
 import { timestamp } from "$lib/server/posts_utilities/_meta.json";
-import { ServerLoad } from "@sveltejs/kit";
+import type { ServerLoad } from "@sveltejs/kit";
 
 export let load: ServerLoad = () => {
     // in dev, store the meta each 5 minutes
