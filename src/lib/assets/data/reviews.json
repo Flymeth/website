@@ -1,46 +1,55 @@
 [
-    {
-        "author": {
-            "name": "Théo MISTRAL",
-            "status": "Etudiant IPI",
-            "img": "/cdn/reviews/theo_m.webp",
-            "link": "https://www.linkedin.com/in/th%C3%A9o-mistral-8597b6216/"
-        },
-        "comment": "Les sites sont complets et permettent des interactions innovantes. Le site est livré assez rapidement. Je recommande vivement Johan pour la création de votre site."
-    },
-    {
-        "author": {
-            "name": "QUENTIN",
-            "status": "Etudiant My Digital School",
-            "img": "/cdn/reviews/quentin.webp"
-        },
-        "comment": "Le travail de codage effectué par Johan JANIN est tout simplement remarquable. Sa maîtrise technique et sa persévérance se reflètent dans son travail, dépassant toutes les attentes. Son engagement envers l’excellence fait de lui un professionnel incontournable dans le domaine et sa contribution mérite une reconnaissance bien méritée."
-    },
-    {
-        "author": {
-            "name": "Loris RODRIGUES",
-            "status": "Etudiant My Digital School",
-            "img": "/cdn/reviews/loris_r.webp",
-            "link": "https://www.linkedin.com/in/loris-rodrigues/"
-        },
-        "comment": "Je recommande fortement Johan JANIN pour le développement Full-Stack."
-    },
-    {
-        "author": {
-            "name": "Cyril Couffe",
-            "status": "Formateur My Digital School",
-            "img": "/cdn/reviews/cyril_c.webp",
-            "link": "https://www.linkedin.com/in/cyril-couffe-phd-331722b6/"
-        },
-        "comment": "Depuis le début, Johan démontre une grande aisance dans l'apprentissage, l'écriture, et la relecture de code pour créer differentes applications et sites web. Je le recommande sans hésiter pour quiconque rechercherait un esprit avide d'apprendre et de créer !"
-    },
-    {
-        "author": {
-            "name": "Alexis MARIN",
-            "status": "Etudiant My Digital School",
-            "img": "/cdn/reviews/alexis_m.webp",
-            "link": "https://www.linkedin.com/in/alexis-marin-a31b87288/"
-        },
-        "comment": "Johan est une source de motivation au sein de notre promo ! Je recommande du fait de sa passion pour le web et de son envie d'aller toujours plus loin !"
-    }
+	{
+		"author": {
+			"name": "Théo MISTRAL",
+			"status": "Etudiant IPI",
+			"img": "/cdn/reviews/theo_m.webp",
+			"link": "https://www.linkedin.com/in/th%C3%A9o-mistral-8597b6216/"
+		},
+		"comment": "Les sites sont complets et permettent des interactions innovantes. Le site est livré assez rapidement. Je recommande vivement Johan pour la création de votre site."
+	},
+	{
+		"author": {
+			"name": "QUENTIN",
+			"status": "Etudiant My Digital School",
+			"img": "/cdn/reviews/quentin.webp"
+		},
+		"comment": "Le travail de codage effectué par Johan JANIN est tout simplement remarquable. Sa maîtrise technique et sa persévérance se reflètent dans son travail, dépassant toutes les attentes. Son engagement envers l’excellence fait de lui un professionnel incontournable dans le domaine et sa contribution mérite une reconnaissance bien méritée."
+	},
+	{
+		"author": {
+			"name": "Loris RODRIGUES",
+			"status": "Etudiant My Digital School",
+			"img": "/cdn/reviews/loris_r.webp",
+			"link": "https://www.linkedin.com/in/loris-rodrigues/"
+		},
+		"comment": "Je recommande fortement Johan JANIN pour le développement Full-Stack."
+	},
+	{
+		"author": {
+			"name": "Cyril Couffe",
+			"status": "Formateur My Digital School",
+			"img": "/cdn/reviews/cyril_c.webp",
+			"link": "https://www.linkedin.com/in/cyril-couffe-phd-331722b6/"
+		},
+		"comment": "Depuis le début, Johan démontre une grande aisance dans l'apprentissage, l'écriture, et la relecture de code pour créer differentes applications et sites web. Je le recommande sans hésiter pour quiconque rechercherait un esprit avide d'apprendre et de créer !"
+	},
+	{
+		"author": {
+			"name": "Alexis MARIN",
+			"status": "Etudiant My Digital School",
+			"img": "/cdn/reviews/alexis_m.webp",
+			"link": "https://www.linkedin.com/in/alexis-marin-a31b87288/"
+		},
+		"comment": "Johan est une source de motivation au sein de notre promo ! Je recommande du fait de sa passion pour le web et de son envie d'aller toujours plus loin !"
+	},
+	{
+		"author": {
+			"name": "Mégane RAGOT",
+			"status": "Co-fondatrice de SecondStep",
+			"img": "/cdn/reviews/megane_r.webp",
+			"link": "https://www.linkedin.com/in/m%C3%A9gane-ragot-562a42171/"
+		},
+		"comment": "Nous avons accueilli Johan en stage au sein de SecondStep, et ce fut un réel plaisir !\nJohan est très autonome, soucieux de bien faire et très intéressé par le domaine du développement web. Il ne cesse de progresser, et il est force de proposition.\nMerci à toi !"
+	}
 ]
