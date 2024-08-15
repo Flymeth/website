@@ -1,84 +1,111 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import { fade } from "svelte/transition";
-    let imgInformations: {
-        src: string,
-        alt: string,
-    } | undefined;
-    export const openModal = (data: typeof imgInformations) => {
-        imgInformations= data
-    }
-    export const closeModal = () => imgInformations = undefined
-    export let auto_implement = true;
+	import { useZoomImageWheel } from "@zoom-image/svelte";
+	const { createZoomImage } = useZoomImageWheel();
 
-    function handleClick(target: EventTarget | null) {
-        if((target as HTMLElement | null)?.nodeName === "BUTTON") return closeModal()
-    }
+	let imgInformations:
+		| {
+				src: string;
+				alt: string;
+		  }
+		| undefined;
+	export const openModal = (data: typeof imgInformations) => {
+		imgInformations = data;
+	};
+	export const closeModal = () => (imgInformations = undefined);
+	export let auto_implement = true;
 
-    let locator: HTMLDivElement;
-    onMount(() => {
-        if(auto_implement && locator) {
-            locator.parentElement?.querySelectorAll<HTMLImageElement>("img:not(#image-visualizer):not(.no-visualizer)").forEach(img => {
-                img.classList.add("img-display")
-                img.onclick = () => openModal(img)
-            })
-        }
-    })
+	function handleClick(target: EventTarget | null) {
+		if ((target as HTMLElement | null)?.nodeName === "BUTTON")
+			return closeModal();
+	}
+
+	let locator: HTMLDivElement;
+	let zoomableElement: HTMLElement;
+	$: zoomableElement && createZoomImage(zoomableElement, {
+        maxZoom: 2.75,
+        initialState: {
+            currentZoom: 1,
+        },
+    });
+
+	onMount(() => {
+		if (auto_implement && locator) {
+			locator.parentElement
+				?.querySelectorAll<HTMLImageElement>(
+					"img:not(#image-visualizer):not(.no-visualizer)"
+				)
+				.forEach((img) => {
+					img.classList.add("img-display");
+					img.onclick = () => openModal(img);
+				});
+		}
+	});
 </script>
 
 <div bind:this={locator}></div>
 {#if imgInformations}
-    <div id="img-displayer" transition:fade>
-        <button class="nodefault" on:click={(e) => handleClick(e.target)}>
-            <img src={imgInformations.src} alt={imgInformations.alt} id="image-visualizer">
-        </button>
-    </div>
+	<div id="img-displayer" transition:fade>
+		<button
+			class="nodefault"
+			on:click={(e) => handleClick(e.target)}
+			bind:this={zoomableElement}
+		>
+			<img
+				src={imgInformations.src}
+				alt={imgInformations.alt}
+				id="image-visualizer"
+				class="disabled-cursor-action"
+			/>
+		</button>
+	</div>
 {/if}
 
 <style lang="scss">
-    @import "$lib/_colors.scss";
+	@import "$lib/_colors.scss";
 
-    #img-displayer {
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background-color: rgba($color: $black, $alpha: .75);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 101;
+	#img-displayer {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		background-color: rgba($color: $black, $alpha: 0.75);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 101;
 
-        overflow: scroll;
+		overflow: hidden;
 
-        > button {
-            border: none;
-            outline: none;
-            background: transparent;
-            box-shadow: none;
-            height: 100%;
-            width: 100%;
-            &:hover {
-                scale: 1;
-            }
+		> button {
+			border: none;
+			outline: none;
+			background: transparent;
+			box-shadow: none;
+			height: 100%;
+			width: 100%;
+			&:hover {
+				scale: 1;
+			}
 
-            > img {
-                max-width: 95vw;
-                max-height: 80vh;
-                width: max-content;
-                height: max-content;
-                border-radius: 5px;
-            }
-        }
-    }
+			> img {
+				max-width: 95vw;
+				max-height: 80vh;
+				width: max-content;
+				height: max-content;
+				border-radius: 5px;
+			}
+		}
+	}
 
-    :global(img.img-display) {
-        will-change: scale;
-        transition: scale .15s;
+	:global(img.img-display) {
+		will-change: scale;
+		transition: scale 0.15s;
 
-        &:hover {
-            scale: 1.02;
-        }
-    }
+		&:hover {
+			scale: 1.02;
+		}
+	}
 </style>

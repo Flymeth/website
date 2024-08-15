@@ -126,7 +126,7 @@
 	<section id="tech">
 		<h2>Mes outils</h2>
 		<p>
-			Voici ce que j'utilise au quotidient afin de réaliser mes projets:
+			Voici ce que j'utilise au quotidien afin de réaliser mes projets:
 		</p>
 		<ol>
 			<li>

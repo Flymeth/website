@@ -12,7 +12,7 @@
     const projectlist = Array.from(data.projects)
     console.debug(`Found ${projectlist.length} projects.`)
 
-    const preOpenID = $page.url.searchParams.get("project")
+    const preOpenID = $page.url.hash.slice(1)
     let projectContainer: HTMLUListElement;
 
     if(preOpenID) $opennedProject = preOpenID
@@ -20,7 +20,7 @@
         if(browser) {
             if(
                 projectlist.find(p => p.metadata.id === projectID)
-            ) window.history.pushState(null, "", new URL(`?project=${projectID}`, $page.url.href))
+            ) window.history.pushState(null, "", new URL(`#${projectID}`, $page.url.href))
             else window.history.pushState(null, "", new URL($page.url.pathname, $page.url.origin))
         }
     })
@@ -61,7 +61,9 @@
 <main>
     <ul bind:this={projectContainer}>
         {#each [...projectlist].sort(() => Math.random() - .5) as project (project.metadata.id)}
-            <li use:reveal>
+            <li use:reveal={{
+                disable: !!preOpenID
+            }}>
                 <ProjectCard {project}/>
             </li>
         {/each}

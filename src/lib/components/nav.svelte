@@ -23,7 +23,8 @@
 		"Un développeur web,",
 		"Amoureux du web,",
 		"Adorant Svelte et React,",
-		`Qui travaille le ${["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"].at(new Date().getDay() - 1)}`,
+		"Qui fait du front & du back",
+		`Et travaille le ${["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"].at(new Date().getDay() - 1)}`,
 		"Hâte de travailler avec vous!",
 	];
 	export let changeMessageEachMs = 5000;

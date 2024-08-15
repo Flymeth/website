@@ -5,20 +5,21 @@ const clickableElementsNames = ["A", "BUTTON", "INPUT", "TEXTAREA", "OPTION"];
 export default function setupCursor() {
 	window.onmousemove = ({ clientX, clientY, target }) => {
 		let clickableElement: HTMLElement | SVGElement | null = null;
-		while (
-			(target && target instanceof HTMLElement) ||
-			target instanceof SVGElement
-		) {
-			if (
+
+		while (target instanceof HTMLElement || target instanceof SVGElement) {
+
+			if (target.classList.contains("disabled-cursor-action")) {
+				break;
+			} else if (
 				clickableElementsNames.includes(target.nodeName) ||
+				target.classList.contains("cursor-action") ||
 				(target.nodeName === "IMG" &&
-					target.classList.contains("img-display")) ||
-				target.classList.contains("cursor-action")
+					target.classList.contains("img-display"))
 			) {
 				clickableElement = target;
 				break;
 			}
-			
+
 			target = target.parentElement;
 		}
 
