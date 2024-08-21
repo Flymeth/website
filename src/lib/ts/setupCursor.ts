@@ -1,13 +1,13 @@
 import gsap from "gsap";
 
 const clickableElementsNames = ["A", "BUTTON", "INPUT", "TEXTAREA", "OPTION"];
+const disableCursorElementsNames = ["EMBED", "IFRAME"];
 
 export default function setupCursor() {
 	window.onmousemove = ({ clientX, clientY, target }) => {
 		let clickableElement: HTMLElement | SVGElement | null = null;
 
 		while (target instanceof HTMLElement || target instanceof SVGElement) {
-
 			if (target.classList.contains("disabled-cursor-action")) {
 				break;
 			} else if (
@@ -18,6 +18,12 @@ export default function setupCursor() {
 			) {
 				clickableElement = target;
 				break;
+			} else if (disableCursorElementsNames.includes(target.nodeName)) {
+				gsap.to(document.body, {
+					"--cursor-opacity": 0,
+					ease: "power4.out",
+				});
+				return;
 			}
 
 			target = target.parentElement;

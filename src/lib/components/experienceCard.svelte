@@ -71,11 +71,6 @@
 			src={exp.document}
 			type="application/pdf"
 			title={docName}
-			on:mouseenter={() => {
-				gsap.to(document.body, {
-					"--cursor-opacity": 0,
-				});
-			}}
 			on:close={() => ($isReportOpen = false)}
 		/>
 

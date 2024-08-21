@@ -3,7 +3,12 @@
 	import Header from "$lib/components/header.svelte";
 	import { reveal } from "svelte-reveal";
 	import type { PageData } from "./$types";
+	import { onMount } from "svelte";
 	export let data: PageData;
+
+	onMount(() => {
+		document.body.style.setProperty("--blog-bg", `url(${data.thumbnail})`);
+	});
 </script>
 
 <svelte:head>
@@ -53,8 +58,7 @@
 	@import "$lib/_colors.scss";
 
 	:global(body:has(#blog-content) > div) {
-		background: url("https://loremflickr.com/1920/1080/technologie,internet,computers"),
-			var(--background);
+		background: var(--blog-bg), var(--background);
 		background-size: cover;
 		background-position: center;
 		background-attachment: fixed;

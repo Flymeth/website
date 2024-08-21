@@ -1,9 +1,9 @@
 ---
-name: "Système de 'carte'"
+name: "Système de 'cartes'"
 description: "Recréation d'un système de 'carte' déplaçables sur une grille définie"
 bannerURL: "/cdn/projects/remake-beaucoup/overview.png"
 github: https://github.com/johan-jnn/tiles-grid
-codesandbox: https://4dv2rs-5173.csb.app/
+codesandbox: https://ktgqgn-5173.csb.app/
 ---
 
 # Recréation d'un design créatif d'une agence
@@ -234,9 +234,9 @@ export default class LogoTile extends TileBuilder {
 
 ## Projet final
 
-<iframe src="https://codesandbox.io/p/github/johan-jnn/tiles-grid/main?embed=1"
+<iframe src="https://codesandbox.io/p/devbox/objective-wind-ktgqgn?embed=2"
      style="width:100%; height: 500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="johan-jnn/tiles-grid/main"
+     title="grid-cards"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>

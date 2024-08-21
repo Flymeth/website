@@ -17,6 +17,7 @@
 	import php from "$lib/assets/img/tools/php.svg";
 
 	import pocketbase from "$lib/assets/img/tools/pocketbase.svg";
+	import supabase from "$lib/assets/img/tools/supabase.svg";
 	import mariadb from "$lib/assets/img/tools/mariadb.svg";
 	import mysql from "$lib/assets/img/tools/mysql.svg";
 	import php_myadmin from "$lib/assets/img/tools/php_myadmin.svg";
@@ -158,7 +159,7 @@
 			<li>
 				<TechCategory
 					name="Bases de données"
-					icons={[pocketbase, mariadb, mysql, php_myadmin, graphQL]}
+					icons={[pocketbase, supabase, mariadb, mysql, php_myadmin, graphQL]}
 				/>
 			</li>
 			<li>

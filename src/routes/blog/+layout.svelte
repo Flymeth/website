@@ -1,21 +1,21 @@
 <script lang="ts">
 	import Nav from "$lib/components/nav.svelte";
-    import "$lib/main.scss";
+	import "$lib/main.scss";
 	import { onMount } from "svelte";
 	import setupCursor from "$lib/ts/setupCursor";
 	import { isMobile } from "$lib/ts/mobile";
 	import Footer from "$lib/components/footer.svelte";
+	import Loader from "$lib/components/loader.svelte";
 
-    onMount(() => {
-        // Set cursor position (only update if the user is on desktop)
-        !isMobile() && setupCursor()
-    })
+	onMount(() => {
+		// Set cursor position (only update if the user is on desktop)
+		!isMobile() && setupCursor();
+	});
 </script>
-
 <Nav />
 
 <div>
-    <slot />
+	<slot />
 </div>
 
 <Footer />

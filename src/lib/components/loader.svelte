@@ -101,6 +101,7 @@
         width: 100%;
         height: 100%;
         background-color: var(--background);
+        cursor: initial !important;
 
         z-index: 9999;
 
