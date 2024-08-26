@@ -62,13 +62,15 @@
 		background-size: cover;
 		background-position: center;
 		background-attachment: fixed;
-		text-shadow: 0 0 10px var(--background);
 	}
 	:global(body:has(#blog-content) > div > div:not(#navbar)) {
-		backdrop-filter: blur(5px);
+		backdrop-filter: blur(calc(var(--scroll) * 15px + 2.5px));
 	}
 	:global(body:has(#blog-content) footer) {
 		margin-top: 0;
+	}
+	:global(body:has(#blog-content) > div > *:not(footer)) {
+		color: $white;
 	}
 
 	main {

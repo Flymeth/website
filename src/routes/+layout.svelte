@@ -10,6 +10,7 @@
 	import SubLoader from "$lib/components/subLoader.svelte";
 	import { navigating as isNavigating } from "$app/stores";
 	import { isMobile } from "$lib/ts/mobile";
+	import { gsap } from "gsap";
 
 	let navigating = false;
 	// Add page transition
@@ -36,7 +37,6 @@
 	afterNavigate(() => {
 		navigating = false;
 	});
-	
 
 	onMount(() => {
 		window.addEventListener("resize", () => {
@@ -45,6 +45,17 @@
 			);
 		});
 		if (isMobile()) document.body.setAttribute("data-mobile", "");
+
+		window.addEventListener("scroll", () => {
+			const { scrollingElement } = document;
+			if (scrollingElement) {
+				gsap.to(document.body, {
+					"--scroll":
+						scrollingElement.scrollTop /
+						(scrollingElement.scrollHeight - window.innerHeight),
+				});
+			}
+		});
 	});
 </script>
 

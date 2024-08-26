@@ -5,7 +5,6 @@
 	import setupCursor from "$lib/ts/setupCursor";
 	import { isMobile } from "$lib/ts/mobile";
 	import Footer from "$lib/components/footer.svelte";
-	import Loader from "$lib/components/loader.svelte";
 
 	onMount(() => {
 		// Set cursor position (only update if the user is on desktop)

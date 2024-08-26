@@ -102,6 +102,7 @@
         height: 100%;
         background-color: var(--background);
         cursor: initial !important;
+        overflow: hidden;
 
         z-index: 9999;
 

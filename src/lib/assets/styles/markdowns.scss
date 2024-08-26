@@ -20,15 +20,22 @@
 }
 
 :global(img),
-:global(video) {
-	width: min(100%, 650px);
-	height: auto;
+:global(video),
+:global(embed),
+:global(iframe) {
 	display: block;
 	margin: 10px auto;
 
 	box-shadow: 0 0 15px -2.5px var(--background);
 	border-radius: 10px;
+	border: none;
 }
+:global(img),
+:global(video) {
+	width: min(100%, 650px);
+	height: auto;
+}
+
 :global(hr) {
 	margin: 40px auto;
 }
@@ -56,18 +63,18 @@
 // https://codepen.io/tomhodgins/pen/QEwvEK/
 :global(table) {
 	margin: 15px auto;
-    color: #333;
-	background: rgba(255, 255, 255, .6);
+	color: #333;
+	background: rgba(255, 255, 255, 0.6);
 	border: 1px solid grey;
 	font-size: 12pt;
 	border-collapse: collapse;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
+	border-radius: 10px;
+	overflow: hidden;
+	text-align: center;
 }
 
 :global(table thead) {
-    text-transform: uppercase;
+	text-transform: uppercase;
 }
 
 :global(table thead th),

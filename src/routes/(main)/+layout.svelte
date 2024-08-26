@@ -67,6 +67,7 @@
 			loadingScene = true;
 			currentScene = scene;
 			sceneContainer.appendChild(scene.renderer.domElement);
+			sceneContainer.style.removeProperty("display");
 
 			await scene.load();
 			Scene.animate(scene);
@@ -89,7 +90,7 @@
 	});
 </script>
 
-<div id="scene" bind:this={sceneContainer}></div>
+<div id="scene" bind:this={sceneContainer} style="display: none;"></div>
 
 {#if loading}
 	<div out:fade>
@@ -119,6 +120,7 @@
 		z-index: -1;
 		opacity: 0.65;
 		filter: blur(2.5px);
+		overflow: hidden;
 	}
 
 	#app {

@@ -32,6 +32,7 @@
     @import "$lib/_colors.scss";
     $icon-width: 50px;
     $icon-gap: 20px;
+    $container-padding: 15px;
     $max-icons-per-row: 5;
     $techNameAnimationDuration: .15s;
 
@@ -45,9 +46,13 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        max-width: ($icon-width + $icon-gap) * $max-icons-per-row;
+        max-width: ($icon-width + $icon-gap + $container-padding) * $max-icons-per-row;
         margin: 0 auto;
         gap: $icon-gap;
+        backdrop-filter: blur(10px);
+        padding: calc($container-padding * 2) $container-padding;
+        border: 1.5px dashed rgba($secondary, .15);
+        border-radius: 5px;
 
         > li {
             filter: grayscale(1) drop-shadow(0 0 5px $black);

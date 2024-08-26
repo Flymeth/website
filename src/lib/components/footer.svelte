@@ -8,13 +8,30 @@
             })
         )}>Envie de remonter la page ?</a>
     </p>
-
-    <h3>Socials</h3>
-    <ul>
-        <li><a href="https://github.com/Flymeth" target="_blank">Mes projets (github)</a></li>
-        <li><a href="https://flymeth.net" target="_blank">Mon deuxième site</a></li>
-        <li><a href="/law/mentions-legales">Mentions Légales</a></li>
-    </ul>
+    <div>
+        <section>
+            <h3>Me retrouver</h3>
+            <ul>
+                <li><a href="https://github.com/Flymeth" target="_blank">Mes projets (github)</a></li>
+                <li><a href="https://flymeth.net" target="_blank">Mon site secondaire</a></li>
+                <li><a href="https://www.linkedin.com/in/johan-janin/" target="_blank">LinkedIn</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Me contacter</h3>
+            <ul>
+                <li><a href="/contact">Formulaire et liens</a></li>
+                <li><a href="mailto:johan.janin@gmail.com">Email</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Autre</h3>
+            <ul>
+                <li><a href="/law/mentions-legales">Mentions Légales</a></li>
+                <li><a href="https://github.com/Flymeth/website" target="_blank">Code source du site</a></li>
+            </ul>
+        </section>
+    </div>
 </footer>
 
 <style lang="scss">
@@ -43,8 +60,23 @@
             margin: 5px 0;
         }
 
-        > h3 {
-            margin-top: 15px;
+        > div {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            gap: 15px;
+
+            > section {
+                padding: 0 15px;
+                > h3 {
+                    margin-top: 15px;
+                    text-align: center;
+                    margin-bottom: 10px;
+                    text-decoration: underline;
+                }
+            }
         }
+
     }
 </style>

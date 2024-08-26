@@ -39,7 +39,7 @@
 	import unity from "$lib/assets/img/tools/unity.svg";
 	import flstudio from "$lib/assets/img/tools/flstudio.svg";
 	import discordDev from "$lib/assets/img/tools/discord_bot.svg";
-    
+
 	import TechCategory from "$lib/components/techCategory.svelte";
 	import gsap from "gsap";
 	import { goto } from "$app/navigation";
@@ -104,7 +104,7 @@
 	<h1>En quête d'un <span>développeur full-stack</span>?</h1>
 	<p>Je suis Johan : un expert dans la création web, basé à Lyon.</p>
 </Header>
-<main>
+<main id="index">
 	<section id="me">
 		<h2>Je me présente</h2>
 		<p use:reveal>
@@ -126,9 +126,7 @@
 	</section>
 	<section id="tech">
 		<h2>Mes outils</h2>
-		<p>
-			Voici ce que j'utilise au quotidien afin de réaliser mes projets:
-		</p>
+		<p>Voici ce que j'utilise au quotidien afin de réaliser mes projets:</p>
 		<ol>
 			<li>
 				<TechCategory
@@ -147,7 +145,7 @@
 						html,
 						css,
 						scriptingLang,
-                        python,
+						python,
 						sass,
 						svelte,
 						react,
@@ -159,7 +157,14 @@
 			<li>
 				<TechCategory
 					name="Bases de données"
-					icons={[pocketbase, supabase, mariadb, mysql, php_myadmin, graphQL]}
+					icons={[
+						pocketbase,
+						supabase,
+						mariadb,
+						mysql,
+						php_myadmin,
+						graphQL,
+					]}
 				/>
 			</li>
 			<li>
@@ -242,6 +247,14 @@
 	<style>
 		#scene {
 			filter: none !important;
+			opacity: 1 !important;
+			backdrop-filter: blur(2.5px);
+		}
+		body {
+			background: url(/index_bg.svg) var(--background);
+			background-attachment: fixed;
+			background-size: contain;
+			background-position: center calc(var(--scroll, 0) * -50vh);
 		}
 	</style>
 </main>

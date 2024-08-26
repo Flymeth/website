@@ -25,12 +25,14 @@ body {
 		left: var(--cursor-x);
 		width: $cursor-w;
 
-		mix-blend-mode: difference;
 		background-color: var(--secondary);
 		z-index: 999;
 
 		scale: var(--cursor-scale);
 		box-shadow: 0 0 15px -2.5px var(--foreground);
+	}
+	&:not([data-mobile])::before {
+		mix-blend-mode: difference;
 	}
 
 	&::after {
