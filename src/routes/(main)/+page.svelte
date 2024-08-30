@@ -34,6 +34,7 @@
 	import illustrator from "$lib/assets/img/tools/illustrator.svg";
 	import premierepro from "$lib/assets/img/tools/premierepro.svg";
 	import indesign from "$lib/assets/img/tools/indesign.svg";
+	import xd from "$lib/assets/img/tools/xd.svg";
 	import figma from "$lib/assets/img/tools/figma.svg";
 
 	import unity from "$lib/assets/img/tools/unity.svg";
@@ -184,6 +185,7 @@
 						illustrator,
 						premierepro,
 						indesign,
+						xd,
 						figma,
 					]}
 				/>

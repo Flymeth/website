@@ -84,6 +84,8 @@ En utilisant [Vite](https://vitejs.dev/), j'ai rapidement créer les différents
 
 J'ai ensuite installé [SASS](https://sass-lang.com/) qui va me permettre d'écrire du CSS bien plus facilement.
 
+![Structure du projet](/cdn/articles/rd-1/file_structure.png)
+
 ### 3. Les cartes
 
 Afin de pouvoir éditer au maximum chaque carte de la grille, j'ai décidé d'associer chaque carte à un composant React.

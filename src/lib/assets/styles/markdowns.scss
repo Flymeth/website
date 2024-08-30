@@ -32,8 +32,10 @@
 }
 :global(img),
 :global(video) {
-	width: min(100%, 650px);
-	height: auto;
+	max-height: 65vh;
+	max-width: 650px;
+	width: 100%;
+	object-fit: contain;
 }
 
 :global(hr) {

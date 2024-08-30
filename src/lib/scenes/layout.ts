@@ -1,5 +1,5 @@
 import * as three from "three";
-import { GLTFLoader } from "three/examples/jsm/Addons";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import Scene from "./_default";
 
 export class LayoutScene extends Scene {

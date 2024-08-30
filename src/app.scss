@@ -26,11 +26,11 @@
 	@include lightTheme;
 	--primary: #{$primary};
 	--secondary: #{$secondary};
+	scroll-behavior: smooth;
+
 	&[force-dark] {
 		@include darkTheme;
 	}
-
-	scroll-behavior: smooth;
 }
 ::selection {
 	background-color: rgba($primary, 0.25);
@@ -95,9 +95,6 @@ ul {
 button:not(.nodefault) {
 	padding: 10px 25px;
 	border: none;
-	&.primary-color {
-		--secondary: var(--primary);
-	}
 	background: linear-gradient(
 		to bottom right,
 		var(--secondary),
@@ -116,6 +113,10 @@ button:not(.nodefault) {
 	transition: scale 0.15s, box-shadow 0.15s;
 
 	box-shadow: 0 0 10px -2px var(--foreground);
+
+	&.primary-color {
+		--secondary: var(--primary);
+	}
 	&:hover {
 		scale: 1.05;
 	}

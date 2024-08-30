@@ -10,9 +10,12 @@
 	import SubLoader from "$lib/components/subLoader.svelte";
 	import { navigating as isNavigating } from "$app/stores";
 	import { isMobile } from "$lib/ts/mobile";
+	import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 	import { gsap } from "gsap";
+	gsap.registerPlugin(ScrollTrigger);
 
 	let navigating = false;
+	let scrollTween: GSAPTween | undefined;
 	// Add page transition
 	//>> https://svelte.dev/blog/view-transitions
 	onNavigate((navigation) => {
@@ -36,6 +39,15 @@
 	});
 	afterNavigate(() => {
 		navigating = false;
+		if (scrollTween) scrollTween.scrollTrigger?.kill(true, true);
+		scrollTween = gsap.to(document.scrollingElement, {
+			"--scroll": 1,
+			scrollTrigger: {
+				scrub: 1,
+				start: "top top",
+				end: "bottom bottom",
+			},
+		});
 	});
 
 	onMount(() => {
@@ -45,17 +57,6 @@
 			);
 		});
 		if (isMobile()) document.body.setAttribute("data-mobile", "");
-
-		window.addEventListener("scroll", () => {
-			const { scrollingElement } = document;
-			if (scrollingElement) {
-				gsap.to(document.body, {
-					"--scroll":
-						scrollingElement.scrollTop /
-						(scrollingElement.scrollHeight - window.innerHeight),
-				});
-			}
-		});
 	});
 </script>
 
