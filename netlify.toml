@@ -1,5 +1,5 @@
 [build]
-	command = "cp -a ./posts ./static && npm run build --force"
+	command = "cp -a ./posts ./static && npm run build -- --force"
 	publish = "build"
 	functions = "functions/"
 [functions]
