@@ -1,9 +1,9 @@
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import Scene from "./_default";
 import { AmbientLight, Vector3 } from "three";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { degToRad } from "three/src/math/MathUtils";
+import { degToRad } from "three/src/math/MathUtils.js";
 
 gsap.registerPlugin(ScrollTrigger);
 

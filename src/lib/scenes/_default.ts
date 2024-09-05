@@ -1,6 +1,6 @@
 import * as three from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { ViewHelper } from "three/examples/jsm/helpers/ViewHelper";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { ViewHelper } from "three/examples/jsm/helpers/ViewHelper.js";
 
 export default class Scene<UseOrbitHelper = false, UseGridHelper = false> {
 	readonly scene = new three.Scene();
