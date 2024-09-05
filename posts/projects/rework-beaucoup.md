@@ -3,7 +3,8 @@ name: "Système de 'cartes'"
 description: "Recréation d'un système de 'carte' déplaçables sur une grille définie"
 bannerURL: "/cdn/projects/remake-beaucoup/overview.png"
 github: https://github.com/johan-jnn/tiles-grid
-codesandbox: https://ktgqgn-5173.csb.app/
+codesandbox: https://codesandbox.io/p/devbox/grid-cards-ktgqgn
+link: https://ktgqgn-5173.csb.app/
 ---
 
 # Recréation d'un design créatif d'une agence
