@@ -13,7 +13,7 @@
             <h3>Me retrouver</h3>
             <ul>
                 <li><a href="https://github.com/Flymeth" target="_blank">Mes projets (github)</a></li>
-                <li><a href="https://flymeth.net" target="_blank">Mon site secondaire</a></li>
+                <li><a href="https://flymeth.is-a.dev" target="_blank">Mon site secondaire</a></li>
                 <li><a href="https://www.linkedin.com/in/johan-janin/" target="_blank">LinkedIn</a></li>
             </ul>
         </section>
