@@ -1,6 +1,7 @@
 <script lang="ts">
   import { reveal } from "svelte-reveal";
   import { createEventDispatcher } from "svelte";
+  import path from "path-browserify";
   export let name: string;
   export let icons: string[];
 
@@ -15,8 +16,7 @@
 <h3>{name}</h3>
 <ul>
   {#each icons as icon, i}
-    <!-- ! Weirds name on icons on production -->
-    {@const techName = icon.match(/[^\\/.]+?(?=[.].+$)/)?.[0] || "<unknown>"}
+    {@const techName = path.parse(icon).name.split(".")[0]}
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <li
       data-tech={techName}
