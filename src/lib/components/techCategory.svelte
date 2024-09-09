@@ -1,32 +1,36 @@
 <script lang="ts">
   import { reveal } from "svelte-reveal";
   import { createEventDispatcher } from "svelte";
-  import path from "path-browserify";
   export let name: string;
-  export let icons: string[];
+  interface Tech {
+    icon: string;
+    name: string;
+  }
+  /**
+   * Key is the tech's name and value is the icon url
+   */
+  export let list: { [key: string]: string | undefined };
+  $: entries = Object.entries(list).filter(([_, i]) => typeof i === "string") as [string, string][];
+  $: list_len = entries.length;
 
   const dispatch = createEventDispatcher<{
-    iconClicked: {
-      techName: string;
-      icon: string;
-    };
+    iconClicked: Tech;
   }>();
 </script>
 
 <h3>{name}</h3>
 <ul>
-  {#each icons as icon, i}
-    {@const techName = path.parse(icon).name.split(".")[0]}
+  {#each entries as [name, icon], i}
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <li
-      data-tech={techName}
-      style="z-index: {icons.length - i};"
-      on:click={() => dispatch("iconClicked", { techName, icon })}
+      data-tech={name}
+      style="z-index: {list_len - i};"
+      on:click={() => dispatch("iconClicked", { name, icon })}
       on:keypress
     >
       <img
         src={icon}
-        alt="{techName} icon"
+        alt="{name}'s icon"
         use:reveal={{
           delay: 100 * i,
           blur: 15,
@@ -137,6 +141,7 @@
         font-weight: bold;
         pointer-events: none;
         transition: $techNameAnimationDuration;
+        text-wrap: nowrap;
       }
       &:hover {
         &::before {
