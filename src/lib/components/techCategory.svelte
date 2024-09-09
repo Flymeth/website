@@ -4,13 +4,19 @@
   export let name: string;
   export let icons: string[];
 
-  const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher<{
+    iconClicked: {
+      techName: string;
+      icon: string;
+    };
+  }>();
 </script>
 
 <h3>{name}</h3>
 <ul>
   {#each icons as icon, i}
-    {@const techName = icon.replace(/^.*[\\/]/, "").split(".")[0]}
+    <!-- ! Weirds name on icons on production -->
+    {@const techName = icon.match(/[^\\/.]+?(?=[.].+$)/)?.[0] || "<unknown>"}
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <li
       data-tech={techName}
@@ -20,7 +26,7 @@
     >
       <img
         src={icon}
-        alt="{icon.split('/').at(-1)?.replace('.svg', '')} icon"
+        alt="{techName} icon"
         use:reveal={{
           delay: 100 * i,
           blur: 15,

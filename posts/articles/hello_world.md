@@ -1,25 +1,25 @@
 ---
 title: "Hello World!"
-description: "As this is my first article, let's learn a bit more on the famous \"Hello World\" sentence in programing environment !"
+description: 'As this is my first article, let''s learn a bit more on the famous "Hello World" sentence in programing environment !'
 coverURL: https://drjplopes.com/media/BlogBanners/Hello-World_Banner.png
 ressources:
-- https://fr.wikipedia.org/wiki/Hello_world#Histoire
-- https://drjplopes.com/journal/2021/5/hello-world
+  - https://fr.wikipedia.org/wiki/Hello_world#Histoire
+  - https://drjplopes.com/journal/2021/5/hello-world
 category: Programation
 tags:
-- Hello World
-- Programing language
-- Debuging
-- Noobs
+  - Hello World
+  - Programing language
+  - Debuging
+  - Noobs
 ---
 
 ## Hello dear readders
 
 First of all, thanks for reading my first article: I hope you enjoy my website so far!
-As I'm currently writing my first article, I remember my first time at programation... my first *Hello World* in `Javascript`.
+As I'm currently writing my first article, I remember my first time at programation... my first _Hello World_ in `Javascript`.
 
 ```js
-console.log("Hello World")
+console.log("Hello World");
 ```
 
 Simple right ?

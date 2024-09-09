@@ -30,6 +30,6 @@ J'ai utilisé pour ce projet les technologies suivantes :
 
 ## Etapes du projet
 
-Afin de connaître les dessous de ce projet, je vous invite à aller lire l'article sur mon blog qui détaille les différentes parties du projet.
+Afin de connaître les dessous de ce projet, je vous invite à aller lire l'article sur mon blog qui détaille les différentes parties du projet :
 
-> Note: l'article est en cours de rédaction. Revenez plus tard sur cette page pour accéder au lien.
+[Accéder à l'article](/blog/recode-design-2-akaru-studio)

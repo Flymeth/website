@@ -32,8 +32,9 @@ export async function getArticles() {
 
 	// Importing projects markdown files
 	const files = import.meta.glob("../../../../posts/articles/*.md", {
-		as: "raw",
+		query: "?raw",
 		eager: true,
+		import: "default"
 	});
 	for (const filePath in files) {
 		const raw = files[filePath] as string;

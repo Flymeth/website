@@ -4,11 +4,11 @@ description: Les raccourcisseurs d'URL sont des outils offrant une solution simp
 coverURL: /cdn/articles/url-shortener/cover.png
 category: Outils
 tags:
-- URL
-- Raccourcisseur d'url
-- HTML
-- Back-end
-- bitly
+  - URL
+  - Raccourcisseur d'url
+  - HTML
+  - Back-end
+  - bitly
 ---
 
 ## Les Raccourcisseurs d'URL : Simplifier la Navigation Web
@@ -60,18 +60,19 @@ Pour cette partie, nous allons simplement créer un formulaire HTML qui lorsqu'i
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Raccourcisseur d'URL - Home made</title>
-    </head>
-    <body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+    <title>Raccourcisseur d'URL - Home made</title>
+  </head>
+  <body>
     <h1>Mon Raccourcisseur d'URL</h1>
     <form method="POST" action="/new">
-        <input type="url" name="url" placeholder="Entrez votre URL ici"/>
-        <button type="submit">Raccourcir</button>
+      <input type="url" name="url" placeholder="Entrez votre URL ici" />
+      <button type="submit">Raccourcir</button>
     </form>
-    </body>
+  </body>
 </html>
 ```
 
@@ -97,9 +98,9 @@ Pour cette partie, nous allons utiliser [Express](https://expressjs.com/fr/) qui
 
 ```js
 // Import des modules nécessaires
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require("node:path")
+const express = require("express");
+const bodyParser = require("body-parser");
+const path = require("node:path");
 
 // Initialisation de l'application Express
 const app = express();
@@ -112,18 +113,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const bdd = new Map();
 
 // Pour envoyer la page d'enregistrement des urls
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, "./index.html"))
-})
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./index.html"));
+});
 ```
 
 #### Génération du code
 
 ```js
 // Fonction pour générer un raccourci URL aléatoire
-function generateCode(len= 6) {
-  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let code= '';
+function generateCode(len = 6) {
+  const characters =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let code = "";
   for (let i = 0; i < len; i++) {
     code += characters.charAt(Math.floor(Math.random() * characters.length));
   }
@@ -137,7 +139,7 @@ Après avoir reçu le formulaire, il nous faut le traiter.
 Le code ci-dessous s'occupe de recevoir l'url, de l'enregistrer et de générer et retourner le code associé.
 
 ```js
-app.post('/new', async (req, res) => {
+app.post("/new", async (req, res) => {
   const { url } = req.body;
 
   // Vérification si l'URL est déjà raccourcie
@@ -148,10 +150,10 @@ app.post('/new', async (req, res) => {
   }
 
   // Création d'un nouveau raccourci URL
-  const code= generateCode();
+  const code = generateCode();
 
   // Sauvegarde de l'URL
-  bdd.set(code, url)
+  bdd.set(code, url);
 
   res.send(`URL compressé: /${code}`);
 });
@@ -162,13 +164,13 @@ app.post('/new', async (req, res) => {
 #### Redirection des URLs
 
 ```js
-app.get('/:code', async (req, res) => {
+app.get("/:code", async (req, res) => {
   const { code } = req.params;
 
   // Recherche de l'URL originale dans la base de données
   const url = bdd.get(code);
   if (!url) {
-    res.status(404).send('URL not found');
+    res.status(404).send("URL not found");
     return;
   }
 
@@ -182,9 +184,9 @@ app.get('/:code', async (req, res) => {
 // server.js
 
 // Import des modules nécessaires
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require("node:path")
+const express = require("express");
+const bodyParser = require("body-parser");
+const path = require("node:path");
 
 // Initialisation de l'application Express
 const app = express();
@@ -197,8 +199,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const bdd = new Map();
 
 // Route pour raccourcir une URL
-app.post('/new', async (req, res) => {
-  const { url} = req.body;
+app.post("/new", async (req, res) => {
+  const { url } = req.body;
 
   // Vérification si l'URL est déjà raccourcie
   const existingUrl = await bdd.get(url);
@@ -208,22 +210,22 @@ app.post('/new', async (req, res) => {
   }
 
   // Création d'un nouveau raccourci URL
-  const code= generateCode();
+  const code = generateCode();
 
   // Sauvegarde de l'URL
-  bdd.set(code, url)
+  bdd.set(code, url);
 
   res.send(`URL compressé: /${code}`);
 });
 
 // Route pour rediriger vers l'URL d'origine
-app.get('/:code', async (req, res) => {
+app.get("/:code", async (req, res) => {
   const { code } = req.params;
 
   // Recherche de l'URL originale dans la base de données
   const url = bdd.get(code);
   if (!url) {
-    res.status(404).send('URL not found');
+    res.status(404).send("URL not found");
     return;
   }
 
@@ -231,14 +233,15 @@ app.get('/:code', async (req, res) => {
 });
 
 // Pour envoyer la page d'enregistrement des urls
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, "./index.html"))
-})
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./index.html"));
+});
 
 // Fonction pour générer un raccourci URL aléatoire
-function generateCode(len= 6) {
-  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let code= '';
+function generateCode(len = 6) {
+  const characters =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let code = "";
   for (let i = 0; i < len; i++) {
     code += characters.charAt(Math.floor(Math.random() * characters.length));
   }

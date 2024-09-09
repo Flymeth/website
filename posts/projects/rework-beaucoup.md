@@ -235,6 +235,8 @@ export default class LogoTile extends TileBuilder {
 
 ## Projet final
 
+Je vous propose également d'aller lire [l'article dédié à ce projet sur mon blog](/blog/recode-design-1-beaucoup-studio) !
+
 <iframe src="https://codesandbox.io/p/devbox/objective-wind-ktgqgn?embed=2"
      style="width:100%; height: 500px; border:0; border-radius: 4px; overflow:hidden;"
      title="grid-cards"

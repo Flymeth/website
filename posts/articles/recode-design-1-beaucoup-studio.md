@@ -1,6 +1,6 @@
 ---
 title: "UI/UX Recode #1: Les cartes du studio Beaucoup"
-description: "Recréation d'une conception UX par le studio de développement web Beaucoup. Au programme: du React, des animations GSAP et un système de \"cases\" à (re)développer !"
+description: 'Recréation d''une conception UX par le studio de développement web Beaucoup. Au programme: du React, des animations GSAP et un système de "cases" à (re)développer !'
 category: Redesign
 coverURL: /cdn/articles/rd-1/banner.png
 tags:
@@ -102,11 +102,11 @@ Afin de pouvoir "hériter" les propriétés, j'ai utiliser pour la création des
 
 ```tsx
 export class Carte extends React.Component {
- readonly breakpoints: BreakPoint[];
- constructor(...breakpoints: BreakPoint[]) {
-  super({});
-  this.breakpoints = breakpoints;
- }
+  readonly breakpoints: BreakPoint[];
+  constructor(...breakpoints: BreakPoint[]) {
+    super({});
+    this.breakpoints = breakpoints;
+  }
 }
 ```
 
@@ -116,22 +116,22 @@ Voici les propriétés d'un breakpoint :
 
 ```ts
 interface BreakPoint {
- /**
-  * The width of the grid container.
-  */
- width?: {
-  min?: number;
-  max?: number;
- };
- /**
-  * The height of the grid container.
-  */
- height?: {
-  min?: number;
-  max?: number;
- };
- relativeTo?: "container" | "window" | (string & {});
- box: Box;
+  /**
+   * The width of the grid container.
+   */
+  width?: {
+    min?: number;
+    max?: number;
+  };
+  /**
+   * The height of the grid container.
+   */
+  height?: {
+    min?: number;
+    max?: number;
+  };
+  relativeTo?: "container" | "window" | (string & {});
+  box: Box;
 }
 ```
 
@@ -141,10 +141,10 @@ Enfin, la propriété `box` correspond à la taille et le placement de la carte 
 
 ```ts
 interface Box {
- x: number;
- y: number;
- height: number;
- width: number;
+  x: number;
+  y: number;
+  height: number;
+  width: number;
 }
 ```
 
@@ -156,43 +156,43 @@ Voici un exemple de carte utilisé dans le projet (celle-ci correspond au logo) 
 
 ```tsx
 export default class LogoTile extends Carte {
- constructor() {
-  super(
-   {
-    box: {
-     x: 0,
-     y: 0,
-     width: 2,
-     height: 2,
-    },
-   },
-   {
-    width: {
-     max: 550,
-    },
-    relativeTo: "window",
-    box: {
-     x: 8,
-     y: 0,
-     width: 2,
-     height: 2,
-    },
-   }
-  );
- }
+  constructor() {
+    super(
+      {
+        box: {
+          x: 0,
+          y: 0,
+          width: 2,
+          height: 2,
+        },
+      },
+      {
+        width: {
+          max: 550,
+        },
+        relativeTo: "window",
+        box: {
+          x: 8,
+          y: 0,
+          width: 2,
+          height: 2,
+        },
+      }
+    );
+  }
 
- render(): ReactNode {
-  return (
-   <button
-    id="logo"
-    onClick={() => {
-     console.log("Button clicked !");
-    }}
-   >
-    <img src="/johan_janin.svg" alt="Logo Johan Janin" />
-   </button>
-  );
- }
+  render(): ReactNode {
+    return (
+      <button
+        id="logo"
+        onClick={() => {
+          console.log("Button clicked !");
+        }}
+      >
+        <img src="/johan_janin.svg" alt="Logo Johan Janin" />
+      </button>
+    );
+  }
 }
 ```
 
@@ -224,32 +224,32 @@ Je commence par créer mon composant `Grille` :
 
 ```tsx
 export interface GrilleProps {
- cartes: Carte[];
- width: number;
- height: number;
+  cartes: Carte[];
+  width: number;
+  height: number;
 }
 
 export default function Grille({ cartes, width, height }: GrilleProps) {
- const [cases, setCases] = useState({
-  size: 0,
-  x: 0,
-  y: 0,
- });
+  const [cases, setCases] = useState({
+    size: 0,
+    x: 0,
+    y: 0,
+  });
 
- return (
-  <div
-   id="grid"
-   style={{
-    "--case-size": cases.size,
-    "--cases-x": cases.x,
-    "--cases-y": cases.y,
-   }}
-  >
-   {cartes.map((Carte) => (
-    <Carte />
-   ))}
-  </div>
- );
+  return (
+    <div
+      id="grid"
+      style={{
+        "--case-size": cases.size,
+        "--cases-x": cases.x,
+        "--cases-y": cases.y,
+      }}
+    >
+      {cartes.map((Carte) => (
+        <Carte />
+      ))}
+    </div>
+  );
 }
 ```
 
@@ -281,16 +281,16 @@ Et il ne me reste plus qu'à calculer la taille des cases, et le nombre de celle
 
 ```tsx
 function calculateCasesInfo() {
- const maxHorizontalCases = Math.max(...cartes.map((t) => t.x + t.width));
- const maxVerticalCases = Math.max(...cartes.map((t) => t.y + t.height));
+  const maxHorizontalCases = Math.max(...cartes.map((t) => t.x + t.width));
+  const maxVerticalCases = Math.max(...cartes.map((t) => t.y + t.height));
 
- const size = width / maxHorizontalCases;
+  const size = width / maxHorizontalCases;
 
- setCases({
-  size,
-  x: maxHorizontalCases,
-  y: maxVerticalCases,
- });
+  setCases({
+    size,
+    x: maxHorizontalCases,
+    y: maxVerticalCases,
+  });
 }
 ```
 
@@ -336,61 +336,61 @@ Et pour ce faire, quoi de mieux qu'un nouveau composant "d'initalisation" de car
 
 ```tsx
 function CreerCarte(props: {
- carte: Carte;
- tailleCase: number;
- breakpoint: Breakpoint;
+  carte: Carte;
+  tailleCase: number;
+  breakpoint: Breakpoint;
 }) {
- const {
-  carte,
-  tailleCase,
-  breakpoint: { x, y, width, height },
- } = props;
- const container = useRef();
+  const {
+    carte,
+    tailleCase,
+    breakpoint: { x, y, width, height },
+  } = props;
+  const container = useRef();
 
- useEffect(() => {
-  if (!container.current) return;
+  useEffect(() => {
+    if (!container.current) return;
 
     // Pour bien placer la carte au chargement de la page
-  gsap.to(container.current, {
-   x: x * tailleCase,
-   y: y * tailleCase,
-   duration: 0,
-  });
+    gsap.to(container.current, {
+      x: x * tailleCase,
+      y: y * tailleCase,
+      duration: 0,
+    });
 
     // Pour rendre la carte déplaçable sur la grille
-  Draggable.create(container.current, {
-   type: "x,y",
+    Draggable.create(container.current, {
+      type: "x,y",
       // Cette propriété permet de forcer à ce que la carte soit toujours placée sur la grille
-   snap: {
-    x: (v) => Math.floor(v / tailleCase) * tailleCase,
-    y: (v) => Math.floor(v / tailleCase) * tailleCase,
-   },
+      snap: {
+        x: (v) => Math.floor(v / tailleCase) * tailleCase,
+        y: (v) => Math.floor(v / tailleCase) * tailleCase,
+      },
       // Celle-ci permet de forcer à ce que la carte reste toujours à l'interrieur de la grille
-   bounds: "#grid",
+      bounds: "#grid",
       // Ces deux propriétés permette d'ajouter/supprimer la classe `dragging` suivant si la carte
       // est en train d'être déplacée ou non.
-   onDragEnd() {
-    container.current?.classList.remove("dragging");
-   },
-   onDragStart() {
-    container.current?.classList.add("dragging");
-   },
-  });
- }, [tailleCase, container]);
+      onDragEnd() {
+        container.current?.classList.remove("dragging");
+      },
+      onDragStart() {
+        container.current?.classList.add("dragging");
+      },
+    });
+  }, [tailleCase, container]);
 
- return (
-  <div
-   id={carte.constructor.name}
-   ref={container}
-   style={{
-    width: tailleCase * width + "px",
-    height: tailleCase * height + "px",
-    position: "absolute",
-   }}
-  >
-   {carte.render()}
-  </div>
- );
+  return (
+    <div
+      id={carte.constructor.name}
+      ref={container}
+      style={{
+        width: tailleCase * width + "px",
+        height: tailleCase * height + "px",
+        position: "absolute",
+      }}
+    >
+      {carte.render()}
+    </div>
+  );
 }
 ```
 
@@ -406,7 +406,7 @@ Je vous ai parlé plus tôt du pluggin `InertiaPlugin` du GSAP. Celui-ci va nous
 
 ### 6. Profiter du résultat
 
-Et voilà! Le projet est fini, est entièrement fonctionnel.
+Et voilà! Le projet est fini, et entièrement fonctionnel.
 Le seul problème n'est désormais que votre imagination afin de rajouter différentes cartes !
 
 Vous pouvez retrouver le résultat de cet article dans mes projets :

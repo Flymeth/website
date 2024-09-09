@@ -17,6 +17,10 @@
 
 <style lang="scss">
 	#subloader {
+		animation: spinningAnimation 1s infinite linear;
+		position: fixed;
+		cursor: initial !important;
+
 		@keyframes spinningAnimation {
 			from {
 				rotate: 0deg;
@@ -25,9 +29,6 @@
 				rotate: 360deg;
 			}
 		}
-		animation: spinningAnimation 1s infinite linear;
-		position: fixed;
-		cursor: initial !important;
 
 		&:not([data-mobile]) {
 			top: var(--cursor-y);
