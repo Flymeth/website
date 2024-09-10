@@ -209,33 +209,6 @@
     </p>
   </section>
 
-  <section id="hobbies">
-    <h2 use:reveal>Mes passe-temps</h2>
-    <p>
-      Certes le monde du digital est une passion chez moi, mais cela ne veut pas
-      dire que je ne fais que cela durant mon temps libre.
-    </p>
-    <ul>
-      <li>
-        J'aime jouer au jeux-vidéos avec mes amis
-        <ul>
-          <li use:reveal>Minecraft</li>
-          <li use:reveal>Rocket League</li>
-          <li use:reveal>Jeux d'arcades</li>
-        </ul>
-      </li>
-      <li>
-        Sortir
-        <ul>
-          <li use:reveal>Passer du temps avec mes amis</li>
-          <li use:reveal>Ou ma famille</li>
-          <li use:reveal>Voyage</li>
-          <li use:reveal>Faire du VTT</li>
-        </ul>
-      </li>
-    </ul>
-  </section>
-
   <section id="reviews">
     <h2>Ce qu'ils disent de mon travail</h2>
     <Reviews list={reviews} />
@@ -306,16 +279,6 @@
             border-radius: 999px;
 
             background-color: var(--primary);
-          }
-        }
-      }
-
-      &#hobbies > ul {
-        margin: 15px;
-        > li {
-          margin: 15px 0;
-          > ul {
-            list-style: "+ ";
           }
         }
       }
