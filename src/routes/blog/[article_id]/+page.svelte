@@ -132,7 +132,7 @@
     </p>
     <ul>
       {#each article.metadata.ressources as rsrc}
-        <li><a href={rsrc} target="_blank">{rsrc}</a></li>
+        <li><a href={rsrc} target="_blank" class="ressource">{rsrc}</a></li>
       {/each}
     </ul>
   {/if}
@@ -253,6 +253,10 @@
     padding: 15px;
     > h2 {
       margin: 15px 0;
+    }
+
+    a.ressource {
+      word-wrap: break-word;
     }
   }
 </style>
