@@ -55,10 +55,13 @@
 
 :global(blockquote) {
 	padding: 15px 15px;
-	border-left: 3.5px solid $primary;
+	border: 0 solid $primary;
+	border-width: 0 3.5px 0 3.5px;
 	background-color: var(--background, $black);
+	line-height: 150%;
 	border-radius: 5px;
-	margin: 15px 0;
+	margin: 25px auto;
+	max-width: 950px;
 	font-style: italic;
 }
 

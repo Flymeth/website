@@ -1,5 +1,4 @@
 import path from "node:path";
-import fs from "node:fs";
 import type { TableOfContent } from "../mdParser";
 import parseMarkdown from "../mdParser";
 import { getMetadata } from "./_meta";
