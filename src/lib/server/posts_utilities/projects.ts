@@ -4,7 +4,13 @@ import parseMarkdown from "../mdParser";
 export interface Project {
   metadata: {
     name: string;
+    /**
+     * Path of the file where the project is writtent (.md format)
+     */
     file: string;
+    /**
+     * Equivalent to the file's name (without the .md format)
+     */
     id: string;
     description: string;
     iconURL?: string;
@@ -24,7 +30,7 @@ export interface Project {
   };
 }
 
-export async function getProjects() {
+export function getProjects() {
   const projects = new Set<Project>();
 
   // Importing projects markdown files

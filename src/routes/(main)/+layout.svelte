@@ -1,129 +1,133 @@
 <script lang="ts" context="module">
-	import { writable } from "svelte/store";
-	export const backgroundScene = writable<Scene>();
+  import { writable } from "svelte/store";
+  export const backgroundScene = writable<Scene>();
 </script>
 
 <script lang="ts">
-	import "$lib/main.scss";
-	import Nav from "$lib/components/nav.svelte";
-	import { onMount } from "svelte";
-	import Loader from "$lib/components/loader.svelte";
-	import { fade } from "svelte/transition";
-	import Footer from "$lib/components/footer.svelte";
-	import { navigating } from "$app/stores";
-	import setupCursor from "$lib/ts/setupCursor";
-	import { changeTheme, theme } from "$lib/ts/theme";
-	import { isMobile } from "$lib/ts/mobile";
-	import Scene from "$lib/scenes/_default";
-	import { onNavigate } from "$app/navigation";
-	import { LayoutScene } from "$lib/scenes/layout";
+  import "$lib/main.scss";
+  import Nav from "$lib/components/nav.svelte";
+  import { onMount } from "svelte";
+  import Loader from "$lib/components/loader.svelte";
+  import { fade } from "svelte/transition";
+  import Footer from "$lib/components/footer.svelte";
+  import { navigating } from "$app/stores";
+  import setupCursor from "$lib/ts/setupCursor";
+  import { changeTheme, theme } from "$lib/ts/theme";
+  import { isMobile } from "$lib/ts/mobile";
+  import Scene from "$lib/three/scene";
+  import { onNavigate } from "$app/navigation";
+  import { LayoutScene } from "$lib/three/scenes/layout";
+  import { browser } from "$app/environment";
 
-	let loader: Loader;
-	let loading = true;
-	let loadingScene = false;
-	let sceneContainer: HTMLDivElement;
-	let currentScene: Scene | undefined;
-	let defaultScene: Scene | undefined;
+  let loader: Loader;
+  let loading = true;
+  let loadingScene = false;
+  let sceneContainer: HTMLDivElement;
+  let currentScene: Scene | undefined;
+  let defaultScene: Scene | undefined;
 
-	onNavigate(async () => {
-		if (!defaultScene) return;
+  $: show_cursor_personnalisation = browser && !isMobile();
 
-		$backgroundScene = defaultScene;
-	});
+  onNavigate(async () => {
+    if (!defaultScene) return;
 
-	onMount(() => {
-		defaultScene = new LayoutScene();
+    $backgroundScene = defaultScene;
+  });
 
-		// Set theme
-		const storedTheme = window.localStorage.getItem("theme");
-		if (storedTheme && ["light", "dark"].includes(storedTheme))
-			changeTheme(storedTheme as "light" | "dark");
-		else window.localStorage.removeItem("theme");
+  onMount(() => {
+    defaultScene = new LayoutScene();
 
-		// Set cursor position (only if the user is on desktop)
-		!isMobile() && setupCursor();
+    // Set theme
+    const storedTheme = window.localStorage.getItem("theme");
+    if (storedTheme && ["light", "dark"].includes(storedTheme))
+      changeTheme(storedTheme as "light" | "dark");
+    else window.localStorage.removeItem("theme");
 
-		if (!location.hash) window.scrollY = 0;
+    // Set cursor position (only if the user is on desktop)
+    !isMobile() && setupCursor();
 
-		// Setup the 3D background scenes
-		backgroundScene.subscribe(async (scene) => {
-			if (
-				scene &&
-				scene.constructor.name === currentScene?.constructor.name
-			)
-				return;
+    if (!location.hash) window.scrollY = 0;
 
-			if (currentScene) Scene.stopAnimation(currentScene);
-			currentScene = undefined;
-			sceneContainer?.children[0]?.remove();
-			if (loader && loading)
-				loader.animationEnded.subscribe((ended) => {
-					loading = !ended;
-					if (ended && scene) scene.doEntrance?.();
-				});
+    // Setup the 3D background scenes
+    backgroundScene.subscribe(async (scene) => {
+      if (scene && scene.constructor.name === currentScene?.constructor.name)
+        return;
 
-			if (!scene) return loader?.loaded();
+      if (currentScene) Scene.stopAnimation(currentScene);
+      currentScene = undefined;
+      sceneContainer?.children[0]?.remove();
+      if (loader && loading)
+        loader.animationEnded.subscribe((ended) => {
+          loading = !ended;
+          if (ended && scene) scene.doEntrance?.();
+        });
 
-			loadingScene = true;
-			currentScene = scene;
-			sceneContainer.appendChild(scene.renderer.domElement);
-			sceneContainer.style.removeProperty("display");
+      if (!scene) return loader?.loaded();
 
-			await scene.load();
-			Scene.animate(scene);
-			if ("setBG" in scene && typeof scene.setBG === "function")
-				scene.setBG($theme);
-			loader?.loaded();
-			loadingScene = false;
-		});
+      loadingScene = true;
+      currentScene = scene;
+      sceneContainer.appendChild(scene.renderer.domElement);
+      sceneContainer.style.removeProperty("display");
 
-		theme.subscribe((value) => {
-			if (
-				currentScene &&
-				"setBG" in currentScene &&
-				typeof currentScene.setBG === "function"
-			)
-				currentScene.setBG(value);
-		});
+      await scene.load();
+      Scene.animate(scene);
+      if ("setBG" in scene && typeof scene.setBG === "function")
+        scene.setBG($theme);
+      loader?.loaded();
+      loadingScene = false;
+    });
 
-		if (!currentScene) $backgroundScene = defaultScene;
-	});
+    theme.subscribe((value) => {
+      if (
+        currentScene &&
+        "setBG" in currentScene &&
+        typeof currentScene.setBG === "function"
+      )
+        currentScene.setBG(value);
+    });
+
+    if (!currentScene) $backgroundScene = defaultScene;
+  });
 </script>
 
 <div id="scene" bind:this={sceneContainer} style="display: none;"></div>
 
 {#if loading}
-	<div out:fade>
-		<Loader bind:this={loader} />
-	</div>
+  <div out:fade>
+    <Loader bind:this={loader} />
+  </div>
 {:else if $navigating !== null || loadingScene}
-	<div transition:fade>
-		<Loader hideProgress={true} />
-	</div>
+  <div transition:fade>
+    <Loader hideProgress={true} />
+  </div>
 {/if}
 
-<Nav />
+<Nav
+  disable_sections={{
+    custom_cursor: !show_cursor_personnalisation,
+  }}
+/>
 
 <div id="app">
-	<slot />
+  <slot />
 </div>
 
 <Footer />
 
 <style lang="scss">
-	#scene {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		opacity: 0.65;
-		filter: blur(2.5px);
-		overflow: hidden;
-	}
+  #scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.65;
+    filter: blur(2.5px);
+    overflow: hidden;
+  }
 
-	#app {
-		min-height: 100vh;
-	}
+  #app {
+    min-height: 100vh;
+  }
 </style>

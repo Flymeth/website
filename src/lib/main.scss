@@ -1,46 +1,48 @@
-*,
-::before,
-::after {
-	cursor: none;
-}
 // Cursor
 $cursor-w: 20px;
 body {
-	&::before,
-	&::after {
-		content: "";
-		position: fixed;
-		translate: -50% -50%;
+  &:not([data-nocursor]) {
+    *,
+    ::before,
+    ::after {
+      cursor: none !important;
+    }
+    &::before,
+    &::after {
+      content: "";
+      position: fixed;
+      translate: -50% -50%;
 
-		aspect-ratio: 1 / 1;
-		border-radius: 50%;
-		z-index: 999;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      z-index: 999;
 
-		pointer-events: none;
-		opacity: var(--cursor-opacity);
-	}
+      pointer-events: none;
+      opacity: var(--cursor-opacity);
+    }
 
-	&::before {
-		top: var(--cursor-y);
-		left: var(--cursor-x);
-		width: $cursor-w;
+    &::before {
+      top: var(--cursor-y);
+      left: var(--cursor-x);
+      width: $cursor-w;
 
-		background-color: var(--secondary);
-		z-index: 999;
+      background-color: var(--secondary);
+      z-index: 999;
 
-		scale: var(--cursor-scale);
-		box-shadow: 0 0 15px -2.5px var(--foreground);
-	}
-	&:not([data-mobile])::before {
-		mix-blend-mode: difference;
-	}
+      scale: var(--cursor-scale);
+      box-shadow: 0 0 15px -2.5px var(--foreground);
+    }
+    &:not([data-mobile])::before {
+      mix-blend-mode: difference;
+    }
 
-	&::after {
-		top: var(--cursor-cy);
-		left: var(--cursor-cx);
-		width: calc(#{$cursor-w} / 2.5);
-		background-color: var(--foreground);
+    &::after {
+      top: var(--cursor-cy);
+      left: var(--cursor-cx);
+      width: calc(#{$cursor-w} / 2.5);
+      background-color: var(--foreground);
 
-		scale: calc(1 / var(--cursor-scale));
-	}
+      scale: calc(1 / var(--cursor-scale));
+    }
+  }
 }

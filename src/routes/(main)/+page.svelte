@@ -47,10 +47,14 @@
   import Reviews from "$lib/components/reviews.svelte";
   import reviews from "$lib/assets/data/reviews.json";
 
-  import { IndexScene } from "$lib/scenes/index";
+  import { IndexScene } from "$lib/three/scenes/index";
   import { backgroundScene } from "./+layout.svelte";
   import { onMount } from "svelte";
   import { reveal } from "svelte-reveal";
+  import type { PageData } from "./$types";
+  import ProjectCard from "$lib/components/projectCard.svelte";
+
+  export let data: PageData;
 
   onMount(() => {
     backgroundScene.set(new IndexScene());
@@ -124,6 +128,25 @@
       aujourd'hui des compétences solides en terme de développement web.
     </p>
   </section>
+
+  <section id="showoff">
+    <h2>Mes projets</h2>
+    <p>
+      Que ce soit pour mes études ou par passe-temps personnel, j'ai réalisé de
+      nombreux projets dont les meilleurs sont répertoriés sur <a
+        href="/portfolio">mon portfolio</a
+      >. Voici une séléction de {data.showOfProjects.length} projets que je souhaite
+      vous mettre en avant :
+    </p>
+    <ul>
+      {#each data.showOfProjects as project}
+        <li>
+          <ProjectCard {project} />
+        </li>
+      {/each}
+    </ul>
+  </section>
+
   <section id="tech">
     <h2>Mes outils</h2>
     <p>Voici ce que j'utilise au quotidien afin de réaliser mes projets:</p>
@@ -197,22 +220,12 @@
     </ol>
   </section>
 
-  <WorkWithMe />
-
-  <section id="showoff">
-    <h2>Mes projets</h2>
-    <p>
-      Que ce soit pour mes études ou par passe-temps personnel, j'ai réalisé de
-      nombreux projets dont les meilleurs sont répertoriés sur <a
-        href="/portfolio">mon portfolio</a
-      >.
-    </p>
-  </section>
-
   <section id="reviews">
     <h2>Ce qu'ils disent de mon travail</h2>
     <Reviews list={reviews} />
   </section>
+
+  <WorkWithMe />
 
   <style>
     #scene {
@@ -226,6 +239,11 @@
       background-size: contain;
       background-position: center calc(var(--scroll, 0) * -50vh);
     }
+    header {
+      justify-content: flex-end !important;
+      padding: max(10%, 100px) 20px !important;
+      text-align: center;
+    }
   </style>
 </main>
 
@@ -238,12 +256,14 @@
 
     section {
       > h2 {
-        margin: 20px 25px 10px;
+        margin: 50px 25px 0;
+      }
+      > p:is([data-mobile] *) {
+        margin: 10px 0;
       }
       > p:not([data-mobile] *) {
         position: relative;
-        margin: 10px 0;
-        margin-left: 30px;
+        margin: 20px 4em;
 
         &::before {
           content: "<p>";
@@ -287,6 +307,17 @@
         margin: 30px 0;
         > h2 {
           margin-bottom: 15px;
+        }
+      }
+
+      &#showoff {
+        > ul {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 25px;
+          flex-wrap: wrap;
+          list-style: none;
         }
       }
     }

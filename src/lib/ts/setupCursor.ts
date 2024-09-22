@@ -3,7 +3,8 @@ import gsap from "gsap";
 const clickableElementsNames = ["A", "BUTTON", "INPUT", "TEXTAREA", "OPTION"];
 const disableCursorElementsNames = ["EMBED", "IFRAME"];
 
-export function onCursorMouve({ clientX, clientY, target }: MouseEvent) {
+export function onCursorMove({ clientX, clientY, target }: MouseEvent) {
+  if (!useCustomCursor()) return;
   let clickableElement: HTMLElement | SVGElement | null = null;
 
   while (target instanceof HTMLElement || target instanceof SVGElement) {
@@ -40,7 +41,27 @@ export function onCursorMouve({ clientX, clientY, target }: MouseEvent) {
   document.body.style.setProperty("--cursor-cy", clientY + "px");
 }
 
+export function useCustomCursor<
+  ARG0 extends boolean | undefined,
+  R = ARG0 extends undefined ? boolean : null
+>(use?: ARG0, save = true): R {
+  if (typeof use === "undefined") {
+    const use = window.localStorage.getItem("cursor") === "custom";
+    useCustomCursor(use, false);
+    return use as R;
+  }
+  
+  if (!use) {
+    document.body.setAttribute("data-nocursor", "");
+    if (save) window.localStorage.removeItem("cursor");
+  } else {
+    document.body.removeAttribute("data-nocursor");
+    if (save) window.localStorage.setItem("cursor", "custom");
+  }
+  return null as R;
+}
+
 export default function setupCursor() {
-  window.removeEventListener("mousemove", onCursorMouve);
-  window.addEventListener("mousemove", onCursorMouve);
+  window.removeEventListener("mousemove", onCursorMove);
+  window.addEventListener("mousemove", onCursorMove);
 }

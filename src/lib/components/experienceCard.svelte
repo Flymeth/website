@@ -7,7 +7,7 @@
   import { navHeight } from "./nav.svelte";
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
-  import { onCursorMouve } from "$lib/ts/setupCursor";
+  import { onCursorMove } from "$lib/ts/setupCursor";
 
   export let exp: Experience;
   const date = exp.date;
@@ -71,7 +71,7 @@
       type="application/pdf"
       title={docName}
       on:close={() => ($isReportOpen = false)}
-			on:mouseenter={onCursorMouve}
+			on:mouseenter={onCursorMove}
     />
 
     <aside>
