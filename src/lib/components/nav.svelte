@@ -40,7 +40,7 @@
   const menuPaths = {
     Présentation: "/",
     Portfolio: "/portfolio",
-    Experiences: "/experiences",
+    // Experiences: "/experiences",
     Discographie: "/discography",
     "Prendre contact": "/contact",
     "Mon petit blog": "/blog",
@@ -209,7 +209,7 @@
               type="checkbox"
               name="use_custom_cursor"
               checked={custom_cursor}
-							id="cursor_checkbox"
+              id="cursor_checkbox"
               title="{custom_cursor
                 ? 'Désactiver'
                 : 'Activer'} le curseur personnalisé"
