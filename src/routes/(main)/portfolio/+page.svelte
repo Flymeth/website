@@ -47,7 +47,7 @@
     name="description"
     content="Vous trouverez ici mes meilleures réalisations durant mes études ou mon temps libre!"
   />
-  <meta property="og:image" content="/icons/bg_white/logo_256.png" />
+  <meta property="og:image" content="/logo.svg" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="twitter:domain" content="johan-janin.com" />
@@ -57,7 +57,7 @@
     name="twitter:description"
     content="Vous trouverez ici mes meilleures réalisations durant mes études ou mon temps libre!"
   />
-  <meta name="twitter:image" content="/icons/bg_white/logo_256.png" />
+  <meta name="twitter:image" content="/logo.svg" />
 </svelte:head>
 
 <Header>

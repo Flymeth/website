@@ -18,7 +18,7 @@
 		name="description"
 		content="Un petit blog créé pour partager mon savoir et mes découvertes!"
 	/>
-	<meta property="og:image" content="/icons/bg_white/logo_256.png" />
+	<meta property="og:image" content="/logo.svg" />
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta property="twitter:domain" content="johan-janin.com" />
@@ -28,7 +28,7 @@
 		name="twitter:description"
 		content="Un petit blog créé pour partager mon savoir et mes découvertes!"
 	/>
-	<meta name="twitter:image" content="/icons/bg_white/logo_256.png" />
+	<meta name="twitter:image" content="/logo.svg" />
 </svelte:head>
 
 <Header>

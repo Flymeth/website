@@ -14,7 +14,7 @@
   import ImageDisplay from "./imageDisplay.svelte";
   import Share from "./share.svelte";
   import { page } from "$app/stores";
-  import { pushState, replaceState } from "$app/navigation";
+  import { goto, pushState, replaceState } from "$app/navigation";
 
   export let project: Project;
 
@@ -72,7 +72,7 @@
       <button
         class="primary-color"
         on:click={() =>
-          pushState("", {
+          pushState(`?open=${project.metadata.id}`, {
             portfolio: {
               activeProjectID: project.metadata.id,
             },

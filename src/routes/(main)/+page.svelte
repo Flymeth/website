@@ -13,8 +13,10 @@
   import sass from "$lib/assets/img/tools/sass.svg";
   import svelte from "$lib/assets/img/tools/svelte.svg";
   import react from "$lib/assets/img/tools/react.svg";
+  import vue from "$lib/assets/img/tools/vuejs.svg";
   import nodejs from "$lib/assets/img/tools/nodejs.svg";
   import php from "$lib/assets/img/tools/php.svg";
+  import rust from "$lib/assets/img/tools/rust.svg";
 
   import pocketbase from "$lib/assets/img/tools/pocketbase.svg";
   import supabase from "$lib/assets/img/tools/supabase.svg";
@@ -92,7 +94,7 @@
     name="description"
     content="Salut! Moi c'est Johan: un passionné du digital spécialisé dans le développement web."
   />
-  <meta property="og:image" content="/icons/bg_white/logo_256.png" />
+  <meta property="og:image" content="/logo.svg" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="twitter:domain" content="johan-janin.com" />
@@ -102,7 +104,7 @@
     name="twitter:description"
     content="Salut! Moi c'est Johan: un passionné du digital spécialisé dans le développement web."
   />
-  <meta name="twitter:image" content="/icons/bg_white/logo_256.png" />
+  <meta name="twitter:image" content="/logo.svg" />
 </svelte:head>
 
 <Header>
@@ -169,14 +171,16 @@
           list={{
             html,
             css,
+            sass,
             Javascript: scriptingLang === js ? scriptingLang : undefined,
             Typescript: scriptingLang === ts ? scriptingLang : undefined,
             python,
-            sass,
             svelte,
             react,
+            vue,
             nodejs,
             php,
+            rust,
           }}
         />
       </li>

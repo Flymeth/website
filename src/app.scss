@@ -66,10 +66,19 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: "leelawadee", sans-serif;
-  transition: background-color 0.15s, color 0.15s;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
   font-size: 1.05em;
   &.noscroll {
     overflow-y: hidden;
+  }
+
+  img.img-display {
+    cursor: pointer;
+  }
+  img#image-visualizer {
+    cursor: initial;
   }
 }
 
@@ -83,7 +92,9 @@ a {
   color: var(--primary);
   text-decoration: none;
   font-style: italic;
-  transition: color 0.15s, text-shadow 0.25s;
+  transition:
+    color 0.15s,
+    text-shadow 0.25s;
   font-weight: bolder;
 
   &:hover {
@@ -96,9 +107,12 @@ ul {
   list-style-position: inside;
 }
 
+button {
+  cursor: pointer;
+}
+
 button:not(.nodefault) {
   padding: 10px 25px;
-	cursor: pointer;
   border: none;
   background: linear-gradient(
     to bottom right,
@@ -115,7 +129,9 @@ button:not(.nodefault) {
 
   will-change: scale;
 
-  transition: scale 0.15s, box-shadow 0.15s;
+  transition:
+    scale 0.15s,
+    box-shadow 0.15s;
 
   box-shadow: 0 0 10px -2px var(--foreground);
 

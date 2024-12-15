@@ -20,14 +20,14 @@
     <title>My musics</title>
     <meta name="title" content="Johan Janin - Mes musiques" />
     <meta name="description" content="J'adore écouter de la musique! Un jour je me suis demandé si je pouvais en créer..." />
-    <meta property="og:image" content="/icons/bg_white/logo_256.png" />
+    <meta property="og:image" content="/logo.svg" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="johan-janin.com">
     <meta property="twitter:url" content="https://johan-janin.com">
     <meta name="twitter:title" content="Johan Janin - Mes musiques">
     <meta name="twitter:description" content="J'adore écouter de la musique! Un jour je me suis demandé si je pouvais en créer...">
-    <meta name="twitter:image" content="/icons/bg_white/logo_256.png">
+    <meta name="twitter:image" content="/logo.svg">
 </svelte:head>
 
 <Header>
