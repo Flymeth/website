@@ -26,8 +26,10 @@
     "Amoureux du web,",
     "Adorant Svelte et React,",
     "Qui fait du front & du back",
+    "Membre du BDE Tech-Paf",
+    "Etudiant en digital",
     `Et travaille le ${["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"].at(new Date().getDay() - 1)}`,
-    "Hâte de travailler avec vous!",
+    "Qui a hâte de travailler avec vous!",
   ];
   export let changeMessageEachMs = 5000;
   let messageID = 0;
@@ -320,6 +322,7 @@
     background: url("/logo.svg"),
       linear-gradient(to right, transparent, rgba($white, 0.5));
     background-size: 25%;
+    padding-right: 25%;
     background-position: center right;
     backdrop-filter: blur(15px);
     background-repeat: no-repeat;

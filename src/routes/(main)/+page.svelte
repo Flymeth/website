@@ -27,6 +27,7 @@
 
   import netlify from "$lib/assets/img/tools/netlify.svg";
   import heroku from "$lib/assets/img/tools/heroku.svg";
+  import ovh from "$lib/assets/img/tools/ovh.svg";
 
   import wordpress from "$lib/assets/img/tools/wordpress.svg";
   import elementor from "$lib/assets/img/tools/elementor.svg";
@@ -204,7 +205,7 @@
         />
       </li>
       <li>
-        <TechCategory name="Hébergement" list={{ netlify, heroku }} />
+        <TechCategory name="Hébergement" list={{ netlify, heroku, ovh }} />
       </li>
       <li>
         <TechCategory
@@ -261,6 +262,16 @@
     section {
       > h2 {
         margin: 50px 25px 0;
+        position: relative;
+
+        &::before {
+          content: "##";
+          opacity: 0.25;
+          font-style: italic;
+          position: absolute;
+          right: calc(100% + 10px);
+          top: 0;
+        }
       }
       > p:is([data-mobile] *) {
         margin: 10px 0;

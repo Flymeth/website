@@ -14,7 +14,7 @@
   import ImageDisplay from "./imageDisplay.svelte";
   import Share from "./share.svelte";
   import { page } from "$app/stores";
-  import { goto, pushState, replaceState } from "$app/navigation";
+  import { pushState, replaceState } from "$app/navigation";
 
   export let project: Project;
 
@@ -165,27 +165,29 @@
       var(--banner), $primary;
     background-position: center;
     background-size: cover;
-    width: min(300px, 90vw);
+    width: min(400px, 90vw);
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
     padding: 10px 15px;
     border-radius: 10px;
     color: $white;
     text-shadow: 0 0 15px $black;
+    transition: 0.25s;
+
+    will-change: scale;
 
     aspect-ratio: 2 / 1;
 
     h3 {
       font-size: 30px;
       text-align: right;
+      margin-bottom: 10px;
     }
     p {
-      font-size: 13px;
+      font-size: 14px;
       font-style: italic;
-      text-align: center;
     }
 
     button {
@@ -197,6 +199,11 @@
       align-items: center;
       justify-content: space-evenly;
       width: 100%;
+    }
+
+    &:hover {
+      scale: 1.05;
+      border-radius: 5px;
     }
   }
 

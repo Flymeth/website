@@ -123,10 +123,15 @@
       margin: 0 auto;
     }
     > p {
-      margin: 10px 0;
+      margin: 25px 0;
       text-align: center;
       opacity: 0.5;
       font-style: italic;
+      transition: opacity 0.25s;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 </style>
