@@ -69,6 +69,9 @@
       <p>{project.metadata.description}</p>
     </div>
     <div class="actions">
+      {#if project.metadata.link}
+        <a href={project.metadata.link} target="_blank">Accéder</a>
+      {/if}
       <button
         class="primary-color"
         on:click={() =>
@@ -78,11 +81,6 @@
             },
           })}>Découvrir</button
       >
-      {#if project.metadata.link}
-        <a href={project.metadata.link} target="_blank">
-          <button>Accéder</button>
-        </a>
-      {/if}
     </div>
   </div>
   {#if isOpen}
@@ -159,13 +157,13 @@
   .card {
     background: linear-gradient(
         to bottom,
-        rgba($black, 0.5),
-        rgba($black, 0.85)
+        rgba($secondary, 0.5),
+        rgba($black, 0.75)
       ),
       var(--banner), $primary;
     background-position: center;
     background-size: cover;
-    width: min(400px, 90vw);
+    width: min(500px, 90vw);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -182,12 +180,14 @@
 
     h3 {
       font-size: 30px;
-      text-align: right;
       margin-bottom: 10px;
+      text-align: center;
+      text-decoration: underline;
     }
     p {
-      font-size: 14px;
+      font-size: 0.85em;
       font-style: italic;
+      font-weight: 600;
     }
 
     button {
@@ -196,9 +196,10 @@
 
     .actions {
       display: flex;
-      align-items: center;
       justify-content: space-evenly;
+      align-items: center;
       width: 100%;
+      gap: 1em;
     }
 
     &:hover {
@@ -263,6 +264,9 @@
             &:hover {
               color: $primary;
             }
+            &::before {
+              content: unset;
+            }
           }
         }
 
@@ -289,6 +293,13 @@
             aspect-ratio: 1 / 1;
             display: grid;
             place-items: center;
+
+            &::before {
+              content: unset;
+            }
+            &:hover {
+              color: $secondary;
+            }
           }
         }
       }
@@ -297,6 +308,7 @@
         border-radius: 999px;
         transform-origin: center right;
         grid-area: close;
+        margin-right: 2.5px;
       }
 
       @media screen and (max-width: 630px) {
@@ -307,20 +319,30 @@
         grid-template-areas:
           "info links"
           "close close";
-        grid-template-rows: 50%;
+        grid-template-rows: repeat(2, 50%);
         gap: 10px;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 50%);
         border-radius: 15px;
         align-items: center;
         justify-content: center;
         position: static;
+
+        > ul {
+          justify-content: flex-end !important;
+        }
         > button {
           transform-origin: bottom center;
+          margin: 0;
+          &:hover {
+            scale: 1;
+          }
         }
       }
     }
     #project-content {
       padding: 0 25px;
+      max-width: 1300px;
+      margin: 0 auto;
       @import "$lib/assets/styles/markdowns.scss";
     }
   }

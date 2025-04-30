@@ -3,6 +3,8 @@
   import Header from "$lib/components/header.svelte";
 
   import vscode from "$lib/assets/img/tools/vscode.svg";
+  import github from "$lib/assets/img/tools/github.svg";
+  import docker from "$lib/assets/img/tools/docker.svg";
 
   import html from "$lib/assets/img/tools/html.svg";
   import css from "$lib/assets/img/tools/css.svg";
@@ -15,7 +17,7 @@
   import react from "$lib/assets/img/tools/react.svg";
   import vue from "$lib/assets/img/tools/vuejs.svg";
   import nodejs from "$lib/assets/img/tools/nodejs.svg";
-  import php from "$lib/assets/img/tools/php.svg";
+  import laravel from "$lib/assets/img/tools/laravel.svg";
   import rust from "$lib/assets/img/tools/rust.svg";
 
   import pocketbase from "$lib/assets/img/tools/pocketbase.svg";
@@ -113,6 +115,18 @@
   <p>Je suis Johan : un expert dans la création web, basé à Lyon.</p>
 </Header>
 <main id="index">
+  <section id="breaking-news">
+    <h2>Breaking News</h2>
+    <p>
+      Je suis en pleine recherche d'alternance pour Septembre 2025 !
+      <br />
+      N'hésitez pas à aller voir <a href="/portfolio">mes projets</a> pour vous convaincre
+      que je suis l'alternant qu'il vous faut.
+    </p>
+    <a href="/CV_Johan-JANIN.pdf">
+      <button type="button">Télécharger mon CV</button>
+    </a>
+  </section>
   <section id="me">
     <h2>Je me présente</h2>
     <p use:reveal>
@@ -148,6 +162,11 @@
         </li>
       {/each}
     </ul>
+    <div style="display: flex;">
+      <a href="/portfolio" style="margin: 15px auto; justify-self: center">
+        <button type="button"> Voir plus de projets </button>
+      </a>
+    </div>
   </section>
 
   <section id="tech">
@@ -156,9 +175,11 @@
     <ol>
       <li>
         <TechCategory
-          name="Logiciels de développement"
+          name="Outils de développement"
           list={{
             VScode: vscode,
+            github,
+            docker,
           }}
         />
       </li>
@@ -180,7 +201,7 @@
             react,
             vue,
             nodejs,
-            php,
+            laravel,
             rust,
           }}
         />
@@ -193,7 +214,6 @@
             supabase,
             mariadb,
             mysql,
-            "PHP My Admin": php_myadmin,
             graphQL,
           }}
         />
@@ -264,7 +284,11 @@
         margin: 50px 25px 0;
         position: relative;
 
-        &::before {
+        &:is([data-mobile] *) {
+          margin: 25px 0;
+        }
+
+        &:not([data-mobile] *)::before {
           content: "##";
           opacity: 0.25;
           font-style: italic;

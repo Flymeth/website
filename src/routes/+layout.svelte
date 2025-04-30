@@ -19,9 +19,10 @@
   // Add page transition
   //>> https://svelte.dev/blog/view-transitions
   onNavigate((navigation) => {
+    $isNavOpen = false;
+
     //@ts-ignore
     if (!document.startViewTransition) return;
-    $isNavOpen = false;
     navigating = true;
 
     return new Promise((resolve) => {
@@ -88,7 +89,7 @@
     height="0"
     width="0"
     style="display:none;visibility:hidden"
-		title="Google Tag Manager"
+    title="Google Tag Manager"
   ></iframe></noscript
 >
 <!-- End Google Tag Manager (noscript) -->

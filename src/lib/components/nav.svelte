@@ -26,10 +26,12 @@
     "Amoureux du web,",
     "Adorant Svelte et React,",
     "Qui fait du front & du back",
+    "Ayant une passion pour le DevOps",
     "Membre du BDE Tech-Paf",
     "Etudiant en digital",
     `Et travaille le ${["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"].at(new Date().getDay() - 1)}`,
     "Qui a hâte de travailler avec vous!",
+    "git commit -am 'Bug fixes' && git push",
   ];
   export let changeMessageEachMs = 5000;
   let messageID = 0;
@@ -83,7 +85,7 @@
         ">-.25"
       );
 
-    const interval: NodeJS.Timer = setInterval(() => {
+    const interval: NodeJS.Timeout = setInterval(() => {
       if (!(currentTextElement && nextTextElement))
         return clearInterval(interval);
 
@@ -112,10 +114,10 @@
 </script>
 
 <div id="navbar" style="--h:{navHeight}">
-  <h1>
+  <a href="/">
     <span bind:this={nextTextElement}>~</span>
     <span bind:this={currentTextElement}>{customMessages[0]}</span>
-  </h1>
+  </a>
   <input
     type="checkbox"
     class="burger nodefault"
@@ -245,9 +247,17 @@
     padding: 15px 25px;
 
     backdrop-filter: blur(2px);
-    > h1 {
+    > a {
+      color: inherit;
+      &::before {
+        content: unset;
+      }
       position: relative;
       width: 100%;
+      font-size: 2em;
+      font-family: "agency", sans-serif;
+      font-style: unset;
+
       > span {
         position: absolute;
         translate: 0 -50%;
@@ -324,13 +334,12 @@
     background-size: 25%;
     padding-right: 25%;
     background-position: center right;
-    backdrop-filter: blur(15px);
     background-repeat: no-repeat;
+    backdrop-filter: blur(15px);
 
     display: flex;
     justify-content: center;
     flex-direction: column;
-    font-size: 17px;
 
     h2 {
       font-size: 30px;
@@ -343,8 +352,13 @@
       margin: 25px 0;
     }
 
-    > #nav nav ul p {
-      display: inline;
+    > #nav nav ul {
+      display: grid;
+      gap: 0.15em;
+
+      p {
+        display: inline;
+      }
     }
 
     > #theme form {

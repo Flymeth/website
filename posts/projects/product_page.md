@@ -4,6 +4,7 @@ description: Développement créatif d'une page-produit fictive
 github: https://github.com/Flymeth/product-page
 link: https://flymeth.github.io/product-page/
 prototype: https://www.figma.com/file/Z3J8mRL8NyuCaVf2WGvUU5/Product-Page?type=design&mode=design&t=HBp5gMT6AocuGadF-1
+bannerURL: /cdn/projects/product_page/vue_ensemble.png
 tags:
 - front-end
 - website

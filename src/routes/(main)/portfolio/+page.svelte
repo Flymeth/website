@@ -3,7 +3,7 @@
   import { page } from "$app/stores";
   import ProjectCard from "$lib/components/projectCard.svelte";
   import WorkWithMe from "$lib/components/workWithMe.svelte";
-  import { onMount } from "svelte";
+  import { onMount, tick } from "svelte";
   import type { PageData } from "./$types";
   import Header from "$lib/components/header.svelte";
   import { reveal } from "svelte-reveal";
@@ -13,15 +13,7 @@
   const { projects, preopen } = data;
   const preopenProject = typeof preopen === "number" ? projects[preopen] : null;
 
-  afterNavigate(() => {
-    if (preopenProject)
-      replaceState("", {
-        portfolio: {
-          activeProjectID: preopenProject.metadata.id,
-        },
-      });
-  });
-  onMount(() => {
+  onMount(async () => {
     console.debug(
       `Found ${projects.length} projects. ${preopenProject ? `Openning project [${preopenProject.metadata.name}]: ${preopenProject}` : ""}`
     );
@@ -33,6 +25,17 @@
       )
         history.back();
     });
+
+    if (preopenProject) {
+      // Use tick because of this :
+      // https://github.com/sveltejs/kit/issues/11466
+      await tick();
+      replaceState("", {
+        portfolio: {
+          activeProjectID: preopenProject.metadata.id,
+        },
+      });
+    }
   });
 </script>
 
@@ -68,7 +71,7 @@
   </p>
 </Header>
 
-<main>
+<main id="portfolio-page">
   <ul>
     {#each [...projects].sort(() => Math.random() - 0.5) as project (project.metadata.id)}
       <li
@@ -85,13 +88,17 @@
 </main>
 
 <style lang="scss">
+  :global(#app:has(#portfolio-page)) {
+    max-width: unset;
+  }
+
   ul {
     list-style: none;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 15px 20px;
+    gap: 20px 25px;
     padding: 0;
 
     > li {

@@ -4,6 +4,7 @@ description: A music discord bot built from scratch using the discord voice api
 iconURL: /cdn/projects/lasido/logo.png
 github: https://github.com/Flymeth/Lasido_v2
 discord: https://discord.com/api/oauth2/authorize?client_id=893579508752478279&permissions=8&scope=bot%20applications.commands
+bannerURL: /cdn/projects/lasido/search_command.png
 ---
 
 # Lasido: Un robot discord musical

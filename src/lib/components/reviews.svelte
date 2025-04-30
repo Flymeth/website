@@ -27,6 +27,7 @@
             speed: 1000,
             arrows: false,
             pagination: false,
+            padding: 2.5,
             fixedWidth: "min(350px, 86vw)",
             width: "100%",
             gap: 20,
@@ -76,7 +77,7 @@
         .review {
             background-color: var(--background);
             padding: 15px;
-            border-radius: 5px;
+            border-radius: 15px;
             height: 100%;
             position: relative;
             display: flex;
