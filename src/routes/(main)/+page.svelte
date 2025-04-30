@@ -148,7 +148,7 @@
   </section>
 
   <section id="showoff">
-    <h2>Mes projets</h2>
+    <h2>Projets à l'affiche</h2>
     <p>
       Que ce soit pour mes études ou par passe-temps personnel, j'ai réalisé de
       nombreux projets dont les meilleurs sont répertoriés sur <a
