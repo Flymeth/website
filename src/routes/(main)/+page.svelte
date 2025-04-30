@@ -4,6 +4,7 @@
 
   import vscode from "$lib/assets/img/tools/vscode.svg";
   import github from "$lib/assets/img/tools/github.svg";
+  import git from "$lib/assets/img/tools/git.svg";
   import docker from "$lib/assets/img/tools/docker.svg";
 
   import html from "$lib/assets/img/tools/html.svg";
@@ -178,6 +179,7 @@
           name="Outils de développement"
           list={{
             VScode: vscode,
+            git,
             github,
             docker,
           }}
