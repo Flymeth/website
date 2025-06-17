@@ -8,10 +8,10 @@ export const load: PageServerLoad = async ({ url }) => {
   const activeProjectIndex =
     typeof activeProjectName === "string"
       ? projects.findIndex(
-          (p) =>
-            p.metadata.name.toLowerCase() === activeProjectName.toLowerCase()
+          (p) => p.metadata.id.toLowerCase() === activeProjectName.toLowerCase()
         )
       : -1;
+
   return {
     projects,
     preopen: activeProjectIndex >= 0 ? activeProjectIndex : null,
