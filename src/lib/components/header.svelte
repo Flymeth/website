@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Fa from "svelte-fa";
-  import { faArrowPointer } from "@fortawesome/free-solid-svg-icons";
   import { faCircle } from "@fortawesome/free-regular-svg-icons";
-  import { gsap } from "gsap";
+  import { faArrowPointer } from "@fortawesome/free-solid-svg-icons";
+  import { gsap } from "gsap/dist/gsap";
   import { onMount } from "svelte";
+  import Fa from "svelte-fa";
   import { navHeight } from "./nav.svelte";
 
   export let bannerURL: string = "";
@@ -41,7 +41,7 @@
           scale: 0.25,
           opacity: 0.25,
         },
-        "<"
+        "<",
       )
 
       // Movement to the top
@@ -59,7 +59,7 @@
           opacity: 1,
           ease: "power1.in",
         },
-        "<"
+        "<",
       )
 
       // The mouse stops and circle goes to the void
@@ -77,7 +77,7 @@
           y: "-150%",
           ease: "power1.out",
         },
-        "<"
+        "<",
       );
 
     scrollInsitationTimeline.play();

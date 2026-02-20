@@ -1,64 +1,62 @@
 <script lang="ts">
-  import WorkWithMe from "$lib/components/workWithMe.svelte";
   import Header from "$lib/components/header.svelte";
+  import WorkWithMe from "$lib/components/workWithMe.svelte";
 
-  import vscode from "$lib/assets/img/tools/vscode.svg";
-  import github from "$lib/assets/img/tools/github.svg";
-  import git from "$lib/assets/img/tools/git.svg";
   import docker from "$lib/assets/img/tools/docker.svg";
+  import git from "$lib/assets/img/tools/git.svg";
+  import github from "$lib/assets/img/tools/github.svg";
+  import vscode from "$lib/assets/img/tools/vscode.svg";
 
-  import html from "$lib/assets/img/tools/html.svg";
   import css from "$lib/assets/img/tools/css.svg";
+  import html from "$lib/assets/img/tools/html.svg";
   import js from "$lib/assets/img/tools/javascript.svg";
-  import ts from "$lib/assets/img/tools/typescript.svg";
-  let scriptingLang = ts;
+  import laravel from "$lib/assets/img/tools/laravel.svg";
+  import nodejs from "$lib/assets/img/tools/nodejs.svg";
   import python from "$lib/assets/img/tools/python.svg";
+  import react from "$lib/assets/img/tools/react.svg";
+  import rust from "$lib/assets/img/tools/rust.svg";
   import sass from "$lib/assets/img/tools/sass.svg";
   import svelte from "$lib/assets/img/tools/svelte.svg";
-  import react from "$lib/assets/img/tools/react.svg";
+  import ts from "$lib/assets/img/tools/typescript.svg";
   import vue from "$lib/assets/img/tools/vuejs.svg";
-  import nodejs from "$lib/assets/img/tools/nodejs.svg";
-  import laravel from "$lib/assets/img/tools/laravel.svg";
-  import rust from "$lib/assets/img/tools/rust.svg";
 
-  import pocketbase from "$lib/assets/img/tools/pocketbase.svg";
-  import supabase from "$lib/assets/img/tools/supabase.svg";
+  import graphQL from "$lib/assets/img/tools/graphql.svg";
   import mariadb from "$lib/assets/img/tools/mariadb.svg";
   import mysql from "$lib/assets/img/tools/mysql.svg";
-  import php_myadmin from "$lib/assets/img/tools/php_myadmin.svg";
-  import graphQL from "$lib/assets/img/tools/graphql.svg";
+  import pocketbase from "$lib/assets/img/tools/pocketbase.svg";
+  import supabase from "$lib/assets/img/tools/supabase.svg";
 
-  import netlify from "$lib/assets/img/tools/netlify.svg";
   import heroku from "$lib/assets/img/tools/heroku.svg";
+  import netlify from "$lib/assets/img/tools/netlify.svg";
   import ovh from "$lib/assets/img/tools/ovh.svg";
 
-  import wordpress from "$lib/assets/img/tools/wordpress.svg";
   import elementor from "$lib/assets/img/tools/elementor.svg";
   import shopify from "$lib/assets/img/tools/shopify.svg";
+  import wordpress from "$lib/assets/img/tools/wordpress.svg";
 
-  import photoshop from "$lib/assets/img/tools/photoshop.svg";
-  import illustrator from "$lib/assets/img/tools/illustrator.svg";
-  import premierepro from "$lib/assets/img/tools/premierepro.svg";
-  import indesign from "$lib/assets/img/tools/indesign.svg";
-  import xd from "$lib/assets/img/tools/xd.svg";
   import figma from "$lib/assets/img/tools/figma.svg";
+  import illustrator from "$lib/assets/img/tools/illustrator.svg";
+  import indesign from "$lib/assets/img/tools/indesign.svg";
+  import photoshop from "$lib/assets/img/tools/photoshop.svg";
+  import premierepro from "$lib/assets/img/tools/premierepro.svg";
+  import xd from "$lib/assets/img/tools/xd.svg";
 
-  import unity from "$lib/assets/img/tools/unity.svg";
-  import flstudio from "$lib/assets/img/tools/flstudio.svg";
   import discordDev from "$lib/assets/img/tools/discord_bot.svg";
+  import flstudio from "$lib/assets/img/tools/flstudio.svg";
+  import unity from "$lib/assets/img/tools/unity.svg";
 
-  import TechCategory from "$lib/components/techCategory.svelte";
-  import gsap from "gsap";
   import { goto } from "$app/navigation";
-  import Reviews from "$lib/components/reviews.svelte";
   import reviews from "$lib/assets/data/reviews.json";
+  import Reviews from "$lib/components/reviews.svelte";
+  import TechCategory from "$lib/components/techCategory.svelte";
+  import gsap from "gsap/dist/gsap";
 
+  import ProjectCard from "$lib/components/projectCard.svelte";
   import { IndexScene } from "$lib/three/scenes/index";
-  import { backgroundScene } from "./+layout.svelte";
   import { onMount } from "svelte";
   import { reveal } from "svelte-reveal";
   import type { PageData } from "./$types";
-  import ProjectCard from "$lib/components/projectCard.svelte";
+  import { backgroundScene } from "./+layout.svelte";
 
   export let data: PageData;
 
@@ -81,7 +79,7 @@
           duration: 2,
           ease: "power1.inOut",
         },
-        "<"
+        "<",
       )
 
       .then(() => {

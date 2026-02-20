@@ -5,13 +5,13 @@
 
 <script lang="ts">
   import { page } from "$app/stores";
-  import { onMount } from "svelte";
-  import { writable } from "svelte/store";
-  import { gsap } from "gsap";
-  import { fade } from "svelte/transition";
-  import { circInOut } from "svelte/easing";
-  import { changeTheme } from "$lib/ts/theme";
   import { useCustomCursor } from "$lib/ts/setupCursor";
+  import { changeTheme } from "$lib/ts/theme";
+  import { gsap } from "gsap/dist/gsap";
+  import { onMount } from "svelte";
+  import { circInOut } from "svelte/easing";
+  import { writable } from "svelte/store";
+  import { fade } from "svelte/transition";
 
   export let disable_sections: {
     location?: boolean;
@@ -73,7 +73,7 @@
           opacity: 0,
           ease: "back.in",
         },
-        "<"
+        "<",
       )
       .from(
         nextTextElement,
@@ -82,7 +82,7 @@
           opacity: 0,
           ease: "bounce.out",
         },
-        ">-.25"
+        ">-.25",
       );
 
     const interval: NodeJS.Timeout = setInterval(() => {
