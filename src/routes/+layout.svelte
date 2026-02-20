@@ -11,7 +11,7 @@
   import { navigating as isNavigating } from "$app/stores";
   import { isMobile } from "$lib/ts/mobile";
   import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-  import { gsap } from "gsap/gsap-core";
+  import { gsap } from "gsap/dist/gsap";
   gsap.registerPlugin(ScrollTrigger);
 
   let navigating = false;
