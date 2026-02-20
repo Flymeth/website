@@ -188,7 +188,7 @@
           name="Langages de programmation/frameworks"
           on:iconClicked={({ detail: { icon } }) => {
             if (icon === ts) return (scriptingLang = js);
-            if (icon === js) return enterEasterGame();
+            // if (icon === js) return enterEasterGame();
           }}
           list={{
             html,
