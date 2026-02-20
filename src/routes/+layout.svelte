@@ -3,15 +3,15 @@
 </script>
 
 <script lang="ts">
-  import "../app.scss";
-  import "highlight.js/styles/atom-one-dark.min.css";
   import { afterNavigate, beforeNavigate, onNavigate } from "$app/navigation";
-  import { onMount } from "svelte";
-  import SubLoader from "$lib/components/subLoader.svelte";
   import { navigating as isNavigating } from "$app/stores";
+  import SubLoader from "$lib/components/subLoader.svelte";
   import { isMobile } from "$lib/ts/mobile";
-  import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
   import { gsap } from "gsap/dist/gsap";
+  import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+  import "highlight.js/styles/atom-one-dark.min.css";
+  import { onMount } from "svelte";
+  import "../app.scss";
   gsap.registerPlugin(ScrollTrigger);
 
   let navigating = false;
@@ -54,7 +54,7 @@
   onMount(() => {
     window.addEventListener("resize", () => {
       console.warn(
-        "Hey! You just resized the window. Please reload the page if you switched between the mobile and the pc version."
+        "Hey! You just resized the window. Please reload the page if you switched between the mobile and the pc version.",
       );
     });
     if (isMobile()) document.body.setAttribute("data-mobile", "");

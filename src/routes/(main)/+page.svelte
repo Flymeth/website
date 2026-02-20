@@ -59,6 +59,7 @@
   import { backgroundScene } from "./+layout.svelte";
 
   export let data: PageData;
+  let scriptingLang = "javascript";
 
   onMount(() => {
     backgroundScene.set(new IndexScene());
@@ -117,7 +118,7 @@
   <section id="breaking-news">
     <h2>Breaking News</h2>
     <p>
-      Je suis en pleine recherche d'alternance pour Septembre 2025 !
+      Je suis en pleine recherche d'alternance pour Septembre 2026 !
       <br />
       N'hésitez pas à aller voir <a href="/portfolio">mes projets</a> pour vous convaincre
       que je suis l'alternant qu'il vous faut.
