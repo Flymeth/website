@@ -49,7 +49,6 @@
   import reviews from "$lib/assets/data/reviews.json";
   import Reviews from "$lib/components/reviews.svelte";
   import TechCategory from "$lib/components/techCategory.svelte";
-  import { gsap } from "gsap/dist/gsap";
 
   import ProjectCard from "$lib/components/projectCard.svelte";
   import { IndexScene } from "$lib/three/scenes/index";
@@ -65,29 +64,29 @@
     backgroundScene.set(new IndexScene());
   });
 
-  function enterEasterGame() {
-    const tm = gsap.timeline();
-    tm.to(document.body, {
-      opacity: 0,
-      "--cursor-scale": 50,
-      duration: 1.25,
-      ease: "power1.inOut",
-    })
-      .to(
-        document.body.children[0],
-        {
-          opacity: 0,
-          duration: 2,
-          ease: "power1.inOut",
-        },
-        "<",
-      )
+  // function enterEasterGame() {
+  //   const tm = gsap.timeline();
+  //   tm.to(document.body, {
+  //     opacity: 0,
+  //     "--cursor-scale": 50,
+  //     duration: 1.25,
+  //     ease: "power1.inOut",
+  //   })
+  //     .to(
+  //       document.body.children[0],
+  //       {
+  //         opacity: 0,
+  //         duration: 2,
+  //         ease: "power1.inOut",
+  //       },
+  //       "<",
+  //     )
 
-      .then(() => {
-        // The entire page needs to be reloaded...
-        window.location.href = "/eastereggs/jumper";
-      });
-  }
+  //     .then(() => {
+  //       // The entire page needs to be reloaded...
+  //       window.location.href = "/eastereggs/jumper";
+  //     });
+  // }
 </script>
 
 <svelte:head>
