@@ -49,7 +49,7 @@
   import reviews from "$lib/assets/data/reviews.json";
   import Reviews from "$lib/components/reviews.svelte";
   import TechCategory from "$lib/components/techCategory.svelte";
-  import { gsap } from "gsap";
+  import { gsap } from "gsap/dist/gsap";
 
   import ProjectCard from "$lib/components/projectCard.svelte";
   import { IndexScene } from "$lib/three/scenes/index";
